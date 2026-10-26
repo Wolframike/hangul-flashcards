@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<title>ハングル読み練習</title>
+<script>try { if (localStorage.getItem('hangul-cards:theme') === '"light"') document.documentElement.dataset.theme = 'light'; } catch (e) {}</script>
+<style>
+/* base.css — openai 規則の値の正本。RULES.md と完全に一致させる。
+   使い方: ページの <style> の先頭に、省略せず変えずに写す。部品の CSS はこの後ろに足す。 */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --fill: #f3f3f3; --fill-strong: #e8e8e8; --raised: #ffffff; --selected: #ffffff;
+  --text: #000000; --text-2: #666666;
+  --border: #e0e0e0; --border-strong: #cccccc; --border-input: #8f8f8f;
+  --ink: #000000; --focus: #000000;
+  --cat1-tint: #eaf2fd; --cat1: #1f4e94;
+  --cat2-tint: #f2eefb; --cat2: #5a3e9e;
+  --cat3-tint: #e8f5ec; --cat3: #1d6b3b;
+  --warn-tint: #fff0e5; --warn: #8f3b00;
+  --error-tint: #fdecea; --error: #b42318;
+  --highlight: #f6d247; --highlight-hover: #e8c33a; --on-highlight: #000000; --highlight-tint: #fdf3c4;
+  --backdrop: rgba(0, 0, 0, .4);
+  --shadow-composer: 0 3px 6px rgba(0, 0, 0, .04), 0 4px 80px 8px rgba(0, 0, 0, .04);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", Meiryo, "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --r-xs: 4px; --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 24px; --r-pill: 9999px;
+  --ease: cubic-bezier(.4, 0, .2, 1); --ease-out: cubic-bezier(0, .56, .46, 1);
+  --gutter: 32px; --measure: 720px; --wide: 1200px; --aside: clamp(440px, 50%, 880px); --nav: 240px; --rail: 80px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --fill: #1f1f1f; --fill-strong: #2b2b2b; --raised: #1f1f1f; --selected: #2b2b2b;
+    --text: #ffffff; --text-2: #a3a3a3;
+    --border: #333333; --border-strong: #4d4d4d; --border-input: #6b6b6b;
+    --ink: #ffffff; --focus: #ffffff;
+    --cat1-tint: #0f2541; --cat1: #a4cdfb;
+    --cat2-tint: #251d3d; --cat2: #c7b8f5;
+    --cat3-tint: #0f2c1b; --cat3: #95d5aa;
+    --warn-tint: #3a1f0c; --warn: #ffb27a;
+    --error-tint: #3b1310; --error: #ff9e94;
+    --highlight: #f6d247; --highlight-hover: #e8c33a; --on-highlight: #000000; --highlight-tint: #3a3212;
+    --backdrop: rgba(0, 0, 0, .7);
+    --shadow-composer: none;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --fill: #1f1f1f; --fill-strong: #2b2b2b; --raised: #1f1f1f; --selected: #2b2b2b;
+  --text: #ffffff; --text-2: #a3a3a3;
+  --border: #333333; --border-strong: #4d4d4d; --border-input: #6b6b6b;
+  --ink: #ffffff; --focus: #ffffff;
+  --cat1-tint: #0f2541; --cat1: #a4cdfb;
+  --cat2-tint: #251d3d; --cat2: #c7b8f5;
+  --cat3-tint: #0f2c1b; --cat3: #95d5aa;
+  --warn-tint: #3a1f0c; --warn: #ffb27a;
+  --error-tint: #3b1310; --error: #ff9e94;
+  --highlight: #f6d247; --highlight-hover: #e8c33a; --on-highlight: #000000; --highlight-tint: #3a3212;
+  --backdrop: rgba(0, 0, 0, .7);
+  --shadow-composer: none;
+}
+@media (max-width: 767px) { :root { --gutter: 16px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.75 var(--font); letter-spacing: .02em; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul, ol { padding-left: 1.25em; }
+li + li { margin-top: var(--s1); }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+::placeholder { color: var(--text-2); opacity: 1; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--text-2); }
+
+/* 文字の段階（RULES.md「トークン」の文字） */
+.t-hero { font-size: 48px; line-height: 1.25; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; text-wrap: balance; word-break: auto-phrase; }
+.t-h2 { font-size: 30px; line-height: 1.35; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; text-wrap: balance; word-break: auto-phrase; }
+.t-h3 { font-size: 22px; line-height: 1.4; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; text-wrap: balance; word-break: auto-phrase; }
+.t-title { font-size: 18px; line-height: 1.4; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; }
+.t-lead { font-size: 18px; line-height: 1.7; font-weight: 400; letter-spacing: .02em; text-wrap: pretty; }
+.t-body { font-size: 16px; line-height: 1.75; font-weight: 400; letter-spacing: .02em; text-wrap: pretty; line-break: strict; }
+.t-brand { font-size: 16px; line-height: 1.4; font-weight: 500; letter-spacing: 0; }
+.t-ui { font-size: 14px; line-height: 1.4; font-weight: 500; letter-spacing: .01em; }
+.t-data { font-size: 14px; line-height: 1.5; font-weight: 400; letter-spacing: .01em; }
+.t-small { font-size: 13px; line-height: 1.6; font-weight: 400; letter-spacing: .01em; }
+.t-caption { font-size: 12px; line-height: 1.5; font-weight: 400; letter-spacing: .01em; }
+.t-mono { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; letter-spacing: 0; }
+@media (max-width: 767px) { .t-hero { font-size: 32px; } .t-h2 { font-size: 24px; } .t-h3 { font-size: 20px; } }
+
+/* アイコン。Material Symbols の公式 SVG を <symbol id="i-名前"> でページに入れ、<svg class="icon" aria-hidden="true"><use href="#i-名前"/></svg> で描く */
+.icon { width: 20px; height: 20px; flex: none; fill: currentColor; vertical-align: middle; }
+
+/* ボタン */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); height: 40px; padding: 0 20px; border: 1px solid transparent; border-radius: var(--r-pill); font-size: 14px; line-height: 1; font-weight: 500; letter-spacing: .01em; white-space: nowrap; text-decoration: none; transition: background-color .2s linear, border-color .2s linear, color .2s linear; }
+.btn .icon { width: 18px; height: 18px; }
+.btn-sm { height: 36px; padding: 0 16px; }
+.btn-primary { background: var(--highlight); color: var(--on-highlight); }
+.btn-primary:hover { background: var(--highlight-hover); }
+.btn-secondary { background: var(--fill); color: var(--text); }
+.btn-secondary:hover { background: var(--fill-strong); }
+.btn-danger { background: var(--fill); color: var(--error); }
+.btn-danger:hover { background: var(--fill-strong); }
+.btn-icon { width: 36px; height: 36px; padding: 0; background: transparent; color: var(--text); }
+.btn-icon:hover { background: var(--fill); }
+.btn-icon.btn-xs { width: 24px; height: 24px; color: var(--text-2); }
+.btn-icon.btn-xs .icon { width: 18px; height: 18px; }
+.btn-icon.btn-xs:hover { background: var(--fill-strong); }
+.btn:disabled, .btn[aria-disabled="true"] { background: var(--fill-strong); color: var(--text-2); cursor: not-allowed; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+
+/* チップ・切替・絞り込みの行 */
+.chip { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; border: 1px solid var(--border-strong); border-radius: var(--r-lg); background: transparent; color: var(--text); font-size: 14px; line-height: 1.5; font-weight: 500; letter-spacing: .01em; text-align: left; word-break: auto-phrase; transition: background-color .2s linear; }
+.chip:hover { background: var(--fill); }
+.toggle { display: inline-flex; align-items: center; gap: var(--s1); height: 32px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: transparent; color: var(--text-2); font-size: 13px; line-height: 1; font-weight: 500; white-space: nowrap; transition: background-color .2s linear, border-color .2s linear, color .2s linear; }
+.toggle .icon { display: none; width: 16px; height: 16px; }
+.toggle[aria-pressed="true"] { background: var(--fill-strong); border-color: var(--fill-strong); color: var(--text); }
+.toggle[aria-pressed="true"] .icon { display: inline-block; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); }
+.toolbar .search { flex: 1 1 280px; }
+.filter { display: inline-flex; align-items: center; gap: var(--s2); }
+.filter > label { color: var(--text-2); font-size: 13px; line-height: 1.4; white-space: nowrap; }
+
+/* 入力とフォーム、入力と送信の面 */
+.field { width: 100%; height: 40px; padding: 0 16px; border: 1px solid var(--border-input); border-radius: var(--r-pill); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.5; transition: border-color .2s linear, box-shadow .2s linear; }
+.field:focus { outline: none; border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
+.field[aria-invalid="true"] { border-color: var(--error); }
+textarea.field { height: auto; min-height: 96px; padding: 10px 16px; border-radius: var(--r-md); resize: vertical; }
+.field-sm { height: 36px; padding-left: 14px; }
+.select { position: relative; display: inline-flex; align-items: center; }
+.select select { appearance: none; padding-right: 40px; background: var(--fill); cursor: pointer; }
+.select .icon { position: absolute; right: 12px; pointer-events: none; }
+.search { position: relative; display: flex; align-items: center; }
+.search .field { padding-left: 44px; }
+.search .icon { position: absolute; left: 16px; color: var(--text-2); pointer-events: none; }
+input[type="checkbox"], input[type="radio"] { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--ink); flex: none; }
+.form { display: grid; gap: var(--s5); }
+.form-row { display: grid; gap: var(--s2); }
+.form-label { font-size: 14px; line-height: 1.4; font-weight: 500; }
+.form-help { font-size: 13px; line-height: 1.6; color: var(--text-2); }
+.check-row { display: flex; align-items: flex-start; gap: var(--s3); }
+.check-row .form-label { line-height: 1.75; }
+fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+legend { padding: 0; }
+.composer { display: flex; align-items: flex-end; gap: var(--s2); min-height: 56px; padding: 8px 8px 8px 20px; border: 1px solid var(--border-input); border-radius: var(--r-xl); background: var(--raised); box-shadow: var(--shadow-composer); transition: border-color .2s linear, box-shadow .2s linear; }
+.composer:focus-within { border-color: var(--text); box-shadow: 0 0 0 1px var(--text), var(--shadow-composer); }
+.composer textarea { flex: 1; min-width: 0; max-height: 192px; padding: 8px 0; border: 0; outline: none; background: transparent; color: var(--text); font-size: 16px; line-height: 24px; resize: none; }
+.composer .btn-send { width: 36px; height: 36px; padding: 0; border: 0; border-radius: var(--r-pill); display: inline-flex; align-items: center; justify-content: center; background: var(--highlight); color: var(--on-highlight); transition: background-color .2s linear; }
+.composer .btn-send:hover { background: var(--highlight-hover); }
+.composer .btn-send:disabled { background: var(--fill-strong); color: var(--text-2); cursor: not-allowed; }
+
+/* 知らせ・空の状態・読み込み中 */
+.banner { display: flex; justify-content: center; align-items: flex-start; gap: var(--s2); padding: 8px 16px; background: var(--fill); color: var(--text); font-size: 13px; line-height: 1.6; text-align: center; }
+.banner .icon { color: var(--text-2); }
+.notice { display: flex; align-items: flex-start; gap: var(--s2); padding: 12px 16px; border-radius: var(--r-md); background: var(--fill); color: var(--text); font-size: 13px; line-height: 1.6; }
+.notice-warn { background: var(--warn-tint); color: var(--warn); }
+.notice-error { background: var(--error-tint); color: var(--error); }
+.notice-title { display: block; font-size: 14px; line-height: 1.5; font-weight: 500; }
+.notice ul { margin: 0; padding-left: 20px; }
+.notice li + li { margin-top: var(--s1); }
+.notice-toggle { display: inline-flex; align-items: center; gap: var(--s1); height: 32px; padding: 0 10px 0 12px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: transparent; color: var(--warn); font-size: 13px; line-height: 1; font-weight: 500; white-space: nowrap; transition: background-color .2s linear, border-color .2s linear; }
+.notice-toggle:hover { background: var(--fill); }
+.notice-toggle.is-new { border-color: var(--warn-tint); background: var(--warn-tint); }
+.notice-toggle .icon { width: 16px; height: 16px; }
+.notice-toggle .icon:last-child { transition: transform .3s var(--ease); }
+.notice-toggle[aria-expanded="true"] .icon:last-child { transform: rotate(180deg); }
+.menu-toggle { display: inline-flex; align-items: center; gap: var(--s1); height: 32px; padding: 0 10px 0 12px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: transparent; color: var(--text); font-size: 13px; line-height: 1; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background-color .2s linear; }
+.menu-toggle:hover { background: var(--fill); }
+.menu-toggle .icon { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+.menu-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.say { display: flex; align-items: flex-start; gap: var(--s1); font-size: 13px; line-height: 1.6; color: var(--text-2); }
+.say-warn { color: var(--warn); }
+.say-error { color: var(--error); }
+.say .icon { width: 18px; height: 18px; margin-top: 2px; }
+.disclaimer { padding: 8px 16px; font-size: 12px; line-height: 1.5; color: var(--text-2); text-align: center; }
+.empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s2); padding: var(--s7) 0; text-align: center; }
+.empty-text { font-size: 14px; line-height: 1.6; color: var(--text-2); }
+.empty .chips, .empty .actions { justify-content: center; margin-top: var(--s4); }
+.loading { display: flex; justify-content: center; align-items: center; gap: var(--s2); padding: var(--s7) 0; color: var(--text-2); font-size: 13px; line-height: 1.6; }
+.dots { display: inline-flex; align-items: center; gap: var(--s1); }
+.dots i { width: 6px; height: 6px; border-radius: var(--r-pill); background: currentColor; animation: blink 1.2s infinite; }
+.dots i:nth-child(2) { animation-delay: .2s; }
+.dots i:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+
+/* ラベル・一覧・表・カード・手順・折りたたみ・リンク */
+.tag { display: inline-block; padding: 0 6px; border-radius: var(--r-xs); background: var(--fill); color: var(--text); font-size: 12px; line-height: 20px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
+.tag-cat1 { background: var(--cat1-tint); color: var(--cat1); }
+.tag-cat2 { background: var(--cat2-tint); color: var(--cat2); }
+.tag-cat3 { background: var(--cat3-tint); color: var(--cat3); }
+.tag-warn { background: var(--warn-tint); color: var(--warn); }
+.list { margin: 0; padding: 0; list-style: none; }
+.list > li + li { margin-top: 0; }
+.list-row { display: flex; align-items: center; gap: var(--s3); min-height: 56px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.list-main { flex: 1; min-width: 0; }
+.list-title { font-size: 14px; line-height: 1.5; font-weight: 500; }
+.list-meta { font-size: 13px; line-height: 1.6; color: var(--text-2); }
+.box { border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); overflow: hidden; }
+.box-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s2); padding: 12px 16px; font-size: 13px; line-height: 1.6; font-weight: 500; }
+.box-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s3); padding: 10px 16px; border-top: 1px solid var(--border); font-size: 13px; line-height: 1.6; }
+.table-wrap { position: relative; width: 100%; overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; letter-spacing: .01em; }
+.table th { height: 40px; padding: 0 12px; border-bottom: 1px solid var(--border); background: var(--bg); color: var(--text-2); font-size: 13px; font-weight: 500; text-align: left; white-space: nowrap; }
+.table td { padding: 14px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.table th:first-child, .table td:first-child { padding-left: 0; }
+.table th:last-child, .table td:last-child { padding-right: 0; }
+.table .col-num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-dense td { padding-top: 8px; padding-bottom: 8px; }
+.table thead th { position: sticky; top: 0; z-index: 1; }
+.table th button { display: inline-flex; align-items: center; gap: var(--s1); padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.table th button .icon { width: 16px; height: 16px; }
+.table th[aria-sort] button { color: var(--text); }
+.c-cat1 { color: var(--cat1); } .c-cat2 { color: var(--cat2); } .c-cat3 { color: var(--cat3); } .c-warn { color: var(--warn); } .c-error { color: var(--error); }
+.card { padding: var(--s5); border-radius: var(--r-sm); background: var(--fill); }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s5); margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.steps > li { margin: 0; counter-increment: step; }
+.steps > li::before { content: counter(step); display: block; margin-bottom: var(--s2); color: var(--text-2); font-size: 14px; line-height: 1.4; font-weight: 500; font-variant-numeric: tabular-nums; }
+.steps > li > * + * { margin-top: var(--s2); }
+.card > * + * { margin-top: var(--s2); }
+details > summary { display: flex; align-items: center; gap: var(--s1); list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary .icon { transition: transform .3s var(--ease); }
+details[open] > summary .icon { transform: rotate(180deg); }
+.faq > details { border-top: 1px solid var(--border); }
+.faq > details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { justify-content: space-between; padding: 16px 0; font-size: 16px; line-height: 1.6; font-weight: 500; }
+.faq details > div { padding: 0 0 16px; color: var(--text-2); }
+a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; transition: color .2s linear; }
+a:hover { color: var(--text-2); }
+a.btn, .nav a, .side-nav a, a.brand { text-decoration: none; }
+a.btn-primary:hover { color: var(--on-highlight); }
+a.btn-secondary:hover { color: var(--text); }
+
+/* ナビゲーション・タブ・ダイアログ */
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); height: 64px; padding: 0 var(--gutter); }
+.nav { display: flex; align-items: center; gap: var(--s5); }
+.nav a { color: var(--text-2); font-size: 14px; line-height: 1.4; font-weight: 500; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.side-nav { display: flex; flex-direction: column; gap: 2px; }
+.side-nav a { display: flex; align-items: center; gap: var(--s2); height: 40px; padding: 0 12px; border-radius: var(--r-pill); color: var(--text-2); font-size: 14px; line-height: 1; font-weight: 500; }
+.side-nav a:hover { color: var(--text); }
+.side-nav a[aria-current="page"] { background: var(--fill); color: var(--text); }
+.tabs { display: flex; padding: 4px; border-radius: var(--r-pill); background: var(--fill); }
+.tab { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: var(--s1); height: 36px; padding: 0 12px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--text-2); font-size: 14px; line-height: 1; font-weight: 500; white-space: nowrap; transition: background-color .2s linear, color .2s linear; }
+.tab[aria-selected="true"] { background: var(--selected); color: var(--text); }
+dialog { width: min(480px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: var(--s5); border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); color: var(--text); }
+dialog::backdrop { background: var(--backdrop); }
+.dialog-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--s2); margin-top: var(--s5); }
+
+/* アプリの外枠の部品（利用者の部品、縦のメニュー、面のタブ、ドラッグ&ドロップ、メニュー） */
+.header-actions { display: flex; align-items: center; gap: var(--s2); }
+.avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--r-pill); background: var(--fill-strong); color: var(--text); font-size: 14px; line-height: 1; font-weight: 500; }
+.avatar-button { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: var(--r-pill); background: transparent; }
+.avatar-button:hover { background: var(--fill); }
+.rail { display: flex; flex-direction: column; align-items: center; gap: var(--s1); padding: var(--s3) 0; border-right: 1px solid var(--border); }
+.rail-item { display: flex; flex-direction: column; align-items: center; gap: var(--s1); width: 64px; padding: var(--s1) 0; border: 0; background: none; color: var(--text-2); font-size: 12px; line-height: 1.4; font-weight: 500; text-align: center; text-decoration: none; cursor: pointer; transition: color .2s linear; }
+.rail-item:hover { color: var(--text); }
+.rail-mark { display: flex; align-items: center; justify-content: center; width: 56px; height: 32px; border-radius: var(--r-pill); transition: background-color .2s linear; }
+.rail-item:hover .rail-mark { background: var(--fill); }
+.rail-item .icon { width: 24px; height: 24px; }
+.rail-item.is-open { color: var(--text); }
+.rail-item.is-open .rail-mark { background: var(--highlight); color: var(--on-highlight); }
+.panel-tabs { display: flex; align-items: flex-end; gap: var(--s2); min-height: 48px; padding: 0 var(--s4); border-bottom: 1px solid var(--border); }
+.panel-tab-group { display: inline-flex; align-items: center; gap: var(--s1); height: 40px; border-bottom: 2px solid transparent; }
+.panel-tab-group:has([aria-selected="true"]) { border-bottom-color: var(--ink); }
+.panel-tab { display: inline-flex; align-items: center; gap: var(--s2); height: 36px; padding: 0 var(--s1); border: 0; border-radius: var(--r-sm); background: none; color: var(--text-2); font-size: 14px; line-height: 1; font-weight: 500; white-space: nowrap; cursor: grab; }
+.panel-tab[aria-selected="true"] { color: var(--text); }
+.panel-tab:hover { background: var(--fill); }
+.is-dragging { opacity: .4; }
+.drop-zone { position: absolute; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s2); padding: var(--s5); border: 2px dashed var(--text-2); border-radius: var(--r-md); background: var(--highlight-tint); color: var(--text); font-size: 14px; line-height: 1.5; font-weight: 500; text-align: center; pointer-events: none; }
+.drop-zone .icon { width: 24px; height: 24px; }
+.drop-zone.is-over { border-style: solid; border-color: var(--text); }
+.has-menu { position: relative; }
+.menu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; min-width: 240px; padding: var(--s1); border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); color: var(--text); }
+.menu-label { padding: var(--s2) var(--s3) var(--s1); color: var(--text-2); font-size: 12px; line-height: 1.5; }
+.menu-item { display: flex; align-items: center; gap: var(--s2); width: 100%; min-height: 40px; padding: 0 var(--s3); border: 0; border-radius: var(--r-sm); background: none; color: var(--text); font-size: 14px; line-height: 1.4; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer; }
+.menu-item:hover { background: var(--fill); }
+.menu-item[aria-disabled="true"] { color: var(--text-2); background: none; cursor: not-allowed; }
+.menu-item .menu-end { margin-left: auto; }
+.menu-text { display: flex; flex-direction: column; min-width: 0; padding: 6px 0; }
+.menu-sub { color: var(--text-2); font-family: var(--font-mono); font-size: 12px; line-height: 1.5; font-weight: 400; letter-spacing: 0; overflow-wrap: anywhere; }
+.menu-sub:empty { display: none; }
+.menu-sep { height: 1px; margin: var(--s1) 0; background: var(--border); }
+/* 格子と幅 */
+.container { width: 100%; max-width: calc(var(--wide) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+.measure { width: 100%; max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.section { padding: var(--s9) 0; }
+.section-head { margin-bottom: var(--s5); }
+.stack > * + * { margin-top: var(--s4); }
+.prose > * + * { margin-top: var(--s5); }
+.prose > h2, .prose > h3 { margin-top: var(--s7); }
+.prose > h2 + *, .prose > h3 + * { margin-top: var(--s4); }
+.pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); margin-top: var(--s7); }
+.pager > :last-child { text-align: right; }
+.pager-label { display: block; margin-bottom: var(--s1); color: var(--text-2); font-size: 13px; line-height: 1.6; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); }
+.site-footer { border-top: 1px solid var(--border); padding: var(--s7) 0; }
+.site-footer .disclaimer { padding: 0; text-align: left; }
+.app { display: flex; flex-direction: column; height: 100dvh; }
+.app-frame { flex: 1; min-height: 0; display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); }
+.app-body { position: relative; min-width: 0; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+.app[data-layout="split"] .app-body { grid-template-columns: minmax(0, 1fr) var(--aside); }
+.app[data-layout="full"] .side-panel { display: none; }
+.pane { position: relative; min-width: 0; min-height: 0; overflow-y: auto; }
+.side-panel { position: relative; min-width: 0; min-height: 0; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+.side-panel > .pane { flex: 1; }
+.split-handle { display: none; position: absolute; top: 0; bottom: 0; right: calc(var(--aside) - 6px); z-index: 3; width: 12px; align-items: center; justify-content: center; cursor: col-resize; touch-action: none; }
+.app[data-layout="split"] .split-handle { display: flex; }
+.split-handle::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); }
+.split-handle:hover::before, .split-handle:focus-visible::before, .is-resizing .split-handle::before { background: var(--border-input); }
+.split-handle:focus-visible { outline: none; }
+.split-grip { position: relative; display: flex; align-items: center; justify-content: center; width: 16px; height: 40px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: var(--bg); color: var(--text-2); }
+.split-handle:focus-visible .split-grip { border: 2px solid var(--focus); }
+.split-grip .icon { width: 16px; height: 16px; }
+.is-resizing { cursor: col-resize; user-select: none; }
+.with-nav { display: grid; grid-template-columns: var(--nav) minmax(0, 1fr); gap: var(--s7); }
+@media (max-width: 1023px) {
+  .app[data-layout] .app-body { grid-template-columns: minmax(0, 1fr); }
+  .app-body > :not(.is-current) { display: none !important; }
+  .app[data-layout="full"] .side-panel.is-current { display: flex; }
+  .side-panel { border-left: 0; }
+  .with-nav { grid-template-columns: minmax(0, 1fr); gap: var(--s5); }
+  .side-nav { flex-direction: row; flex-wrap: wrap; gap: var(--s2); }
+}
+@media (max-width: 767px) {
+  .app-frame { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; }
+  .rail { grid-row: 2; flex-direction: row; justify-content: space-around; padding: var(--s1) 0; border-right: 0; border-top: 1px solid var(--border); }
+  .site-header { height: 56px; }
+  .section { padding: var(--s8) 0; }
+  .grid-2, .grid-3, .pager { grid-template-columns: minmax(0, 1fr); }
+  .pager > :last-child { text-align: left; }
+  .table-wrap .table th, .table-wrap .table td { white-space: nowrap; }
+  .table-wrap .table th:first-child, .table-wrap .table td:first-child { width: 160px; min-width: 160px; white-space: normal; }
+}
+
+/* 動き */
+@keyframes appear { from { opacity: 0; transform: translateY(4px); } }
+.appear { animation: appear .3s var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* 単語カードのページ */
+.practice { padding: var(--s6) 0 var(--s8); }
+.flashcard { display: block; width: 100%; margin-top: var(--s5); padding: 0; border: 0; border-radius: var(--r-md); background: none; color: var(--text); text-align: center; perspective: 1200px; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.flashcard-inner { display: grid; transform-style: preserve-3d; transition: transform .3s var(--ease); }
+.flashcard.is-flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard.no-anim .flashcard-inner { transition: none; }
+.face { grid-area: 1 / 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s3); min-width: 0; aspect-ratio: 8 / 5; padding: var(--s7) var(--s5); border-radius: var(--r-md); background: var(--fill); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face-back { transform: rotateY(180deg); }
+.face-label { position: absolute; top: var(--s4); left: var(--s5); }
+.face-hint { position: absolute; right: 0; bottom: var(--s4); left: 0; }
+.word { font-size: 72px; line-height: 1.25; font-weight: 500; letter-spacing: 0; word-break: keep-all; overflow-wrap: anywhere; }
+.roman, .pron { word-break: keep-all; overflow-wrap: anywhere; }
+.meaning { margin-top: var(--s4); overflow-wrap: anywhere; }
+.deck-nav { display: flex; justify-content: center; align-items: center; gap: var(--s5); margin-top: var(--s5); }
+.nav-btn { width: 40px; padding: 0; touch-action: manipulation; }
+.keys { margin-top: var(--s3); text-align: center; }
+.hint-touch { display: none; }
+@media (hover: none) { .hint-mouse, .keys { display: none; } .hint-touch { display: inline; } }
+/* スマホでは、カードを画面の残りの高さまで伸ばす */
+@media (max-width: 767px) {
+  .practice { display: flex; flex-direction: column; min-height: calc(100vh - 56px); min-height: calc(100dvh - 56px); padding: var(--s4) 0 var(--s5); }
+  #study { display: flex; flex: 1; flex-direction: column; }
+  .flashcard { display: grid; flex: 1; margin-top: var(--s4); }
+  .face { aspect-ratio: auto; min-height: 240px; }
+  .word { font-size: 48px; }
+  .keys { display: none; }
+}
+</style>
+</head>
+<body>
+<svg hidden>
+<symbol id="i-arrow_back" viewBox="0 -960 960 960"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224 h487 v80 H313 Z"/></symbol>
+<symbol id="i-arrow_forward" viewBox="0 -960 960 960"><path d="M647-440 H160 v-80 h487 L423-744 l57-56 320 320-320 320-57-56 224-224 Z"/></symbol>
+<symbol id="i-check" viewBox="0 -960 960 960"><path d="M382-240 154-468 l57-57 171 171 367-367 57 57-424 424 Z"/></symbol>
+<symbol id="i-expand_more" viewBox="0 -960 960 960"><path d="M480-345 240-585 l56-56 184 184 184-184 56 56-240 240 Z"/></symbol>
+<symbol id="i-refresh" viewBox="0 -960 960 960"><path d="M480-160 q-134 0-227-93 t-93-227 q0-134 93-227 t227-93 q69 0 132 28.5 T720-690 v-110 h80 v280 H520 v-80 h168 q-32-56-87.5-88 T480-720 q-100 0-170 70 t-70 170 q0 100 70 170 t170 70 q77 0 139-44 t87-116 h84 q-28 106-114 173 t-196 67 Z"/></symbol>
+</svg>
+<header class="site-header container">
+  <h1 class="t-brand">ハングル読み練習</h1>
+  <div class="header-actions">
+    <button class="toggle" id="theme" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ダークモード</button>
+  </div>
+</header>
+<main class="container">
+  <div class="measure practice">
+    <div class="toolbar">
+      <div class="filter">
+        <label for="set">セット</label>
+        <span class="select"><select id="set" class="field field-sm"></select><svg class="icon" aria-hidden="true"><use href="#i-expand_more"/></svg></span>
+      </div>
+      <div class="chips">
+        <button class="toggle" id="shuffle" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>順番を混ぜる</button>
+        <button class="toggle" id="changed" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>発音が変わる語だけ</button>
+      </div>
+    </div>
+
+    <div id="study">
+      <button class="flashcard" id="card">
+        <span class="flashcard-inner">
+          <span class="face face-front" id="front">
+            <span class="face-label t-small muted" id="where"></span>
+            <span class="word" id="word" lang="ko"></span>
+            <span class="face-hint t-caption muted"><span class="hint-mouse">クリックで裏返す</span><span class="hint-touch">タップで裏返す　左右にスワイプで前後のカードへ</span></span>
+          </span>
+          <span class="face face-back" id="back" aria-hidden="true">
+            <span class="face-label t-small muted" id="where-back"></span>
+            <span class="roman t-hero" id="roman" lang="ko-Latn"></span>
+            <span class="pron t-title muted" id="pron" lang="ko"></span>
+            <span class="meaning t-h2" id="meaning"></span>
+          </span>
+        </span>
+      </button>
+      <div class="deck-nav">
+        <button class="btn btn-secondary nav-btn" id="prev" aria-label="前のカード"><svg class="icon" aria-hidden="true"><use href="#i-arrow_back"/></svg></button>
+        <span class="t-ui num" id="pos" aria-live="polite"></span>
+        <button class="btn btn-secondary nav-btn" id="next" aria-label="次のカード"><svg class="icon" aria-hidden="true"><use href="#i-arrow_forward"/></svg></button>
+      </div>
+      <p class="t-caption muted keys">クリック・Space：裏返す　← →：前後のカード</p>
+    </div>
+
+    <div class="empty" id="done" hidden>
+      <h2 class="t-title" id="done-title"></h2>
+      <p class="empty-text" id="done-text"></p>
+      <div class="actions" id="done-actions"><button class="btn btn-primary" id="restart"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>最初から</button></div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p class="disclaimer">単語と意味は Quizlet のクラス「SFC朝鮮語」の25セット（2026年10月26日に取得）から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。</p>
+  </div>
+</footer>
+<script>
+const SETS = [{"n":"09","cards":[{"ko":"가수","ja":"歌手","pron":["가수"],"rom":["gasu"],"chg":false},{"ko":"운동","ja":"運動","pron":["운동"],"rom":["undong"],"chg":false},{"ko":"게임","ja":"ゲーム","pron":["게임"],"rom":["geim"],"chg":false},{"ko":"의사","ja":"医者","pron":["의사"],"rom":["uisa"],"chg":false},{"ko":"고향","ja":"出身、故郷","pron":["고향"],"rom":["gohyang"],"chg":false},{"ko":"일본","ja":"日本","pron":["일본"],"rom":["ilbon"],"chg":false},{"ko":"공무원","ja":"公務員","pron":["공무원"],"rom":["gongmuwon"],"chg":false},{"ko":"저","ja":"私（わたくし）","pron":["저"],"rom":["jeo"],"chg":false},{"ko":"교사","ja":"教師","pron":["교사"],"rom":["gyosa"],"chg":false},{"ko":"전공","ja":"専攻","pron":["전공"],"rom":["jeongong"],"chg":false},{"ko":"나","ja":"私（わたし）、僕","pron":["나"],"rom":["na"],"chg":false},{"ko":"주부","ja":"主婦","pron":["주부"],"rom":["jubu"],"chg":false},{"ko":"대학생","ja":"大学生","pron":["대학쌩"],"rom":["daehakssaeng"],"chg":true},{"ko":"중국","ja":"中国","pron":["중국"],"rom":["jungguk"],"chg":false},{"ko":"독서","ja":"読書","pron":["독써"],"rom":["doksseo"],"chg":true},{"ko":"집","ja":"家","pron":["집"],"rom":["jip"],"chg":false},{"ko":"미국","ja":"アメリカ","pron":["미국"],"rom":["miguk"],"chg":false},{"ko":"취미","ja":"趣味","pron":["취미"],"rom":["chwimi"],"chg":false},{"ko":"부산","ja":"釜山","pron":["부산"],"rom":["busan"],"chg":false},{"ko":"친구","ja":"友達","pron":["친구"],"rom":["chingu"],"chg":false},{"ko":"사람","ja":"人、～人（じん）","pron":["사람"],"rom":["saram"],"chg":false},{"ko":"학생","ja":"学生","pron":["학쌩"],"rom":["hakssaeng"],"chg":true},{"ko":"서울","ja":"ソウル","pron":["서울"],"rom":["seoul"],"chg":false},{"ko":"한국","ja":"韓国","pron":["한국"],"rom":["hanguk"],"chg":false},{"ko":"씨","ja":"～さん","pron":["씨"],"rom":["ssi"],"chg":false},{"ko":"혹시","ja":"もしかして","pron":["혹씨"],"rom":["hokssi"],"chg":true},{"ko":"어","ja":"～語","pron":["어"],"rom":["eo"],"chg":false},{"ko":"회사원","ja":"会社員","pron":["회사원"],"rom":["hoesawon"],"chg":false},{"ko":"요리","ja":"料理","pron":["요리"],"rom":["yori"],"chg":false}]},{"n":"11","cards":[{"ko":"가다","ja":"行く","pron":["가다"],"rom":["gada"],"chg":false},{"ko":"가르치다","ja":"教える","pron":["가르치다"],"rom":["gareuchida"],"chg":false},{"ko":"값","ja":"値段","pron":["갑"],"rom":["gap"],"chg":true},{"ko":"공부","ja":"勉強","pron":["공부"],"rom":["gongbu"],"chg":false},{"ko":"듣다","ja":"聞く","pron":["듣따"],"rom":["deutta"],"chg":true},{"ko":"마시다","ja":"飲む","pron":["마시다"],"rom":["masida"],"chg":false},{"ko":"많다","ja":"多い","pron":["만타"],"rom":["manta"],"chg":true},{"ko":"먹다","ja":"食べる","pron":["먹따"],"rom":["meoktta"],"chg":true},{"ko":"받다","ja":"受け取る、もらう","pron":["받따"],"rom":["batta"],"chg":true},{"ko":"방","ja":"部屋","pron":["방"],"rom":["bang"],"chg":false},{"ko":"배우다","ja":"習う","pron":["배우다"],"rom":["baeuda"],"chg":false},{"ko":"보다","ja":"見る","pron":["보다"],"rom":["boda"],"chg":false},{"ko":"비빔밥","ja":"ビビンバ","pron":["비빔빱"],"rom":["bibimppap"],"chg":true},{"ko":"비싸다","ja":"(値段が)高い","pron":["비싸다"],"rom":["bissada"],"chg":false},{"ko":"선생님","ja":"先生","pron":["선생님"],"rom":["seonsaengnim"],"chg":false},{"ko":"싸다","ja":"安い","pron":["싸다"],"rom":["ssada"],"chg":false},{"ko":"쓰다","ja":"書く","pron":["쓰다"],"rom":["sseuda"],"chg":false},{"ko":"안","ja":"〜ない","pron":["안"],"rom":["an"],"chg":false},{"ko":"앉다","ja":"座る","pron":["안따"],"rom":["antta"],"chg":true},{"ko":"없다","ja":"ない、いない","pron":["업따"],"rom":["eoptta"],"chg":true},{"ko":"오늘","ja":"今日","pron":["오늘"],"rom":["oneul"],"chg":false},{"ko":"오다","ja":"来る","pron":["오다"],"rom":["oda"],"chg":false},{"ko":"음악","ja":"音楽","pron":["으막"],"rom":["eumak"],"chg":true},{"ko":"의자","ja":"椅子","pron":["의자"],"rom":["uija"],"chg":false},{"ko":"이야기","ja":"話","pron":["이야기"],"rom":["iyagi"],"chg":false},{"ko":"읽다","ja":"読む","pron":["익따"],"rom":["iktta"],"chg":true},{"ko":"있다","ja":"ある、いる","pron":["읻따"],"rom":["itta"],"chg":true},{"ko":"작다","ja":"小さい","pron":["작따"],"rom":["jaktta"],"chg":true},{"ko":"점심","ja":"昼ご飯","pron":["점심"],"rom":["jeomsim"],"chg":false},{"ko":"주다","ja":"あげる、くれる","pron":["주다"],"rom":["juda"],"chg":false},{"ko":"주스","ja":"ジュース","pron":["주스"],"rom":["juseu"],"chg":false},{"ko":"크다","ja":"大きい","pron":["크다"],"rom":["keuda"],"chg":false},{"ko":"하다","ja":"する","pron":["하다"],"rom":["hada"],"chg":false},{"ko":"학교","ja":"学校","pron":["학꾜"],"rom":["hakkyo"],"chg":true}]},{"n":"12","cards":[{"ko":"가깝다","ja":"近い","pron":["가깝따"],"rom":["gakkaptta"],"chg":true},{"ko":"걷다","ja":"歩く","pron":["걷따"],"rom":["geotta"],"chg":true},{"ko":"걸리다","ja":"(時間が)かかる","pron":["걸리다"],"rom":["geollida"],"chg":false},{"ko":"괜찮다","ja":"大丈夫だ","pron":["괜찬타"],"rom":["gwaenchanta"],"chg":true},{"ko":"교실","ja":"教室","pron":["교실"],"rom":["gyosil"],"chg":false},{"ko":"내다","ja":"払う、出す","pron":["내다"],"rom":["naeda"],"chg":false},{"ko":"돈","ja":"お金","pron":["돈"],"rom":["don"],"chg":false},{"ko":"만나다","ja":"会う","pron":["만나다"],"rom":["mannada"],"chg":false},{"ko":"모자","ja":"帽子","pron":["모자"],"rom":["moja"],"chg":false},{"ko":"버스","ja":"バス","pron":["버스"],"rom":["beoseu"],"chg":false},{"ko":"벌써","ja":"もう","pron":["벌써"],"rom":["beolsseo"],"chg":false},{"ko":"벗다","ja":"脱ぐ","pron":["벋따"],"rom":["beotta"],"chg":true},{"ko":"사랑","ja":"愛","pron":["사랑"],"rom":["sarang"],"chg":false},{"ko":"수업","ja":"授業","pron":["수업"],"rom":["sueop"],"chg":false},{"ko":"신문","ja":"新聞","pron":["신문"],"rom":["sinmun"],"chg":false},{"ko":"얼마나","ja":"どのくらい","pron":["얼마나"],"rom":["eolmana"],"chg":false},{"ko":"역","ja":"駅","pron":["역"],"rom":["yeok"],"chg":false},{"ko":"운동장","ja":"運動場","pron":["운동장"],"rom":["undongjang"],"chg":false},{"ko":"웃다","ja":"笑う","pron":["욷따"],"rom":["utta"],"chg":true},{"ko":"일어나다","ja":"起きる","pron":["이러나다"],"rom":["ireonada"],"chg":true},{"ko":"자다","ja":"寝る","pron":["자다"],"rom":["jada"],"chg":false},{"ko":"자전거","ja":"自転車","pron":["자전거"],"rom":["jajeongeo"],"chg":false},{"ko":"주말","ja":"週末","pron":["주말"],"rom":["jumal"],"chg":false},{"ko":"책상","ja":"机","pron":["책쌍"],"rom":["chaekssang"],"chg":true},{"ko":"카페","ja":"カフェ","pron":["카페"],"rom":["kape"],"chg":false},{"ko":"타다","ja":"乗る","pron":["타다"],"rom":["tada"],"chg":false}]},{"n":"14","cards":[{"ko":"가방","ja":"カバン","pron":["가방"],"rom":["gabang"],"chg":false},{"ko":"경찰서","ja":"警察署","pron":["경찰써"],"rom":["gyeongchalsseo"],"chg":true},{"ko":"고양이","ja":"猫","pron":["고양이"],"rom":["goyang-i"],"chg":false},{"ko":"과일","ja":"果物","pron":["과일"],"rom":["gwail"],"chg":false},{"ko":"귤","ja":"みかん","pron":["귤"],"rom":["gyul"],"chg":false},{"ko":"그럼","ja":"じゃあ、それでは","pron":["그럼"],"rom":["geureom"],"chg":false},{"ko":"근처","ja":"近く、近所","pron":["근처"],"rom":["geuncheo"],"chg":false},{"ko":"끝내다","ja":"終わらせる","pron":["끈내다"],"rom":["kkeunnaeda"],"chg":true},{"ko":"나다","ja":"出る","pron":["나다"],"rom":["nada"],"chg":false},{"ko":"내리다","ja":"降りる","pron":["내리다"],"rom":["naerida"],"chg":false},{"ko":"놓다","ja":"置く","pron":["노타"],"rom":["nota"],"chg":true},{"ko":"닫다","ja":"閉める","pron":["닫따"],"rom":["datta"],"chg":true},{"ko":"돌아오다","ja":"帰る(帰って来る)","pron":["도라오다"],"rom":["doraoda"],"chg":true},{"ko":"머리","ja":"頭","pron":["머리"],"rom":["meori"],"chg":false},{"ko":"모으다","ja":"貯める、集める","pron":["모으다"],"rom":["moeuda"],"chg":false},{"ko":"바꾸다","ja":"替える","pron":["바꾸다"],"rom":["bakkuda"],"chg":false},{"ko":"병원","ja":"病院","pron":["병원"],"rom":["byeong-won"],"chg":false},{"ko":"소리","ja":"音","pron":["소리"],"rom":["sori"],"chg":false},{"ko":"식사","ja":"食事","pron":["식싸"],"rom":["sikssa"],"chg":true},{"ko":"아르바이트","ja":"アルバイト","pron":["아르바이트"],"rom":["areubaiteu"],"chg":false},{"ko":"아프다","ja":"痛い","pron":["아프다"],"rom":["apeuda"],"chg":false},{"ko":"열심히","ja":"一生懸命、熱心に","pron":["열씸히"],"rom":["yeolssimhi"],"chg":true},{"ko":"일","ja":"仕事","pron":["일"],"rom":["il"],"chg":false},{"ko":"의자","ja":"椅子","pron":["의자"],"rom":["uija"],"chg":false},{"ko":"잠시만","ja":"しばらく","pron":["잠시만"],"rom":["jamsiman"],"chg":false},{"ko":"잡다","ja":"掴む、取る","pron":["잡따"],"rom":["japtta"],"chg":true},{"ko":"좋다","ja":"いい、よい","pron":["조타"],"rom":["jota"],"chg":true},{"ko":"지금","ja":"今","pron":["지금"],"rom":["jigeum"],"chg":false},{"ko":"창문","ja":"窓","pron":["창문"],"rom":["changmun"],"chg":false},{"ko":"천천히","ja":"ゆっくり","pron":["천천히"],"rom":["cheoncheonhi"],"chg":false}]},{"n":"15","cards":[{"ko":"같이","ja":"一緒に","pron":["가치"],"rom":["gachi"],"chg":true},{"ko":"김치","ja":"キムチ","pron":["김치"],"rom":["gimchi"],"chg":false},{"ko":"누구","ja":"誰","pron":["누구"],"rom":["nugu"],"chg":false},{"ko":"늦다","ja":"遅れる、遅い","pron":["늗따"],"rom":["neutta"],"chg":true},{"ko":"다음","ja":"次","pron":["다음"],"rom":["daeum"],"chg":false},{"ko":"들다","ja":"(費用が)かかる","pron":["들다"],"rom":["deulda"],"chg":false},{"ko":"떡볶이","ja":"トッポッキ","pron":["떡뽀끼"],"rom":["tteokppokki"],"chg":true},{"ko":"때","ja":"とき","pron":["때"],"rom":["ttae"],"chg":false},{"ko":"만들다","ja":"作る","pron":["만들다"],"rom":["mandeulda"],"chg":false},{"ko":"무슨","ja":"何の","pron":["무슨"],"rom":["museun"],"chg":false},{"ko":"문제","ja":"問題","pron":["문제"],"rom":["munje"],"chg":false},{"ko":"김밥","ja":"のり巻き","pron":["김밥","김빱"],"rom":["gimbap","gimppap"],"chg":true},{"ko":"사진","ja":"写真","pron":["사진"],"rom":["sajin"],"chg":false},{"ko":"살다","ja":"住む","pron":["살다"],"rom":["salda"],"chg":false},{"ko":"상","ja":"賞","pron":["상"],"rom":["sang"],"chg":false},{"ko":"소설","ja":"小説","pron":["소설"],"rom":["soseol"],"chg":false},{"ko":"소파","ja":"ソファ","pron":["소파"],"rom":["sopa"],"chg":false},{"ko":"씻다","ja":"洗う","pron":["씯따"],"rom":["ssitta"],"chg":true},{"ko":"알다","ja":"知る、わかる","pron":["알다"],"rom":["alda"],"chg":false},{"ko":"어떻게","ja":"どのように、どうやって","pron":["어떠케"],"rom":["eotteoke"],"chg":true},{"ko":"얼굴","ja":"顔","pron":["얼굴"],"rom":["eolgul"],"chg":false},{"ko":"얼마","ja":"いくら","pron":["얼마"],"rom":["eolma"],"chg":false},{"ko":"왜","ja":"なぜ","pron":["왜"],"rom":["wae"],"chg":false},{"ko":"우리","ja":"私たち","pron":["우리"],"rom":["uri"],"chg":false},{"ko":"울다","ja":"泣く","pron":["울다"],"rom":["ulda"],"chg":false},{"ko":"잘","ja":"よく","pron":["잘"],"rom":["jal"],"chg":false},{"ko":"정도","ja":"くらい","pron":["정도"],"rom":["jeongdo"],"chg":false},{"ko":"찌개","ja":"鍋料理","pron":["찌개"],"rom":["jjigae"],"chg":false},{"ko":"찍다","ja":"撮る","pron":["찍따"],"rom":["jjiktta"],"chg":true},{"ko":"케이크","ja":"ケーキ","pron":["케이크"],"rom":["keikeu"],"chg":false},{"ko":"회의","ja":"会議","pron":["회의"],"rom":["hoeui"],"chg":false}]},{"n":"16","cards":[{"ko":"가지다","ja":"持つ","pron":["가지다"],"rom":["gajida"],"chg":false},{"ko":"그러면","ja":"それでは","pron":["그러면"],"rom":["geureomyeon"],"chg":false},{"ko":"끝나다","ja":"終わる","pron":["끈나다"],"rom":["kkeunnada"],"chg":true},{"ko":"낚시","ja":"釣り","pron":["낙씨"],"rom":["nakssi"],"chg":true},{"ko":"낮","ja":"昼","pron":["낟"],"rom":["nat"],"chg":true},{"ko":"노래","ja":"歌","pron":["노래"],"rom":["norae"],"chg":false},{"ko":"다니다","ja":"通う","pron":["다니다"],"rom":["danida"],"chg":false},{"ko":"되다","ja":"なる","pron":["되다"],"rom":["doeda"],"chg":false},{"ko":"등산","ja":"登山","pron":["등산"],"rom":["deungsan"],"chg":false},{"ko":"못하다","ja":"下手だ","pron":["모타다"],"rom":["motada"],"chg":true},{"ko":"미안하다","ja":"すまない、申し訳ない","pron":["미안하다"],"rom":["mianhada"],"chg":false},{"ko":"밤","ja":"夜","pron":["밤"],"rom":["bam"],"chg":false},{"ko":"보내다","ja":"送る","pron":["보내다"],"rom":["bonaeda"],"chg":false},{"ko":"비행기","ja":"飛行機","pron":["비행기"],"rom":["bihaenggi"],"chg":false},{"ko":"서다","ja":"立つ","pron":["서다"],"rom":["seoda"],"chg":false},{"ko":"세다","ja":"強い","pron":["세다"],"rom":["seda"],"chg":false},{"ko":"쇼핑","ja":"買い物","pron":["쇼핑"],"rom":["syoping"],"chg":false},{"ko":"싫어하다","ja":"嫌いだ","pron":["시러하다"],"rom":["sireohada"],"chg":true},{"ko":"아침","ja":"朝","pron":["아침"],"rom":["achim"],"chg":false},{"ko":"여름","ja":"夏","pron":["여름"],"rom":["yeoreum"],"chg":false},{"ko":"여행","ja":"旅行","pron":["여행"],"rom":["yeohaeng"],"chg":false},{"ko":"오전","ja":"午前","pron":["오전"],"rom":["ojeon"],"chg":false},{"ko":"오후","ja":"午後","pron":["오후"],"rom":["ohu"],"chg":false},{"ko":"옷","ja":"服","pron":["옫"],"rom":["ot"],"chg":true},{"ko":"외우다","ja":"覚える","pron":["외우다"],"rom":["oeuda"],"chg":false},{"ko":"유학","ja":"留学","pron":["유학"],"rom":["yuhak"],"chg":false},{"ko":"잘하다","ja":"上手だ","pron":["잘하다"],"rom":["jalhada"],"chg":false},{"ko":"저녁","ja":"夕方","pron":["저녁"],"rom":["jeonyeok"],"chg":false},{"ko":"중에","ja":"の中で","pron":["중에"],"rom":["jung-e"],"chg":false},{"ko":"지내다","ja":"過ごす","pron":["지내다"],"rom":["jinaeda"],"chg":false},{"ko":"직장","ja":"職場","pron":["직짱"],"rom":["jikjjang"],"chg":true},{"ko":"펴다","ja":"開く、開ける","pron":["펴다"],"rom":["pyeoda"],"chg":false},{"ko":"편하다","ja":"楽だ","pron":["편하다"],"rom":["pyeonhada"],"chg":false}]},{"n":"17","cards":[{"ko":"감상","ja":"鑑賞","pron":["감상"],"rom":["gamsang"],"chg":false},{"ko":"건물","ja":"建物","pron":["건물"],"rom":["geonmul"],"chg":false},{"ko":"공원","ja":"公園","pron":["공원"],"rom":["gong-won"],"chg":false},{"ko":"구두","ja":"くつ","pron":["구두"],"rom":["gudu"],"chg":false},{"ko":"군대","ja":"軍隊","pron":["군대"],"rom":["gundae"],"chg":false},{"ko":"그래도","ja":"それでも","pron":["그래도"],"rom":["geuraedo"],"chg":false},{"ko":"그림","ja":"絵","pron":["그림"],"rom":["geurim"],"chg":false},{"ko":"기자","ja":"記者","pron":["기자"],"rom":["gija"],"chg":false},{"ko":"깻잎","ja":"エゴマの葉","pron":["깬닙"],"rom":["kkaennip"],"chg":true},{"ko":"나이","ja":"年齢","pron":["나이"],"rom":["nai"],"chg":false},{"ko":"남자친구","ja":"彼氏","pron":["남자친구"],"rom":["namjachingu"],"chg":false},{"ko":"내일","ja":"明日","pron":["내일"],"rom":["naeil"],"chg":false},{"ko":"농구","ja":"バスケットボール","pron":["농구"],"rom":["nonggu"],"chg":false},{"ko":"담요","ja":"毛布","pron":["담뇨"],"rom":["damnyo"],"chg":true},{"ko":"두통","ja":"頭痛","pron":["두통"],"rom":["dutong"],"chg":false},{"ko":"매일","ja":"毎日","pron":["매일"],"rom":["maeil"],"chg":false},{"ko":"문","ja":"ドア","pron":["문"],"rom":["mun"],"chg":false},{"ko":"반","ja":"半（30分）","pron":["반"],"rom":["ban"],"chg":false},{"ko":"볼일","ja":"用事","pron":["볼릴"],"rom":["bollil"],"chg":true},{"ko":"부탁하다","ja":"たのむ","pron":["부타카다"],"rom":["butakada"],"chg":true},{"ko":"빨리","ja":"速く","pron":["빨리"],"rom":["ppalli"],"chg":false},{"ko":"설거지","ja":"皿洗い、食後の片付け","pron":["설거지"],"rom":["seolgeoji"],"chg":false},{"ko":"야근","ja":"夜勤","pron":["야근"],"rom":["yageun"],"chg":false},{"ko":"약","ja":"薬","pron":["약"],"rom":["yak"],"chg":false},{"ko":"엽서","ja":"はがき","pron":["엽써"],"rom":["yeopsseo"],"chg":true},{"ko":"영어","ja":"英語","pron":["영어"],"rom":["yeong-eo"],"chg":false},{"ko":"요즘","ja":"最近","pron":["요즘"],"rom":["yojeum"],"chg":false},{"ko":"용돈","ja":"おこづかい","pron":["용똔"],"rom":["yongtton"],"chg":true},{"ko":"이따가","ja":"後で","pron":["이따가"],"rom":["ittaga"],"chg":false},{"ko":"이름","ja":"名前","pron":["이름"],"rom":["ireum"],"chg":false},{"ko":"일찍","ja":"早く","pron":["일찍"],"rom":["iljjik"],"chg":false},{"ko":"자주","ja":"よく、ひんぱんに","pron":["자주"],"rom":["jaju"],"chg":false},{"ko":"조심하다","ja":"気をつける","pron":["조심하다"],"rom":["josimhada"],"chg":false},{"ko":"지하철","ja":"地下鉄","pron":["지하철"],"rom":["jihacheol"],"chg":false}]},{"n":"18","cards":[{"ko":"감다","ja":"（髪を）洗う","pron":["감따"],"rom":["gamtta"],"chg":true},{"ko":"감다","ja":"閉じる","pron":["감따"],"rom":["gamtta"],"chg":true},{"ko":"결혼","ja":"結婚","pron":["결혼"],"rom":["gyeolhon"],"chg":false},{"ko":"그러다","ja":"そう言う、そうする","pron":["그러다"],"rom":["geureoda"],"chg":false},{"ko":"끊다","ja":"（電話）切る","pron":["끈타"],"rom":["kkeunta"],"chg":true},{"ko":"남기다","ja":"残す","pron":["남기다"],"rom":["namgida"],"chg":false},{"ko":"남다","ja":"残る","pron":["남따"],"rom":["namtta"],"chg":true},{"ko":"너무","ja":"とても","pron":["너무"],"rom":["neomu"],"chg":false},{"ko":"눈","ja":"目","pron":["눈"],"rom":["nun"],"chg":false},{"ko":"단어","ja":"単語","pron":["다너"],"rom":["daneo"],"chg":true},{"ko":"많이","ja":"たくさん","pron":["마니"],"rom":["mani"],"chg":true},{"ko":"물건","ja":"品物","pron":["물건"],"rom":["mulgeon"],"chg":false},{"ko":"바로","ja":"すぐに","pron":["바로"],"rom":["baro"],"chg":false},{"ko":"버리다","ja":"すてる","pron":["버리다"],"rom":["beorida"],"chg":false},{"ko":"부르다","ja":"よぶ","pron":["부르다"],"rom":["bureuda"],"chg":false},{"ko":"불꽃놀이","ja":"花火大会","pron":["불꼰노리"],"rom":["bulkkonnori"],"chg":true},{"ko":"사전","ja":"辞書","pron":["사전"],"rom":["sajeon"],"chg":false},{"ko":"세우다","ja":"立てる","pron":["세우다"],"rom":["seuda"],"chg":false},{"ko":"손","ja":"手","pron":["손"],"rom":["son"],"chg":false},{"ko":"슬슬","ja":"そろそろ","pron":["슬슬"],"rom":["seulseul"],"chg":false},{"ko":"쓰다","ja":"使う","pron":["쓰다"],"rom":["sseuda"],"chg":false},{"ko":"아침","ja":"朝ごはん","pron":["아침"],"rom":["achim"],"chg":false},{"ko":"얻다","ja":"得る","pron":["얻따"],"rom":["eotta"],"chg":true},{"ko":"여자친구","ja":"彼女","pron":["여자친구"],"rom":["yeojachingu"],"chg":false},{"ko":"열다","ja":"あける","pron":["열다"],"rom":["yeolda"],"chg":false},{"ko":"일","ja":"仕事","pron":["일"],"rom":["il"],"chg":false},{"ko":"저녁","ja":"夜ごはん","pron":["저녁"],"rom":["jeonyeok"],"chg":false},{"ko":"준비","ja":"準備","pron":["준비"],"rom":["junbi"],"chg":false},{"ko":"짓다","ja":"建てる","pron":["짇따"],"rom":["jitta"],"chg":true},{"ko":"출발","ja":"出発","pron":["출발"],"rom":["chulbal"],"chg":false},{"ko":"편의점","ja":"コンビニ","pron":["펴늬점"],"rom":["pyeonuijeom"],"chg":true}]},{"n":"22","cards":[{"ko":"공항","ja":"空港","pron":["공항"],"rom":["gonghang"],"chg":false},{"ko":"과자","ja":"菓子","pron":["과자"],"rom":["gwaja"],"chg":false},{"ko":"그리다","ja":"描く","pron":["그리다"],"rom":["geurida"],"chg":false},{"ko":"꼭","ja":"きっと、必ず","pron":["꼭"],"rom":["kkok"],"chg":false},{"ko":"나누다","ja":"分ける","pron":["나누다"],"rom":["nanuda"],"chg":false},{"ko":"농담","ja":"冗談","pron":["농담"],"rom":["nongdam"],"chg":false},{"ko":"담배","ja":"タバコ","pron":["담배"],"rom":["dambae"],"chg":false},{"ko":"대신(에)","ja":"代わり（に）","pron":["대신","대시네"],"rom":["daesin","daesine"],"chg":true},{"ko":"독일","ja":"ドイツ","pron":["도길"],"rom":["dogil"],"chg":true},{"ko":"들어가다","ja":"入る","pron":["드러가다"],"rom":["deureogada"],"chg":true},{"ko":"마음껏","ja":"思う存分","pron":["마음껃"],"rom":["maeumkkeot"],"chg":true},{"ko":"보내다","ja":"過ごす","pron":["보내다"],"rom":["bonaeda"],"chg":false},{"ko":"붙이다","ja":"付ける","pron":["부치다"],"rom":["buchida"],"chg":true},{"ko":"사다","ja":"おごる","pron":["사다"],"rom":["sada"],"chg":false},{"ko":"삼계탕","ja":"参鶏湯","pron":["삼계탕"],"rom":["samgyetang"],"chg":false},{"ko":"생각","ja":"考え","pron":["생각"],"rom":["saenggak"],"chg":false},{"ko":"연락","ja":"連絡","pron":["열락"],"rom":["yeollak"],"chg":true},{"ko":"열쇠","ja":"鍵","pron":["열쐬"],"rom":["yeolssoe"],"chg":true},{"ko":"영국","ja":"イギリス","pron":["영국"],"rom":["yeongguk"],"chg":false},{"ko":"외국","ja":"外国","pron":["외국"],"rom":["oeguk"],"chg":false},{"ko":"우산","ja":"傘","pron":["우산"],"rom":["usan"],"chg":false},{"ko":"우표","ja":"郵便切手","pron":["우표"],"rom":["upyo"],"chg":false},{"ko":"음료수","ja":"飲み物","pron":["음뇨수"],"rom":["eumnyosu"],"chg":true},{"ko":"의견","ja":"意見","pron":["의견"],"rom":["uigyeon"],"chg":false},{"ko":"자기소개","ja":"自己紹介","pron":["자기소개"],"rom":["jagisogae"],"chg":false},{"ko":"장면","ja":"場面","pron":["장면"],"rom":["jangmyeon"],"chg":false},{"ko":"전통","ja":"伝統","pron":["전통"],"rom":["jeontong"],"chg":false},{"ko":"제목","ja":"タイトル","pron":["제목"],"rom":["jemok"],"chg":false},{"ko":"지도","ja":"地図","pron":["지도"],"rom":["jido"],"chg":false},{"ko":"진짜","ja":"本当 、本当に","pron":["진짜"],"rom":["jinjja"],"chg":false},{"ko":"편지","ja":"手紙","pron":["편지"],"rom":["pyeonji"],"chg":false},{"ko":"피우다","ja":"（タバコを）吸う","pron":["피우다"],"rom":["piuda"],"chg":false}]},{"n":"23","cards":[{"ko":"가늘다","ja":"細い","pron":["가늘다"],"rom":["ganeulda"],"chg":false},{"ko":"거리","ja":"通り、道","pron":["거리"],"rom":["geori"],"chg":false},{"ko":"걸다","ja":"かける","pron":["걸다"],"rom":["geolda"],"chg":false},{"ko":"그만","ja":"それくらいにして","pron":["그만"],"rom":["geuman"],"chg":false},{"ko":"날짜","ja":"日付","pron":["날짜"],"rom":["naljja"],"chg":false},{"ko":"다녀오다","ja":"行ってくる","pron":["다녀오다"],"rom":["danyeooda"],"chg":false},{"ko":"다리","ja":"脚","pron":["다리"],"rom":["dari"],"chg":false},{"ko":"다시","ja":"また、再び","pron":["다시"],"rom":["dasi"],"chg":false},{"ko":"달다","ja":"甘い","pron":["달다"],"rom":["dalda"],"chg":false},{"ko":"대답하다","ja":"答える","pron":["대다파다"],"rom":["daedapada"],"chg":true},{"ko":"둥글다","ja":"丸い","pron":["둥글다"],"rom":["dunggeulda"],"chg":false},{"ko":"(이)든지","ja":"でも","pron":["든지","이든지"],"rom":["deunji","ideunji"],"chg":false},{"ko":"들다","ja":"入る","pron":["들다"],"rom":["deulda"],"chg":false},{"ko":"떠들다","ja":"騒ぐ","pron":["떠들다"],"rom":["tteodeulda"],"chg":false},{"ko":"맥주","ja":"ビール","pron":["맥쭈"],"rom":["maekjju"],"chg":true},{"ko":"설명","ja":"説明","pron":["설명"],"rom":["seolmyeong"],"chg":false},{"ko":"손님","ja":"お客さん","pron":["손님"],"rom":["sonnim"],"chg":false},{"ko":"시장","ja":"市場","pron":["시장"],"rom":["sijang"],"chg":false},{"ko":"쓰레기","ja":"ごみ","pron":["쓰레기"],"rom":["sseuregi"],"chg":false},{"ko":"쓰레기통","ja":"ごみ箱","pron":["쓰레기통"],"rom":["sseuregitong"],"chg":false},{"ko":"언젠가","ja":"いつかは、そのうち","pron":["언젠가"],"rom":["eonjenga"],"chg":false},{"ko":"인형","ja":"人形","pron":["인형"],"rom":["inhyeong"],"chg":false},{"ko":"초대","ja":"招待","pron":["초대"],"rom":["chodae"],"chg":false},{"ko":"팔다","ja":"売る","pron":["팔다"],"rom":["palda"],"chg":false},{"ko":"하루 종일","ja":"一日中","pron":["하루 종일"],"rom":["haru jong-il"],"chg":false},{"ko":"해외","ja":"海外","pron":["해외"],"rom":["haeoe"],"chg":false},{"ko":"힘들다","ja":"つらい","pron":["힘들다"],"rom":["himdeulda"],"chg":false}]},{"n":"24","cards":[{"ko":"가게","ja":"店","pron":["가게"],"rom":["gage"],"chg":false},{"ko":"가볍다","ja":"軽い","pron":["가볍따"],"rom":["gabyeoptta"],"chg":true},{"ko":"걱정","ja":"心配","pron":["걱쩡"],"rom":["geokjjeong"],"chg":true},{"ko":"겨울","ja":"冬","pron":["겨울"],"rom":["gyeoul"],"chg":false},{"ko":"고맙다","ja":"ありがたい","pron":["고맙따"],"rom":["gomaptta"],"chg":true},{"ko":"곱다","ja":"綺麗だ","pron":["곱따"],"rom":["goptta"],"chg":true},{"ko":"굽다","ja":"焼く","pron":["굽따"],"rom":["guptta"],"chg":true},{"ko":"귀엽다","ja":"かわいい","pron":["귀엽따"],"rom":["gwiyeoptta"],"chg":true},{"ko":"기분","ja":"気分、気持ち","pron":["기분"],"rom":["gibun"],"chg":false},{"ko":"깜짝","ja":"びっくり","pron":["깜짝"],"rom":["kkamjjak"],"chg":false},{"ko":"나중에","ja":"後で、後程","pron":["나중에"],"rom":["najung-e"],"chg":false},{"ko":"날씨","ja":"天気","pron":["날씨"],"rom":["nalssi"],"chg":false},{"ko":"놀라다","ja":"驚く、びっくりする","pron":["놀라다"],"rom":["nollada"],"chg":false},{"ko":"눕다","ja":"横になる","pron":["눕따"],"rom":["nuptta"],"chg":true},{"ko":"덥다","ja":"暑い","pron":["덥따"],"rom":["deoptta"],"chg":true},{"ko":"돕다","ja":"助ける、手伝う","pron":["돕따"],"rom":["doptta"],"chg":true},{"ko":"맵다","ja":"辛い","pron":["맵따"],"rom":["maeptta"],"chg":true},{"ko":"무겁다","ja":"重い","pron":["무겁따"],"rom":["mugeoptta"],"chg":true},{"ko":"손","ja":"手","pron":["손"],"rom":["son"],"chg":false},{"ko":"쉽다","ja":"易しい","pron":["쉽따"],"rom":["swiptta"],"chg":true},{"ko":"싱겁다","ja":"味が薄い","pron":["싱겁따"],"rom":["singgeoptta"],"chg":true},{"ko":"아기","ja":"赤ちゃん","pron":["아기"],"rom":["agi"],"chg":false},{"ko":"아름답다","ja":"美しい","pron":["아름답따"],"rom":["areumdaptta"],"chg":true},{"ko":"어때요?","ja":"どうですか","pron":["어때요"],"rom":["eottaeyo"],"chg":false},{"ko":"어렵다","ja":"難しい","pron":["어렵따"],"rom":["eoryeoptta"],"chg":true},{"ko":"어울리다","ja":"似合う","pron":["어울리다"],"rom":["eoullida"],"chg":false},{"ko":"엄청","ja":"とっても","pron":["엄청"],"rom":["eomcheong"],"chg":false},{"ko":"오랜만","ja":"久しぶり","pron":["오랜만"],"rom":["oraenman"],"chg":false},{"ko":"이미","ja":"もう、すでに","pron":["이미"],"rom":["imi"],"chg":false},{"ko":"입장료","ja":"入場料","pron":["입짱뇨"],"rom":["ipjjangnyo"],"chg":true},{"ko":"전부","ja":"全部","pron":["전부"],"rom":["jeonbu"],"chg":false},{"ko":"지각","ja":"遅刻","pron":["지각"],"rom":["jigak"],"chg":false},{"ko":"쭉","ja":"ずっと","pron":["쭉"],"rom":["jjuk"],"chg":false},{"ko":"춥다","ja":"寒い","pron":["춥따"],"rom":["chuptta"],"chg":true},{"ko":"통화하다","ja":"電話で話す","pron":["통화하다"],"rom":["tonghwahada"],"chg":false}]},{"n":"25","cards":[{"ko":"거의","ja":"ほとんど","pron":["거의"],"rom":["geoui"],"chg":false},{"ko":"곳","ja":"所、場所","pron":["곧"],"rom":["got"],"chg":true},{"ko":"관광","ja":"観光","pron":["관광"],"rom":["gwangwang"],"chg":false},{"ko":"관광지","ja":"観光地","pron":["관광지"],"rom":["gwangwangji"],"chg":false},{"ko":"그럼요","ja":"もちろんですよ","pron":["그러묘","그럼뇨"],"rom":["geureomyo","geureomnyo"],"chg":true},{"ko":"기쁘다","ja":"うれしい","pron":["기쁘다"],"rom":["gippeuda"],"chg":false},{"ko":"끄다","ja":"消す","pron":["끄다"],"rom":["kkeuda"],"chg":false},{"ko":"나쁘다","ja":"悪い","pron":["나쁘다"],"rom":["nappeuda"],"chg":false},{"ko":"두통약","ja":"頭痛薬","pron":["두통냑"],"rom":["dutongnyak"],"chg":true},{"ko":"마음","ja":"心、気持ち","pron":["마음"],"rom":["maeum"],"chg":false},{"ko":"마음에 들다","ja":"気に入る","pron":["마으메 들다"],"rom":["maeume deulda"],"chg":true},{"ko":"마침","ja":"ちょうど、程よく","pron":["마침"],"rom":["machim"],"chg":false},{"ko":"먼저","ja":"先に、まず","pron":["먼저"],"rom":["meonjeo"],"chg":false},{"ko":"멋있다","ja":"素敵だ","pron":["머딛따","머싣따"],"rom":["meoditta","meositta"],"chg":true},{"ko":"모델","ja":"モデル","pron":["모델"],"rom":["model"],"chg":false},{"ko":"바쁘다","ja":"忙しい","pron":["바쁘다"],"rom":["bappeuda"],"chg":false},{"ko":"발표","ja":"発表","pron":["발표"],"rom":["balpyo"],"chg":false},{"ko":"백화점","ja":"デパート","pron":["배콰점"],"rom":["baekwajeom"],"chg":true},{"ko":"별로","ja":"別に、さほど","pron":["별로"],"rom":["byeollo"],"chg":false},{"ko":"부엌","ja":"台所","pron":["부억"],"rom":["bueok"],"chg":true},{"ko":"불","ja":"明かり","pron":["불"],"rom":["bul"],"chg":false},{"ko":"비슷하다","ja":"似ている","pron":["비스타다"],"rom":["biseutada"],"chg":true},{"ko":"성격","ja":"性格","pron":["성껵"],"rom":["seongkkyeok"],"chg":true},{"ko":"섬","ja":"島","pron":["섬"],"rom":["seom"],"chg":false},{"ko":"슬프다","ja":"悲しい","pron":["슬프다"],"rom":["seulpeuda"],"chg":false},{"ko":"시험","ja":"試験、テスト","pron":["시험"],"rom":["siheom"],"chg":false},{"ko":"어떤","ja":"どんな","pron":["어떤"],"rom":["eotteon"],"chg":false},{"ko":"예쁘다","ja":"かわいい、きれいだ","pron":["예쁘다"],"rom":["yeppeuda"],"chg":false},{"ko":"졸업식","ja":"卒業式","pron":["조럽씩"],"rom":["joreopssik"],"chg":true},{"ko":"키가 크다","ja":"背が高い","pron":["키가 크다"],"rom":["kiga keuda"],"chg":false},{"ko":"키가 작다","ja":"背が低い","pron":["키가 작따"],"rom":["kiga jaktta"],"chg":true},{"ko":"학회","ja":"学会","pron":["하쾨"],"rom":["hakoe"],"chg":true}]},{"n":"33","cards":[{"ko":"관심","ja":"関心","pron":["관심"],"rom":["gwansim"],"chg":false},{"ko":"그냥","ja":"そのまま、ただ、何となく","pron":["그냥"],"rom":["geunyang"],"chg":false},{"ko":"나이가 들다","ja":"年を取る","pron":["나이가 들다"],"rom":["naiga deulda"],"chg":false},{"ko":"나타나다","ja":"現れる","pron":["나타나다"],"rom":["natanada"],"chg":false},{"ko":"더럽다","ja":"汚い（ㅂ変）","pron":["더럽따"],"rom":["deoreoptta"],"chg":true},{"ko":"더욱","ja":"さらに","pron":["더욱"],"rom":["deouk"],"chg":false},{"ko":"돌다","ja":"曲がる、回る","pron":["돌다"],"rom":["dolda"],"chg":false},{"ko":"두다","ja":"置く","pron":["두다"],"rom":["duda"],"chg":false},{"ko":"맞다","ja":"合う","pron":["맏따"],"rom":["matta"],"chg":true},{"ko":"메일","ja":"メール","pron":["메일"],"rom":["meil"],"chg":false},{"ko":"몸","ja":"体","pron":["몸"],"rom":["mom"],"chg":false},{"ko":"보이다","ja":"見える","pron":["보이다"],"rom":["boida"],"chg":false},{"ko":"비누","ja":"石鹸","pron":["비누"],"rom":["binu"],"chg":false},{"ko":"빌리다","ja":"借りる","pron":["빌리다"],"rom":["billida"],"chg":false},{"ko":"생기다","ja":"できる、生じる","pron":["생기다"],"rom":["saenggida"],"chg":false},{"ko":"아저씨","ja":"おじさん","pron":["아저씨"],"rom":["ajeossi"],"chg":false},{"ko":"어린이","ja":"子供","pron":["어리니"],"rom":["eorini"],"chg":true},{"ko":"에어컨","ja":"エアコン","pron":["에어컨"],"rom":["eeokeon"],"chg":false},{"ko":"주소","ja":"住所","pron":["주소"],"rom":["juso"],"chg":false},{"ko":"짧다","ja":"短い","pron":["짤따"],"rom":["jjaltta"],"chg":true},{"ko":"켜다","ja":"つける","pron":["켜다"],"rom":["kyeoda"],"chg":false},{"ko":"힘이 없다","ja":"気力がない","pron":["히미 업따"],"rom":["himi eoptta"],"chg":true}]},{"n":"34","cards":[{"ko":"계획","ja":"計画","pron":["계획"],"rom":["gyehoek"],"chg":false},{"ko":"궁금하다","ja":"気になる","pron":["궁금하다"],"rom":["gunggeumhada"],"chg":false},{"ko":"기억","ja":"記憶","pron":["기억"],"rom":["gieok"],"chg":false},{"ko":"길","ja":"道","pron":["길"],"rom":["gil"],"chg":false},{"ko":"끝","ja":"終わり","pron":["끋"],"rom":["kkeut"],"chg":true},{"ko":"나타내다","ja":"表す","pron":["나타내다"],"rom":["natanaeda"],"chg":false},{"ko":"느끼다","ja":"感じる","pron":["느끼다"],"rom":["neukkida"],"chg":false},{"ko":"다이어트","ja":"ダイエット","pron":["다이어트"],"rom":["daieoteu"],"chg":false},{"ko":"목이 마르다","ja":"喉が渇く（르変）","pron":["모기 마르다"],"rom":["mogi mareuda"],"chg":true},{"ko":"목적","ja":"目的","pron":["목쩍"],"rom":["mokjjeok"],"chg":true},{"ko":"세탁","ja":"洗濯","pron":["세탁"],"rom":["setak"],"chg":false},{"ko":"순서","ja":"順序","pron":["순서"],"rom":["sunseo"],"chg":false},{"ko":"아마","ja":"たぶん、おそらく","pron":["아마"],"rom":["ama"],"chg":false},{"ko":"알아보다","ja":"調べる","pron":["아라보다"],"rom":["araboda"],"chg":true},{"ko":"앞으로","ja":"これから","pron":["아프로"],"rom":["apeuro"],"chg":true},{"ko":"양쪽","ja":"両方、両側","pron":["양쪽"],"rom":["yangjjok"],"chg":false},{"ko":"어서","ja":"早く","pron":["어서"],"rom":["eoseo"],"chg":false},{"ko":"예상","ja":"予想","pron":["예상"],"rom":["yesang"],"chg":false},{"ko":"옳다","ja":"正しい","pron":["올타"],"rom":["olta"],"chg":true},{"ko":"원하다","ja":"望む","pron":["원하다"],"rom":["wonhada"],"chg":false},{"ko":"유명","ja":"有名","pron":["유명"],"rom":["yumyeong"],"chg":false},{"ko":"의미","ja":"意味","pron":["의미"],"rom":["uimi"],"chg":false},{"ko":"이불","ja":"掛け布団","pron":["이불"],"rom":["ibul"],"chg":false},{"ko":"일단","ja":"とりあえず","pron":["일딴"],"rom":["ilttan"],"chg":true},{"ko":"잃다","ja":"失う、なくす","pron":["일타"],"rom":["ilta"],"chg":true},{"ko":"출구","ja":"出口","pron":["출구"],"rom":["chulgu"],"chg":false},{"ko":"출신","ja":"出身","pron":["출씬"],"rom":["chulssin"],"chg":true},{"ko":"확인","ja":"確認","pron":["화긴"],"rom":["hwagin"],"chg":true}]},{"n":"35","cards":[{"ko":"건배","ja":"乾杯","pron":["건배"],"rom":["geonbae"],"chg":false},{"ko":"결과","ja":"結果","pron":["결과"],"rom":["gyeolgwa"],"chg":false},{"ko":"나머지","ja":"残り","pron":["나머지"],"rom":["nameoji"],"chg":false},{"ko":"닦다","ja":"拭く、磨く","pron":["닥따"],"rom":["daktta"],"chg":true},{"ko":"드라마","ja":"ドラマ","pron":["드라마"],"rom":["deurama"],"chg":false},{"ko":"마음이 넓다","ja":"心が広い","pron":["마으미 널따"],"rom":["maeumi neoltta"],"chg":true},{"ko":"말다","ja":"(-다(가)の後で)中断する、止める","pron":["말다"],"rom":["malda"],"chg":false},{"ko":"무척","ja":"非常に、甚だしく","pron":["무척"],"rom":["mucheok"],"chg":false},{"ko":"바뀌다","ja":"変わる","pron":["바뀌다"],"rom":["bakkwida"],"chg":false},{"ko":"방학","ja":"学校の長期休み","pron":["방학"],"rom":["banghak"],"chg":false},{"ko":"번째","ja":"番目","pron":["번째"],"rom":["beonjjae"],"chg":false},{"ko":"생각이 나다","ja":"思い出す","pron":["생가기 나다"],"rom":["saenggagi nada"],"chg":true},{"ko":"스페인","ja":"スペイン","pron":["스페인"],"rom":["seupein"],"chg":false},{"ko":"신다","ja":"履く","pron":["신따"],"rom":["sintta"],"chg":true},{"ko":"신발","ja":"靴","pron":["신발"],"rom":["sinbal"],"chg":false},{"ko":"싸우다","ja":"喧嘩する、争う","pron":["싸우다"],"rom":["ssauda"],"chg":false},{"ko":"아줌마","ja":"おばさん","pron":["아줌마"],"rom":["ajumma"],"chg":false},{"ko":"여기저기","ja":"あちこち(に)","pron":["여기저기"],"rom":["yeogijeogi"],"chg":false},{"ko":"우선","ja":"まず","pron":["우선"],"rom":["useon"],"chg":false},{"ko":"우연히","ja":"偶然","pron":["우연히"],"rom":["uyeonhi"],"chg":false},{"ko":"자꾸","ja":"やたら、しきりに","pron":["자꾸"],"rom":["jakku"],"chg":false},{"ko":"잠이 들다","ja":"眠る、寝付く","pron":["자미 들다"],"rom":["jami deulda"],"chg":true},{"ko":"졸다","ja":"居眠りする","pron":["졸다"],"rom":["jolda"],"chg":false},{"ko":"쯤","ja":"くらい、程度","pron":["쯤"],"rom":["jjeum"],"chg":false},{"ko":"피다","ja":"咲く","pron":["피다"],"rom":["pida"],"chg":false},{"ko":"피아노를 치다","ja":"ピアノを弾く","pron":["피아노를 치다"],"rom":["pianoreul chida"],"chg":false},{"ko":"하나 둘이 아니다","ja":"1つ(1人)や2つ(2人)ではない","pron":["하나 두리 아니다"],"rom":["hana duri anida"],"chg":true}]},{"n":"36","cards":[{"ko":"간단하다","ja":"簡単だ","pron":["간단하다"],"rom":["gandanhada"],"chg":false},{"ko":"결국","ja":"結局","pron":["결국"],"rom":["gyeolguk"],"chg":false},{"ko":"고민","ja":"悩み","pron":["고민"],"rom":["gomin"],"chg":false},{"ko":"고장이 나다","ja":"故障する","pron":["고장이 나다"],"rom":["gojang-i nada"],"chg":false},{"ko":"그만두다","ja":"やめる","pron":["그만두다"],"rom":["geumanduda"],"chg":false},{"ko":"깊다","ja":"深い","pron":["깁따"],"rom":["giptta"],"chg":true},{"ko":"늦잠을 자다","ja":"寝坊をする","pron":["늗짜믈 자다"],"rom":["neutjjameul jada"],"chg":true},{"ko":"답장","ja":"返事、返信","pron":["답짱"],"rom":["dapjjang"],"chg":true},{"ko":"대단하다","ja":"すごい、すばらしい","pron":["대단하다"],"rom":["daedanhada"],"chg":false},{"ko":"던지다","ja":"投げる","pron":["던지다"],"rom":["deonjida"],"chg":false},{"ko":"동네","ja":"街、町内","pron":["동네"],"rom":["dongne"],"chg":false},{"ko":"뚜렷하다","ja":"はっきりしている","pron":["뚜려타다"],"rom":["tturyeotada"],"chg":true},{"ko":"목소리","ja":"声","pron":["목쏘리"],"rom":["mokssori"],"chg":true},{"ko":"무관심","ja":"無関心","pron":["무관심"],"rom":["mugwansim"],"chg":false},{"ko":"분명하다","ja":"明らかだ","pron":["분명하다"],"rom":["bunmyeonghada"],"chg":false},{"ko":"상처","ja":"傷","pron":["상처"],"rom":["sangcheo"],"chg":false},{"ko":"새롭다","ja":"新しい（ㅂ変）","pron":["새롭따"],"rom":["saeroptta"],"chg":true},{"ko":"시끄럽다","ja":"うるさい（ㅂ変）","pron":["시끄럽따"],"rom":["sikkeureoptta"],"chg":true},{"ko":"시험에 붙다","ja":"試験に受かる","pron":["시허메 붇따"],"rom":["siheome butta"],"chg":true},{"ko":"심각하다","ja":"深刻だ","pron":["심가카다"],"rom":["simgakada"],"chg":true},{"ko":"정확하다","ja":"正確だ","pron":["정화카다"],"rom":["jeonghwakada"],"chg":true},{"ko":"제시간","ja":"定刻","pron":["제시간"],"rom":["jesigan"],"chg":false},{"ko":"조용하다","ja":"静かだ","pron":["조용하다"],"rom":["joyonghada"],"chg":false},{"ko":"좀 더","ja":"もう少し","pron":["좀 더"],"rom":["jom deo"],"chg":false},{"ko":"즐겁다","ja":"楽しい、愉快だ（ㅂ変）","pron":["즐겁따"],"rom":["jeulgeoptta"],"chg":true},{"ko":"합격","ja":"合格","pron":["합껵"],"rom":["hapkkyeok"],"chg":true}]},{"n":"37","cards":[{"ko":"강","ja":"川","pron":["강"],"rom":["gang"],"chg":false},{"ko":"걔","ja":"その子、あの子","pron":["걔"],"rom":["gyae"],"chg":false},{"ko":"건너다","ja":"渡る","pron":["건너다"],"rom":["geonneoda"],"chg":false},{"ko":"고춧가루","ja":"唐辛子の粉","pron":["고추까루","고춛까루"],"rom":["gochukkaru","gochutkkaru"],"chg":true},{"ko":"금방","ja":"今すぐ","pron":["금방"],"rom":["geumbang"],"chg":false},{"ko":"냉장고","ja":"冷蔵庫","pron":["냉장고"],"rom":["naengjanggo"],"chg":false},{"ko":"너","ja":"お前、あんた","pron":["너"],"rom":["neo"],"chg":false},{"ko":"달리다","ja":"走る","pron":["달리다"],"rom":["dallida"],"chg":false},{"ko":"닭고기","ja":"鶏肉","pron":["닥꼬기"],"rom":["dakkogi"],"chg":true},{"ko":"돼지고기","ja":"豚肉","pron":["돼지고기"],"rom":["dwaejigogi"],"chg":false},{"ko":"때리다","ja":"殴る","pron":["때리다"],"rom":["ttaerida"],"chg":false},{"ko":"바라다","ja":"願う","pron":["바라다"],"rom":["barada"],"chg":false},{"ko":"배드민턴","ja":"バドミントン","pron":["배드민턴"],"rom":["baedeuminteon"],"chg":false},{"ko":"성함","ja":"お名前（尊敬語）","pron":["성함"],"rom":["seongham"],"chg":false},{"ko":"소고기","ja":"牛肉","pron":["소고기"],"rom":["sogogi"],"chg":false},{"ko":"숨기다","ja":"隠す","pron":["숨기다"],"rom":["sumgida"],"chg":false},{"ko":"얘","ja":"この子","pron":["얘"],"rom":["yae"],"chg":false},{"ko":"어떻게든","ja":"どうにかして","pron":["어떠케든"],"rom":["eotteokedeun"],"chg":true},{"ko":"얼른","ja":"すぐに","pron":["얼른"],"rom":["eolleun"],"chg":false},{"ko":"여러가지","ja":"色々","pron":["여러가지"],"rom":["yeoreogaji"],"chg":false},{"ko":"연필","ja":"鉛筆","pron":["연필"],"rom":["yeonpil"],"chg":false},{"ko":"옮기다","ja":"運ぶ、移す","pron":["옴기다"],"rom":["omgida"],"chg":true},{"ko":"원래","ja":"元々","pron":["월래"],"rom":["wollae"],"chg":true},{"ko":"쟤","ja":"あの子","pron":["쟤"],"rom":["jyae"],"chg":false},{"ko":"젖다","ja":"濡れる","pron":["젇따"],"rom":["jeotta"],"chg":true},{"ko":"지키다","ja":"守る","pron":["지키다"],"rom":["jikida"],"chg":false},{"ko":"친절하다","ja":"親切だ","pron":["친절하다"],"rom":["chinjeolhada"],"chg":false},{"ko":"필통","ja":"筆箱","pron":["필통"],"rom":["piltong"],"chg":false}]},{"n":"38","cards":[{"ko":"거리","ja":"距離","pron":["거리"],"rom":["geori"],"chg":false},{"ko":"결심","ja":"決心","pron":["결씸"],"rom":["gyeolssim"],"chg":true},{"ko":"결정","ja":"決定","pron":["결쩡"],"rom":["gyeoljjeong"],"chg":true},{"ko":"내로","ja":"のうちに","pron":["내로"],"rom":["naero"],"chg":false},{"ko":"넘어지다","ja":"転ぶ","pron":["너머지다"],"rom":["neomeojida"],"chg":true},{"ko":"느낌이 들다","ja":"気がする","pron":["느끼미 들다"],"rom":["neukkimi deulda"],"chg":true},{"ko":"마음을 먹다","ja":"心に決める","pron":["마으믈 먹따"],"rom":["maeumeul meoktta"],"chg":true},{"ko":"머물다","ja":"泊まる","pron":["머물다"],"rom":["meomulda"],"chg":false},{"ko":"미끄럽다","ja":"滑りやすい（ㅂ変）","pron":["미끄럽따"],"rom":["mikkeureoptta"],"chg":true},{"ko":"바닥","ja":"床","pron":["바닥"],"rom":["badak"],"chg":false},{"ko":"언어","ja":"言語","pron":["어너"],"rom":["eoneo"],"chg":true},{"ko":"욕실","ja":"浴室","pron":["욕씰"],"rom":["yokssil"],"chg":true},{"ko":"웃음이 나오다","ja":"笑いが出る","pron":["우스미 나오다"],"rom":["useumi naoda"],"chg":true},{"ko":"이","ja":"歯","pron":["이"],"rom":["i"],"chg":false},{"ko":"이상하다","ja":"変だ、おかしい","pron":["이상하다"],"rom":["isanghada"],"chg":false},{"ko":"입구","ja":"入口","pron":["입꾸"],"rom":["ipkku"],"chg":true},{"ko":"작가","ja":"作家","pron":["작까"],"rom":["jakka"],"chg":true},{"ko":"줄넘기","ja":"縄跳び","pron":["줄럼끼"],"rom":["julleomkki"],"chg":true},{"ko":"지켜보다","ja":"見守る","pron":["지켜보다"],"rom":["jikyeoboda"],"chg":false},{"ko":"참다","ja":"耐える、我慢する","pron":["참따"],"rom":["chamtta"],"chg":true},{"ko":"처리","ja":"処理","pron":["처리"],"rom":["cheori"],"chg":false},{"ko":"춤을 추다","ja":"(踊りを)踊る","pron":["추믈 추다"],"rom":["chumeul chuda"],"chg":true},{"ko":"충분하다","ja":"十分だ","pron":["충분하다"],"rom":["chungbunhada"],"chg":false},{"ko":"평일","ja":"平日","pron":["평일"],"rom":["pyeong-il"],"chg":false},{"ko":"하룻밤","ja":"一晩","pron":["하루빰","하룯빰"],"rom":["haruppam","harutppam"],"chg":true}]},{"n":"39","cards":[{"ko":"가격","ja":"価格","pron":["가격"],"rom":["gagyeok"],"chg":false},{"ko":"감자","ja":"じゃがいも","pron":["감자"],"rom":["gamja"],"chg":false},{"ko":"더위","ja":"暑さ","pron":["더위"],"rom":["deowi"],"chg":false},{"ko":"드리다","ja":"差し上げる","pron":["드리다"],"rom":["deurida"],"chg":false},{"ko":"도시락","ja":"お弁当","pron":["도시락"],"rom":["dosirak"],"chg":false},{"ko":"돌","ja":"石","pron":["돌"],"rom":["dol"],"chg":false},{"ko":"등","ja":"など","pron":["등"],"rom":["deung"],"chg":false},{"ko":"똑같다","ja":"全く同じだ","pron":["똑깓따"],"rom":["ttokkatta"],"chg":true},{"ko":"못생기다","ja":"醜い","pron":["몯쌩기다"],"rom":["motssaenggida"],"chg":true},{"ko":"무","ja":"大根","pron":["무"],"rom":["mu"],"chg":false},{"ko":"반찬","ja":"おかず","pron":["반찬"],"rom":["banchan"],"chg":false},{"ko":"배추","ja":"白菜","pron":["배추"],"rom":["baechu"],"chg":false},{"ko":"보고","ja":"報告","pron":["보고"],"rom":["bogo"],"chg":false},{"ko":"비타민","ja":"ビタミン","pron":["비타민"],"rom":["bitamin"],"chg":false},{"ko":"역사","ja":"歴史","pron":["역싸"],"rom":["yeokssa"],"chg":true},{"ko":"올라가다","ja":"上がっていく","pron":["올라가다"],"rom":["ollagada"],"chg":false},{"ko":"외롭다","ja":"寂しい（ㅂ変）","pron":["외롭따"],"rom":["oeroptta"],"chg":true},{"ko":"인사","ja":"挨拶","pron":["인사"],"rom":["insa"],"chg":false},{"ko":"지치다","ja":"疲れる、くたびれる","pron":["지치다"],"rom":["jichida"],"chg":false},{"ko":"추가","ja":"追加","pron":["추가"],"rom":["chuga"],"chg":false},{"ko":"콘서트","ja":"コンサート","pron":["콘서트"],"rom":["konseoteu"],"chg":false},{"ko":"표","ja":"チケット","pron":["표"],"rom":["pyo"],"chg":false}]},{"n":"40","cards":[{"ko":"끓이다","ja":"煮る","pron":["끄리다"],"rom":["kkeurida"],"chg":true},{"ko":"나도 모르게","ja":"我知らず","pron":["나도 모르게"],"rom":["nado moreuge"],"chg":false},{"ko":"두껍다","ja":"厚い（ㅂ変）","pron":["두껍따"],"rom":["dukkeoptta"],"chg":true},{"ko":"마르다","ja":"乾く（르変）","pron":["마르다"],"rom":["mareuda"],"chg":false},{"ko":"맡기다","ja":"任せる","pron":["맏끼다"],"rom":["matkkida"],"chg":true},{"ko":"멈추다","ja":"止まる","pron":["멈추다"],"rom":["meomchuda"],"chg":false},{"ko":"물고기","ja":"魚","pron":["물꼬기"],"rom":["mulkkogi"],"chg":true},{"ko":"밤을 새우다","ja":"徹夜をする","pron":["바믈 새우다"],"rom":["bameul saeuda"],"chg":true},{"ko":"밥하다","ja":"ご飯を炊く、作る","pron":["바파다"],"rom":["bapada"],"chg":true},{"ko":"부끄럽다","ja":"恥ずかしい（ㅂ変）","pron":["부끄럽따"],"rom":["bukkeureoptta"],"chg":true},{"ko":"부럽다","ja":"羨ましい（ㅂ変）","pron":["부럽따"],"rom":["bureoptta"],"chg":true},{"ko":"분위기","ja":"雰囲気","pron":["부뉘기"],"rom":["bunwigi"],"chg":true},{"ko":"불가능","ja":"不可能","pron":["불가능"],"rom":["bulganeung"],"chg":false},{"ko":"빨래","ja":"洗濯","pron":["빨래"],"rom":["ppallae"],"chg":false},{"ko":"성공","ja":"成功","pron":["성공"],"rom":["seonggong"],"chg":false},{"ko":"아쉽다","ja":"おしい（ㅂ変）","pron":["아쉽따"],"rom":["aswiptta"],"chg":true},{"ko":"여전히","ja":"相変わらず","pron":["여전히"],"rom":["yeojeonhi"],"chg":false},{"ko":"이것저것","ja":"あれこれ","pron":["이걷쩌걷"],"rom":["igeotjjeogeot"],"chg":true},{"ko":"자신","ja":"自身","pron":["자신"],"rom":["jasin"],"chg":false},{"ko":"책임을 지다","ja":"責任を取る","pron":["채기믈 지다"],"rom":["chaegimeul jida"],"chg":true}]},{"n":"41","cards":[{"ko":"구경","ja":"見物","pron":["구경"],"rom":["gugyeong"],"chg":false},{"ko":"긴장","ja":"緊張","pron":["긴장"],"rom":["ginjang"],"chg":false},{"ko":"꽉","ja":"しっかり","pron":["꽉"],"rom":["kkwak"],"chg":false},{"ko":"녹다","ja":"溶ける","pron":["녹따"],"rom":["noktta"],"chg":true},{"ko":"물론","ja":"もちろん","pron":["물론"],"rom":["mullon"],"chg":false},{"ko":"부드럽다","ja":"柔らかい（ㅂ変）","pron":["부드럽따"],"rom":["budeureoptta"],"chg":true},{"ko":"빠짐없이","ja":"漏れなく、全て","pron":["빠지멉씨"],"rom":["ppajimeopssi"],"chg":true},{"ko":"살다","ja":"生きる","pron":["살다"],"rom":["salda"],"chg":false},{"ko":"섭섭하다","ja":"名残惜しい、寂しい","pron":["섭써파다"],"rom":["seopsseopada"],"chg":true},{"ko":"성적","ja":"成績","pron":["성적"],"rom":["seongjeok"],"chg":false},{"ko":"식탁","ja":"食卓","pron":["식탁"],"rom":["siktak"],"chg":false},{"ko":"실수","ja":"失敗、過ち","pron":["실쑤"],"rom":["silssu"],"chg":true},{"ko":"심심하다","ja":"退屈だ","pron":["심심하다"],"rom":["simsimhada"],"chg":false},{"ko":"아이스크림","ja":"アイスクリーム","pron":["아이스크림"],"rom":["aiseukeurim"],"chg":false},{"ko":"얼다","ja":"凍る","pron":["얼다"],"rom":["eolda"],"chg":false},{"ko":"얼음","ja":"氷","pron":["어름"],"rom":["eoreum"],"chg":true},{"ko":"움직이다","ja":"動く","pron":["움지기다"],"rom":["umjigida"],"chg":true},{"ko":"인생","ja":"人生","pron":["인생"],"rom":["insaeng"],"chg":false},{"ko":"자기","ja":"自分","pron":["자기"],"rom":["jagi"],"chg":false},{"ko":"째","ja":"番目、の間","pron":["째"],"rom":["jjae"],"chg":false},{"ko":"취직","ja":"就職","pron":["취직"],"rom":["chwijik"],"chg":false},{"ko":"포기하다","ja":"諦める","pron":["포기하다"],"rom":["pogihada"],"chg":false},{"ko":"헤어지다","ja":"別れる","pron":["헤어지다"],"rom":["heeojida"],"chg":false}]},{"n":"42","cards":[{"ko":"개발","ja":"開発","pron":["개발"],"rom":["gaebal"],"chg":false},{"ko":"거절","ja":"拒絶","pron":["거절"],"rom":["geojeol"],"chg":false},{"ko":"국내","ja":"国内","pron":["궁내"],"rom":["gungnae"],"chg":true},{"ko":"내용","ja":"内容","pron":["내용"],"rom":["naeyong"],"chg":false},{"ko":"무시","ja":"無視","pron":["무시"],"rom":["musi"],"chg":false},{"ko":"발견","ja":"発見","pron":["발견"],"rom":["balgyeon"],"chg":false},{"ko":"발달","ja":"発達","pron":["발딸"],"rom":["balttal"],"chg":true},{"ko":"발전","ja":"発展","pron":["발쩐"],"rom":["baljjeon"],"chg":true},{"ko":"밟다","ja":"踏む","pron":["밥따"],"rom":["baptta"],"chg":true},{"ko":"병","ja":"病気","pron":["병"],"rom":["byeong"],"chg":false},{"ko":"부상","ja":"負傷","pron":["부상"],"rom":["busang"],"chg":false},{"ko":"부작용","ja":"副作用","pron":["부자굥"],"rom":["bujagyong"],"chg":true},{"ko":"사업","ja":"事業","pron":["사업"],"rom":["saeop"],"chg":false},{"ko":"선택","ja":"選択","pron":["선택"],"rom":["seontaek"],"chg":false},{"ko":"설치","ja":"設置","pron":["설치"],"rom":["seolchi"],"chg":false},{"ko":"소개","ja":"紹介","pron":["소개"],"rom":["sogae"],"chg":false},{"ko":"쌓다","ja":"積む","pron":["싸타"],"rom":["ssata"],"chg":true},{"ko":"연구","ja":"研究","pron":["연구"],"rom":["yeongu"],"chg":false},{"ko":"이용","ja":"利用","pron":["이용"],"rom":["iyong"],"chg":false},{"ko":"점점","ja":"だんだん、徐々に","pron":["점점"],"rom":["jeomjeom"],"chg":false},{"ko":"조금씩","ja":"少しずつ","pron":["조금씩"],"rom":["jogeumssik"],"chg":false},{"ko":"지우다","ja":"消す","pron":["지우다"],"rom":["jiuda"],"chg":false},{"ko":"칭찬","ja":"称賛［하다：褒める］","pron":["칭찬"],"rom":["chingchan"],"chg":false},{"ko":"풀다","ja":"ほどく、解く","pron":["풀다"],"rom":["pulda"],"chg":false}]},{"n":"43","cards":[{"ko":"낮다","ja":"低い","pron":["낟따"],"rom":["natta"],"chg":true},{"ko":"늘다","ja":"増える","pron":["늘다"],"rom":["neulda"],"chg":false},{"ko":"배달","ja":"配達","pron":["배달"],"rom":["baedal"],"chg":false},{"ko":"신분증","ja":"身分証","pron":["신분쯩"],"rom":["sinbunjjeung"],"chg":true},{"ko":"아빠","ja":"パパ","pron":["아빠"],"rom":["appa"],"chg":false},{"ko":"양","ja":"量","pron":["양"],"rom":["yang"],"chg":false},{"ko":"어렸을 때","ja":"幼いころ","pron":["어려쓸 때"],"rom":["eoryeosseul ttae"],"chg":true},{"ko":"억지로","ja":"無理やり","pron":["억찌로"],"rom":["eokjjiro"],"chg":true},{"ko":"엄마","ja":"ママ","pron":["엄마"],"rom":["eomma"],"chg":false},{"ko":"없애다","ja":"なくす","pron":["업쌔다"],"rom":["eopssaeda"],"chg":true},{"ko":"자유롭다","ja":"自由だ(ㅂ変）","pron":["자유롭따"],"rom":["jayuroptta"],"chg":true},{"ko":"장소","ja":"場所","pron":["장소"],"rom":["jangso"],"chg":false},{"ko":"주의","ja":"注意","pron":["주의"],"rom":["juui"],"chg":false},{"ko":"줄다","ja":"減る","pron":["줄다"],"rom":["julda"],"chg":false},{"ko":"햇빛","ja":"日光","pron":["해삗","핻삗"],"rom":["haeppit","haetppit"],"chg":true},{"ko":"화면","ja":"画面","pron":["화면"],"rom":["hwamyeon"],"chg":false}]},{"n":"44","cards":[{"ko":"관계","ja":"関係","pron":["관계"],"rom":["gwangye"],"chg":false},{"ko":"기회","ja":"機会","pron":["기회"],"rom":["gihoe"],"chg":false},{"ko":"모습","ja":"姿","pron":["모습"],"rom":["moseup"],"chg":false},{"ko":"버릇","ja":"癖","pron":["버륻"],"rom":["beoreut"],"chg":true},{"ko":"부모님","ja":"両親","pron":["부모님"],"rom":["bumonim"],"chg":false},{"ko":"사라지다","ja":"消える、なくなる","pron":["사라지다"],"rom":["sarajida"],"chg":false},{"ko":"어떤","ja":"ある","pron":["어떤"],"rom":["eotteon"],"chg":false},{"ko":"없이","ja":"なく","pron":["업씨"],"rom":["eopssi"],"chg":true},{"ko":"이상","ja":"以上","pron":["이상"],"rom":["isang"],"chg":false},{"ko":"일부러","ja":"わざと","pron":["일부러"],"rom":["ilbureo"],"chg":false},{"ko":"자라다","ja":"育つ","pron":["자라다"],"rom":["jarada"],"chg":false},{"ko":"자세하다","ja":"詳しい","pron":["자세하다"],"rom":["jasehada"],"chg":false},{"ko":"정부","ja":"政府","pron":["정부"],"rom":["jeongbu"],"chg":false},{"ko":"차라리","ja":"むしろ、いっそのこと","pron":["차라리"],"rom":["charari"],"chg":false},{"ko":"최근","ja":"最近","pron":["최근"],"rom":["choegeun"],"chg":false},{"ko":"태어나다","ja":"生まれる","pron":["태어나다"],"rom":["taeeonada"],"chg":false},{"ko":"포함하다","ja":"含む","pron":["포함하다"],"rom":["pohamhada"],"chg":false},{"ko":"표현","ja":"表現","pron":["표현"],"rom":["pyohyeon"],"chg":false},{"ko":"행동","ja":"行動","pron":["행동"],"rom":["haengdong"],"chg":false},{"ko":"행복","ja":"幸福、幸せ","pron":["행복"],"rom":["haengbok"],"chg":false}]},{"n":"45","cards":[{"ko":"뉴스","ja":"ニュース","pron":["뉴스"],"rom":["nyuseu"],"chg":false},{"ko":"명령","ja":"命令","pron":["명녕"],"rom":["myeongnyeong"],"chg":true},{"ko":"보석","ja":"宝石、宝","pron":["보석"],"rom":["boseok"],"chg":false},{"ko":"상상","ja":"想像","pron":["상상"],"rom":["sangsang"],"chg":false},{"ko":"소리(를) 치다","ja":"声を張り上げる","pron":["소리 치다","소리를 치다"],"rom":["sori chida","sorireul chida"],"chg":false},{"ko":"소문","ja":"噂","pron":["소문"],"rom":["somun"],"chg":false},{"ko":"자랑","ja":"自慢","pron":["자랑"],"rom":["jarang"],"chg":false},{"ko":"전하다","ja":"伝える","pron":["전하다"],"rom":["jeonhada"],"chg":false},{"ko":"제안","ja":"提案","pron":["제안"],"rom":["jean"],"chg":false},{"ko":"주장","ja":"主張","pron":["주장"],"rom":["jujang"],"chg":false},{"ko":"추측","ja":"推測","pron":["추측"],"rom":["chucheuk"],"chg":false},{"ko":"평가","ja":"評価","pron":["평까"],"rom":["pyeongkka"],"chg":true},{"ko":"평양","ja":"平壌","pron":["평양"],"rom":["pyeong-yang"],"chg":false},{"ko":"혼내다","ja":"叱る、懲らしめる","pron":["혼내다"],"rom":["honnaeda"],"chg":false},{"ko":"확신","ja":"確信","pron":["확씬"],"rom":["hwakssin"],"chg":true},{"ko":"후회","ja":"後悔","pron":["후회"],"rom":["huhoe"],"chg":false}]}];
+const $ = id => document.getElementById(id);
+
+const store = {
+  get(key, fallback) {
+    try { const v = localStorage.getItem('hangul-cards:' + key); return v === null ? fallback : JSON.parse(v); } catch (e) { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem('hangul-cards:' + key, JSON.stringify(value)); } catch (e) {}
+  }
+};
+
+const state = {
+  set: store.get('set', 'all'),
+  shuffle: store.get('shuffle', false),
+  changed: store.get('changed', false)
+};
+if (state.set !== 'all' && !SETS.some(s => s.n === state.set)) state.set = 'all';
+
+const card = $('card');
+let deck = [];
+let pos = 0;
+let flipped = false;
+
+function shuffled(list) {
+  for (let i = list.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
+  return list;
+}
+
+function build() {
+  const sets = state.set === 'all' ? SETS : SETS.filter(s => s.n === state.set);
+  deck = sets.flatMap(s => s.cards.map(c => Object.assign({ set: s.n }, c)));
+  if (state.changed) deck = deck.filter(c => c.chg);
+  if (state.shuffle) shuffled(deck);
+  go(0);
+}
+
+function setFlipped(value) {
+  flipped = value;
+  card.classList.toggle('is-flipped', flipped);
+  $('front').setAttribute('aria-hidden', String(flipped));
+  $('back').setAttribute('aria-hidden', String(!flipped));
+}
+
+// Move to card i showing its front, without animating the turn back.
+function go(i) {
+  card.classList.add('no-anim');
+  setFlipped(false);
+  pos = i;
+  render();
+  void card.offsetWidth;
+  card.classList.remove('no-anim');
+}
+
+function render() {
+  const finished = deck.length === 0 || pos >= deck.length;
+  $('study').hidden = finished;
+  $('done').hidden = !finished;
+  if (finished) {
+    if (deck.length === 0) {
+      $('done-title').textContent = '該当する語がありません';
+      $('done-text').textContent = '「発音が変わる語だけ」を外すか、別のセットを選んでください。';
+      $('done-actions').hidden = true;
+    } else {
+      $('done-title').textContent = '最後まで終わりました';
+      $('done-text').textContent = deck.length + '語を見ました。';
+      $('done-actions').hidden = false;
+    }
+    return;
+  }
+  const c = deck[pos];
+  $('where').textContent = $('where-back').textContent = 'SFC朝鮮語' + c.set;
+  $('word').textContent = c.ko;
+  $('meaning').textContent = c.ja;
+  $('roman').textContent = c.rom.join(' / ');
+  $('pron').textContent = c.pron.map(p => '[' + p + ']').join(' / ');
+  $('pos').textContent = (pos + 1) + ' / ' + deck.length;
+  $('prev').disabled = pos === 0;
+}
+
+function next() { if (pos < deck.length) go(pos + 1); }
+function prev() { if (pos > 0) go(pos - 1); }
+
+const select = $('set');
+select.append(new Option('すべて（' + SETS.reduce((n, s) => n + s.cards.length, 0) + '語）', 'all'));
+for (const s of SETS) select.append(new Option('SFC朝鮮語' + s.n + '（' + s.cards.length + '語）', s.n));
+select.value = state.set;
+select.addEventListener('change', () => { state.set = select.value; store.set('set', state.set); build(); });
+
+for (const key of ['shuffle', 'changed']) {
+  const button = $(key);
+  button.setAttribute('aria-pressed', String(state[key]));
+  button.addEventListener('click', () => {
+    state[key] = !state[key];
+    store.set(key, state[key]);
+    button.setAttribute('aria-pressed', String(state[key]));
+    build();
+  });
+}
+
+const theme = $('theme');
+theme.setAttribute('aria-pressed', String(document.documentElement.dataset.theme === 'dark'));
+theme.addEventListener('click', () => {
+  const dark = document.documentElement.dataset.theme !== 'dark';
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  theme.setAttribute('aria-pressed', String(dark));
+  store.set('theme', dark ? 'dark' : 'light');
+});
+
+// Swipe left/right on the card to move between cards; a click right after a swipe is ignored so it does not also flip.
+let touchStart = null;
+let swipedAt = -Infinity;
+card.addEventListener('click', () => { if (performance.now() - swipedAt > 500) setFlipped(!flipped); });
+card.addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  touchStart = e.touches.length === 1 ? { x: t.clientX, y: t.clientY } : null;
+}, { passive: true });
+card.addEventListener('touchend', e => {
+  if (!touchStart) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touchStart.x;
+  const dy = t.clientY - touchStart.y;
+  touchStart = null;
+  if (Math.abs(dx) < 50 || Math.abs(dx) < 2 * Math.abs(dy)) return;
+  swipedAt = performance.now();
+  if (dx < 0) next(); else prev();
+});
+$('prev').addEventListener('click', prev);
+$('next').addEventListener('click', next);
+$('restart').addEventListener('click', build);
+
+document.addEventListener('keydown', e => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  const t = e.target;
+  if (t.closest('select, input, textarea')) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  else if ((e.key === ' ' || e.key === 'Enter') && !t.closest('button')) {
+    e.preventDefault();
+    if ($('done').hidden) setFlipped(!flipped);
+    else if (!$('done-actions').hidden) build();
+  }
+});
+
+build();
+</script>
+</body>
+</html>
