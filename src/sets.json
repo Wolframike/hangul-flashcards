@@ -11,7 +11,8 @@
     "rom": [
      "gasu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "歌手"
    },
    {
     "ko": "운동",
@@ -22,7 +23,8 @@
     "rom": [
      "undong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "運動"
    },
    {
     "ko": "게임",
@@ -44,7 +46,8 @@
     "rom": [
      "uisa"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "醫師"
    },
    {
     "ko": "고향",
@@ -55,7 +58,8 @@
     "rom": [
      "gohyang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "故鄕"
    },
    {
     "ko": "일본",
@@ -66,7 +70,8 @@
     "rom": [
      "ilbon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "日本"
    },
    {
     "ko": "공무원",
@@ -77,7 +82,8 @@
     "rom": [
      "gongmuwon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "公務員"
    },
    {
     "ko": "저",
@@ -99,7 +105,8 @@
     "rom": [
      "gyosa"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "敎師"
    },
    {
     "ko": "전공",
@@ -110,7 +117,8 @@
     "rom": [
      "jeongong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "專攻"
    },
    {
     "ko": "나",
@@ -132,7 +140,8 @@
     "rom": [
      "jubu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "主婦"
    },
    {
     "ko": "대학생",
@@ -143,7 +152,8 @@
     "rom": [
      "daehakssaeng"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "大學生"
    },
    {
     "ko": "중국",
@@ -154,7 +164,8 @@
     "rom": [
      "jungguk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "中國"
    },
    {
     "ko": "독서",
@@ -165,7 +176,8 @@
     "rom": [
      "doksseo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "讀書"
    },
    {
     "ko": "집",
@@ -187,7 +199,8 @@
     "rom": [
      "miguk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "美國"
    },
    {
     "ko": "취미",
@@ -198,7 +211,8 @@
     "rom": [
      "chwimi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "趣味"
    },
    {
     "ko": "부산",
@@ -209,7 +223,8 @@
     "rom": [
      "busan"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "釜山"
    },
    {
     "ko": "친구",
@@ -220,7 +235,8 @@
     "rom": [
      "chingu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "親舊"
    },
    {
     "ko": "사람",
@@ -242,7 +258,8 @@
     "rom": [
      "hakssaeng"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "學生"
    },
    {
     "ko": "서울",
@@ -264,7 +281,8 @@
     "rom": [
      "hanguk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "韓國"
    },
    {
     "ko": "씨",
@@ -275,7 +293,8 @@
     "rom": [
      "ssi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "氏"
    },
    {
     "ko": "혹시",
@@ -286,7 +305,8 @@
     "rom": [
      "hokssi"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "或是"
    },
    {
     "ko": "어",
@@ -297,7 +317,8 @@
     "rom": [
      "eo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "語"
    },
    {
     "ko": "회사원",
@@ -308,7 +329,8 @@
     "rom": [
      "hoesawon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "會社員"
    },
    {
     "ko": "요리",
@@ -319,7 +341,8 @@
     "rom": [
      "yori"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "料理"
    }
   ]
  },
@@ -368,7 +391,8 @@
     "rom": [
      "gongbu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "工夫"
    },
    {
     "ko": "듣다",
@@ -434,7 +458,8 @@
     "rom": [
      "bang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "房"
    },
    {
     "ko": "배우다",
@@ -489,7 +514,8 @@
     "rom": [
      "seonsaengnim"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "先生님"
    },
    {
     "ko": "싸다",
@@ -577,7 +603,8 @@
     "rom": [
      "eumak"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "音樂"
    },
    {
     "ko": "의자",
@@ -588,7 +615,8 @@
     "rom": [
      "uija"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "椅子"
    },
    {
     "ko": "이야기",
@@ -643,7 +671,8 @@
     "rom": [
      "jeomsim"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "點心"
    },
    {
     "ko": "주다",
@@ -698,7 +727,8 @@
     "rom": [
      "hakkyo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "學校"
    }
   ]
  },
@@ -758,7 +788,8 @@
     "rom": [
      "gyosil"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "敎室"
    },
    {
     "ko": "내다",
@@ -802,7 +833,8 @@
     "rom": [
      "moja"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "帽子"
    },
    {
     "ko": "버스",
@@ -857,7 +889,8 @@
     "rom": [
      "sueop"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "授業"
    },
    {
     "ko": "신문",
@@ -868,7 +901,8 @@
     "rom": [
      "sinmun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "新聞"
    },
    {
     "ko": "얼마나",
@@ -890,7 +924,8 @@
     "rom": [
      "yeok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "驛"
    },
    {
     "ko": "운동장",
@@ -901,7 +936,8 @@
     "rom": [
      "undongjang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "運動場"
    },
    {
     "ko": "웃다",
@@ -945,7 +981,8 @@
     "rom": [
      "jajeongeo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "自轉車"
    },
    {
     "ko": "주말",
@@ -956,7 +993,8 @@
     "rom": [
      "jumal"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "週末"
    },
    {
     "ko": "책상",
@@ -967,7 +1005,8 @@
     "rom": [
      "chaekssang"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "冊床"
    },
    {
     "ko": "카페",
@@ -1016,7 +1055,8 @@
     "rom": [
      "gyeongchalsseo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "警察署"
    },
    {
     "ko": "고양이",
@@ -1049,7 +1089,8 @@
     "rom": [
      "gyul"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "橘"
    },
    {
     "ko": "그럼",
@@ -1071,7 +1112,8 @@
     "rom": [
      "geuncheo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "近處"
    },
    {
     "ko": "끝내다",
@@ -1181,7 +1223,8 @@
     "rom": [
      "byeong-won"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "病院"
    },
    {
     "ko": "소리",
@@ -1203,7 +1246,8 @@
     "rom": [
      "sikssa"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "食事"
    },
    {
     "ko": "아르바이트",
@@ -1236,7 +1280,8 @@
     "rom": [
      "yeolssimhi"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "熱心히"
    },
    {
     "ko": "일",
@@ -1258,7 +1303,8 @@
     "rom": [
      "uija"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "椅子"
    },
    {
     "ko": "잠시만",
@@ -1269,7 +1315,8 @@
     "rom": [
      "jamsiman"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "暫時만"
    },
    {
     "ko": "잡다",
@@ -1302,7 +1349,8 @@
     "rom": [
      "jigeum"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "只今"
    },
    {
     "ko": "창문",
@@ -1313,7 +1361,8 @@
     "rom": [
      "changmun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "窓門"
    },
    {
     "ko": "천천히",
@@ -1450,7 +1499,8 @@
     "rom": [
      "munje"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "問題"
    },
    {
     "ko": "김밥",
@@ -1474,7 +1524,8 @@
     "rom": [
      "sajin"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "寫眞"
    },
    {
     "ko": "살다",
@@ -1496,7 +1547,8 @@
     "rom": [
      "sang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "賞"
    },
    {
     "ko": "소설",
@@ -1507,7 +1559,8 @@
     "rom": [
      "soseol"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "小說"
    },
    {
     "ko": "소파",
@@ -1628,7 +1681,8 @@
     "rom": [
      "jeongdo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "程度"
    },
    {
     "ko": "찌개",
@@ -1672,7 +1726,8 @@
     "rom": [
      "hoeui"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "會議"
    }
   ]
  },
@@ -1776,7 +1831,8 @@
     "rom": [
      "deungsan"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "登山"
    },
    {
     "ko": "못하다",
@@ -1798,7 +1854,8 @@
     "rom": [
      "mianhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "未安하다"
    },
    {
     "ko": "밤",
@@ -1831,7 +1888,8 @@
     "rom": [
      "bihaenggi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "飛行機"
    },
    {
     "ko": "서다",
@@ -1908,7 +1966,8 @@
     "rom": [
      "yeohaeng"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "旅行"
    },
    {
     "ko": "오전",
@@ -1919,7 +1978,8 @@
     "rom": [
      "ojeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "午前"
    },
    {
     "ko": "오후",
@@ -1930,7 +1990,8 @@
     "rom": [
      "ohu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "午後"
    },
    {
     "ko": "옷",
@@ -1963,7 +2024,8 @@
     "rom": [
      "yuhak"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "留學"
    },
    {
     "ko": "잘하다",
@@ -1996,7 +2058,8 @@
     "rom": [
      "jung-e"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "中에"
    },
    {
     "ko": "지내다",
@@ -2018,7 +2081,8 @@
     "rom": [
      "jikjjang"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "職場"
    },
    {
     "ko": "펴다",
@@ -2040,7 +2104,8 @@
     "rom": [
      "pyeonhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "便하다"
    }
   ]
  },
@@ -2056,7 +2121,8 @@
     "rom": [
      "gamsang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "鑑賞"
    },
    {
     "ko": "건물",
@@ -2067,7 +2133,8 @@
     "rom": [
      "geonmul"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "建物"
    },
    {
     "ko": "공원",
@@ -2078,7 +2145,8 @@
     "rom": [
      "gong-won"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "公園"
    },
    {
     "ko": "구두",
@@ -2100,7 +2168,8 @@
     "rom": [
      "gundae"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "軍隊"
    },
    {
     "ko": "그래도",
@@ -2133,7 +2202,8 @@
     "rom": [
      "gija"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "記者"
    },
    {
     "ko": "깻잎",
@@ -2166,7 +2236,8 @@
     "rom": [
      "namjachingu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "男子親舊"
    },
    {
     "ko": "내일",
@@ -2177,7 +2248,8 @@
     "rom": [
      "naeil"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "來日"
    },
    {
     "ko": "농구",
@@ -2188,7 +2260,8 @@
     "rom": [
      "nonggu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "籠球"
    },
    {
     "ko": "담요",
@@ -2199,7 +2272,8 @@
     "rom": [
      "damnyo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "毯요"
    },
    {
     "ko": "두통",
@@ -2210,7 +2284,8 @@
     "rom": [
      "dutong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "頭痛"
    },
    {
     "ko": "매일",
@@ -2221,7 +2296,8 @@
     "rom": [
      "maeil"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "每日"
    },
    {
     "ko": "문",
@@ -2232,7 +2308,8 @@
     "rom": [
      "mun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "門"
    },
    {
     "ko": "반",
@@ -2243,7 +2320,8 @@
     "rom": [
      "ban"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "半"
    },
    {
     "ko": "볼일",
@@ -2265,7 +2343,8 @@
     "rom": [
      "butakada"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "付託하다"
    },
    {
     "ko": "빨리",
@@ -2298,7 +2377,8 @@
     "rom": [
      "yageun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "夜勤"
    },
    {
     "ko": "약",
@@ -2309,7 +2389,8 @@
     "rom": [
      "yak"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "藥"
    },
    {
     "ko": "엽서",
@@ -2320,7 +2401,8 @@
     "rom": [
      "yeopsseo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "葉書"
    },
    {
     "ko": "영어",
@@ -2331,7 +2413,8 @@
     "rom": [
      "yeong-eo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "英語"
    },
    {
     "ko": "요즘",
@@ -2353,7 +2436,8 @@
     "rom": [
      "yongtton"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "用돈"
    },
    {
     "ko": "이따가",
@@ -2408,7 +2492,8 @@
     "rom": [
      "josimhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "操心하다"
    },
    {
     "ko": "지하철",
@@ -2419,7 +2504,8 @@
     "rom": [
      "jihacheol"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "地下鐵"
    }
   ]
  },
@@ -2457,7 +2543,8 @@
     "rom": [
      "gyeolhon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "結婚"
    },
    {
     "ko": "그러다",
@@ -2534,7 +2621,8 @@
     "rom": [
      "daneo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "單語"
    },
    {
     "ko": "많이",
@@ -2556,7 +2644,8 @@
     "rom": [
      "mulgeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "物件"
    },
    {
     "ko": "바로",
@@ -2611,7 +2700,8 @@
     "rom": [
      "sajeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "辭典"
    },
    {
     "ko": "세우다",
@@ -2688,7 +2778,8 @@
     "rom": [
      "yeojachingu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "女子親舊"
    },
    {
     "ko": "열다",
@@ -2732,7 +2823,8 @@
     "rom": [
      "junbi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "準備"
    },
    {
     "ko": "짓다",
@@ -2754,7 +2846,8 @@
     "rom": [
      "chulbal"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "出發"
    },
    {
     "ko": "편의점",
@@ -2765,7 +2858,8 @@
     "rom": [
      "pyeonuijeom"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "便宜店"
    }
   ]
  },
@@ -2781,7 +2875,8 @@
     "rom": [
      "gonghang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "空港"
    },
    {
     "ko": "과자",
@@ -2792,7 +2887,8 @@
     "rom": [
      "gwaja"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "菓子"
    },
    {
     "ko": "그리다",
@@ -2836,7 +2932,8 @@
     "rom": [
      "nongdam"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "弄談"
    },
    {
     "ko": "담배",
@@ -2860,7 +2957,8 @@
      "daesin",
      "daesine"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "代身(에)"
    },
    {
     "ko": "독일",
@@ -2871,7 +2969,8 @@
     "rom": [
      "dogil"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "獨逸"
    },
    {
     "ko": "들어가다",
@@ -2937,7 +3036,8 @@
     "rom": [
      "samgyetang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "蔘鷄湯"
    },
    {
     "ko": "생각",
@@ -2959,7 +3059,8 @@
     "rom": [
      "yeollak"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "連絡"
    },
    {
     "ko": "열쇠",
@@ -2981,7 +3082,8 @@
     "rom": [
      "yeongguk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "英國"
    },
    {
     "ko": "외국",
@@ -2992,7 +3094,8 @@
     "rom": [
      "oeguk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "外國"
    },
    {
     "ko": "우산",
@@ -3003,7 +3106,8 @@
     "rom": [
      "usan"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "雨傘"
    },
    {
     "ko": "우표",
@@ -3014,7 +3118,8 @@
     "rom": [
      "upyo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "郵票"
    },
    {
     "ko": "음료수",
@@ -3025,7 +3130,8 @@
     "rom": [
      "eumnyosu"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "飮料水"
    },
    {
     "ko": "의견",
@@ -3036,7 +3142,8 @@
     "rom": [
      "uigyeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "意見"
    },
    {
     "ko": "자기소개",
@@ -3047,7 +3154,8 @@
     "rom": [
      "jagisogae"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "自己紹介"
    },
    {
     "ko": "장면",
@@ -3058,7 +3166,8 @@
     "rom": [
      "jangmyeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "場面"
    },
    {
     "ko": "전통",
@@ -3069,7 +3178,8 @@
     "rom": [
      "jeontong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "傳統"
    },
    {
     "ko": "제목",
@@ -3080,7 +3190,8 @@
     "rom": [
      "jemok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "題目"
    },
    {
     "ko": "지도",
@@ -3091,7 +3202,8 @@
     "rom": [
      "jido"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "地圖"
    },
    {
     "ko": "진짜",
@@ -3102,7 +3214,8 @@
     "rom": [
      "jinjja"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "眞짜"
    },
    {
     "ko": "편지",
@@ -3113,7 +3226,8 @@
     "rom": [
      "pyeonji"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "便紙"
    },
    {
     "ko": "피우다",
@@ -3239,7 +3353,8 @@
     "rom": [
      "daedapada"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "對答하다"
    },
    {
     "ko": "둥글다",
@@ -3296,7 +3411,8 @@
     "rom": [
      "maekjju"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "麥酒"
    },
    {
     "ko": "설명",
@@ -3307,7 +3423,8 @@
     "rom": [
      "seolmyeong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "說明"
    },
    {
     "ko": "손님",
@@ -3329,7 +3446,8 @@
     "rom": [
      "sijang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "市場"
    },
    {
     "ko": "쓰레기",
@@ -3351,7 +3469,8 @@
     "rom": [
      "sseuregitong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "쓰레기桶"
    },
    {
     "ko": "언젠가",
@@ -3373,7 +3492,8 @@
     "rom": [
      "inhyeong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "人形"
    },
    {
     "ko": "초대",
@@ -3384,7 +3504,8 @@
     "rom": [
      "chodae"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "招待"
    },
    {
     "ko": "팔다",
@@ -3406,7 +3527,8 @@
     "rom": [
      "haru jong-il"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "하루 終日"
    },
    {
     "ko": "해외",
@@ -3417,7 +3539,8 @@
     "rom": [
      "haeoe"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "海外"
    },
    {
     "ko": "힘들다",
@@ -3532,7 +3655,8 @@
     "rom": [
      "gibun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "氣分"
    },
    {
     "ko": "깜짝",
@@ -3763,7 +3887,8 @@
     "rom": [
      "ipjjangnyo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "入場料"
    },
    {
     "ko": "전부",
@@ -3774,7 +3899,8 @@
     "rom": [
      "jeonbu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "全部"
    },
    {
     "ko": "지각",
@@ -3785,7 +3911,8 @@
     "rom": [
      "jigak"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "遲刻"
    },
    {
     "ko": "쭉",
@@ -3818,7 +3945,8 @@
     "rom": [
      "tonghwahada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "通話하다"
    }
   ]
  },
@@ -3856,7 +3984,8 @@
     "rom": [
      "gwangwang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "觀光"
    },
    {
     "ko": "관광지",
@@ -3867,7 +3996,8 @@
     "rom": [
      "gwangwangji"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "觀光地"
    },
    {
     "ko": "그럼요",
@@ -3924,7 +4054,8 @@
     "rom": [
      "dutongnyak"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "頭痛藥"
    },
    {
     "ko": "마음",
@@ -4014,7 +4145,8 @@
     "rom": [
      "balpyo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "發表"
    },
    {
     "ko": "백화점",
@@ -4025,7 +4157,8 @@
     "rom": [
      "baekwajeom"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "百貨店"
    },
    {
     "ko": "별로",
@@ -4036,7 +4169,8 @@
     "rom": [
      "byeollo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "別로"
    },
    {
     "ko": "부엌",
@@ -4080,7 +4214,8 @@
     "rom": [
      "seongkkyeok"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "性格"
    },
    {
     "ko": "섬",
@@ -4113,7 +4248,8 @@
     "rom": [
      "siheom"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "試驗"
    },
    {
     "ko": "어떤",
@@ -4146,7 +4282,8 @@
     "rom": [
      "joreopssik"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "卒業式"
    },
    {
     "ko": "키가 크다",
@@ -4179,7 +4316,8 @@
     "rom": [
      "hakoe"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "學會"
    }
   ]
  },
@@ -4195,7 +4333,8 @@
     "rom": [
      "gwansim"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "關心"
    },
    {
     "ko": "그냥",
@@ -4393,7 +4532,8 @@
     "rom": [
      "juso"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "住所"
    },
    {
     "ko": "짧다",
@@ -4442,7 +4582,8 @@
     "rom": [
      "gyehoek"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "計劃"
    },
    {
     "ko": "궁금하다",
@@ -4464,7 +4605,8 @@
     "rom": [
      "gieok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "記憶"
    },
    {
     "ko": "길",
@@ -4541,7 +4683,8 @@
     "rom": [
      "mokjjeok"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "目的"
    },
    {
     "ko": "세탁",
@@ -4552,7 +4695,8 @@
     "rom": [
      "setak"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "洗濯"
    },
    {
     "ko": "순서",
@@ -4563,7 +4707,8 @@
     "rom": [
      "sunseo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "順序"
    },
    {
     "ko": "아마",
@@ -4607,7 +4752,8 @@
     "rom": [
      "yangjjok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "兩쪽"
    },
    {
     "ko": "어서",
@@ -4629,7 +4775,8 @@
     "rom": [
      "yesang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "豫想"
    },
    {
     "ko": "옳다",
@@ -4651,7 +4798,8 @@
     "rom": [
      "wonhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "願하다"
    },
    {
     "ko": "유명",
@@ -4662,7 +4810,8 @@
     "rom": [
      "yumyeong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "有名"
    },
    {
     "ko": "의미",
@@ -4673,7 +4822,8 @@
     "rom": [
      "uimi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "意味"
    },
    {
     "ko": "이불",
@@ -4695,7 +4845,8 @@
     "rom": [
      "ilttan"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "一旦"
    },
    {
     "ko": "잃다",
@@ -4717,7 +4868,8 @@
     "rom": [
      "chulgu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "出口"
    },
    {
     "ko": "출신",
@@ -4728,7 +4880,8 @@
     "rom": [
      "chulssin"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "出身"
    },
    {
     "ko": "확인",
@@ -4739,7 +4892,8 @@
     "rom": [
      "hwagin"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "確認"
    }
   ]
  },
@@ -4755,7 +4909,8 @@
     "rom": [
      "geonbae"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "乾杯"
    },
    {
     "ko": "결과",
@@ -4766,7 +4921,8 @@
     "rom": [
      "gyeolgwa"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "結果"
    },
    {
     "ko": "나머지",
@@ -4854,7 +5010,8 @@
     "rom": [
      "banghak"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "放學"
    },
    {
     "ko": "번째",
@@ -4865,7 +5022,8 @@
     "rom": [
      "beonjjae"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "番째"
    },
    {
     "ko": "생각이 나다",
@@ -4953,7 +5111,8 @@
     "rom": [
      "useon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "于先"
    },
    {
     "ko": "우연히",
@@ -4964,7 +5123,8 @@
     "rom": [
      "uyeonhi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "偶然히"
    },
    {
     "ko": "자꾸",
@@ -5057,7 +5217,8 @@
     "rom": [
      "gandanhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "簡單하다"
    },
    {
     "ko": "결국",
@@ -5068,7 +5229,8 @@
     "rom": [
      "gyeolguk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "結局"
    },
    {
     "ko": "고민",
@@ -5079,7 +5241,8 @@
     "rom": [
      "gomin"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "苦悶"
    },
    {
     "ko": "고장이 나다",
@@ -5090,7 +5253,8 @@
     "rom": [
      "gojang-i nada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "故障이 나다"
    },
    {
     "ko": "그만두다",
@@ -5134,7 +5298,8 @@
     "rom": [
      "dapjjang"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "答狀"
    },
    {
     "ko": "대단하다",
@@ -5167,7 +5332,8 @@
     "rom": [
      "dongne"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "洞네"
    },
    {
     "ko": "뚜렷하다",
@@ -5200,7 +5366,8 @@
     "rom": [
      "mugwansim"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "無關心"
    },
    {
     "ko": "분명하다",
@@ -5211,7 +5378,8 @@
     "rom": [
      "bunmyeonghada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "分明하다"
    },
    {
     "ko": "상처",
@@ -5222,7 +5390,8 @@
     "rom": [
      "sangcheo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "傷處"
    },
    {
     "ko": "새롭다",
@@ -5255,7 +5424,8 @@
     "rom": [
      "siheome butta"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "試驗에 붙다"
    },
    {
     "ko": "심각하다",
@@ -5266,7 +5436,8 @@
     "rom": [
      "simgakada"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "深刻하다"
    },
    {
     "ko": "정확하다",
@@ -5277,7 +5448,8 @@
     "rom": [
      "jeonghwakada"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "正確하다"
    },
    {
     "ko": "제시간",
@@ -5288,7 +5460,8 @@
     "rom": [
      "jesigan"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "제時間"
    },
    {
     "ko": "조용하다",
@@ -5332,7 +5505,8 @@
     "rom": [
      "hapkkyeok"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "合格"
    }
   ]
  },
@@ -5348,7 +5522,8 @@
     "rom": [
      "gang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "江"
    },
    {
     "ko": "걔",
@@ -5394,7 +5569,8 @@
     "rom": [
      "geumbang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "今方"
    },
    {
     "ko": "냉장고",
@@ -5405,7 +5581,8 @@
     "rom": [
      "naengjanggo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "冷藏庫"
    },
    {
     "ko": "너",
@@ -5493,7 +5670,8 @@
     "rom": [
      "seongham"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "姓銜"
    },
    {
     "ko": "소고기",
@@ -5570,7 +5748,8 @@
     "rom": [
      "yeonpil"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "鉛筆"
    },
    {
     "ko": "옮기다",
@@ -5592,7 +5771,8 @@
     "rom": [
      "wollae"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "元來"
    },
    {
     "ko": "쟤",
@@ -5636,7 +5816,8 @@
     "rom": [
      "chinjeolhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "親切하다"
    },
    {
     "ko": "필통",
@@ -5647,7 +5828,8 @@
     "rom": [
      "piltong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "筆筒"
    }
   ]
  },
@@ -5663,7 +5845,8 @@
     "rom": [
      "geori"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "距離"
    },
    {
     "ko": "결심",
@@ -5674,7 +5857,8 @@
     "rom": [
      "gyeolssim"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "決心"
    },
    {
     "ko": "결정",
@@ -5685,7 +5869,8 @@
     "rom": [
      "gyeoljjeong"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "決定"
    },
    {
     "ko": "내로",
@@ -5696,7 +5881,8 @@
     "rom": [
      "naero"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "內로"
    },
    {
     "ko": "넘어지다",
@@ -5773,7 +5959,8 @@
     "rom": [
      "eoneo"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "言語"
    },
    {
     "ko": "욕실",
@@ -5784,7 +5971,8 @@
     "rom": [
      "yokssil"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "浴室"
    },
    {
     "ko": "웃음이 나오다",
@@ -5817,7 +6005,8 @@
     "rom": [
      "isanghada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "異常하다"
    },
    {
     "ko": "입구",
@@ -5828,7 +6017,8 @@
     "rom": [
      "ipkku"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "入口"
    },
    {
     "ko": "작가",
@@ -5839,7 +6029,8 @@
     "rom": [
      "jakka"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "作家"
    },
    {
     "ko": "줄넘기",
@@ -5883,7 +6074,8 @@
     "rom": [
      "cheori"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "處理"
    },
    {
     "ko": "춤을 추다",
@@ -5905,7 +6097,8 @@
     "rom": [
      "chungbunhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "充分하다"
    },
    {
     "ko": "평일",
@@ -5916,7 +6109,8 @@
     "rom": [
      "pyeong-il"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "平日"
    },
    {
     "ko": "하룻밤",
@@ -5945,7 +6139,8 @@
     "rom": [
      "gagyeok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "價格"
    },
    {
     "ko": "감자",
@@ -6011,7 +6206,8 @@
     "rom": [
      "deung"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "等"
    },
    {
     "ko": "똑같다",
@@ -6055,7 +6251,8 @@
     "rom": [
      "banchan"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "飯饌"
    },
    {
     "ko": "배추",
@@ -6077,7 +6274,8 @@
     "rom": [
      "bogo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "報告"
    },
    {
     "ko": "비타민",
@@ -6099,7 +6297,8 @@
     "rom": [
      "yeokssa"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "歷史"
    },
    {
     "ko": "올라가다",
@@ -6132,7 +6331,8 @@
     "rom": [
      "insa"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "人事"
    },
    {
     "ko": "지치다",
@@ -6154,7 +6354,8 @@
     "rom": [
      "chuga"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "追加"
    },
    {
     "ko": "콘서트",
@@ -6176,7 +6377,8 @@
     "rom": [
      "pyo"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "票"
    }
   ]
  },
@@ -6313,7 +6515,8 @@
     "rom": [
      "bunwigi"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "雰圍氣"
    },
    {
     "ko": "불가능",
@@ -6324,7 +6527,8 @@
     "rom": [
      "bulganeung"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "不可能"
    },
    {
     "ko": "빨래",
@@ -6346,7 +6550,8 @@
     "rom": [
      "seonggong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "成功"
    },
    {
     "ko": "아쉽다",
@@ -6368,7 +6573,8 @@
     "rom": [
      "yeojeonhi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "如前히"
    },
    {
     "ko": "이것저것",
@@ -6390,7 +6596,8 @@
     "rom": [
      "jasin"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "自身"
    },
    {
     "ko": "책임을 지다",
@@ -6401,7 +6608,8 @@
     "rom": [
      "chaegimeul jida"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "責任을 지다"
    }
   ]
  },
@@ -6428,7 +6636,8 @@
     "rom": [
      "ginjang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "緊張"
    },
    {
     "ko": "꽉",
@@ -6461,7 +6670,8 @@
     "rom": [
      "mullon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "勿論"
    },
    {
     "ko": "부드럽다",
@@ -6516,7 +6726,8 @@
     "rom": [
      "seongjeok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "成績"
    },
    {
     "ko": "식탁",
@@ -6527,7 +6738,8 @@
     "rom": [
      "siktak"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "食卓"
    },
    {
     "ko": "실수",
@@ -6538,7 +6750,8 @@
     "rom": [
      "silssu"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "失手"
    },
    {
     "ko": "심심하다",
@@ -6604,7 +6817,8 @@
     "rom": [
      "insaeng"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "人生"
    },
    {
     "ko": "자기",
@@ -6615,7 +6829,8 @@
     "rom": [
      "jagi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "自己"
    },
    {
     "ko": "째",
@@ -6637,7 +6852,8 @@
     "rom": [
      "chwijik"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "就職"
    },
    {
     "ko": "포기하다",
@@ -6648,7 +6864,8 @@
     "rom": [
      "pogihada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "抛棄하다"
    },
    {
     "ko": "헤어지다",
@@ -6675,7 +6892,8 @@
     "rom": [
      "gaebal"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "開發"
    },
    {
     "ko": "거절",
@@ -6686,7 +6904,8 @@
     "rom": [
      "geojeol"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "拒絕"
    },
    {
     "ko": "국내",
@@ -6697,7 +6916,8 @@
     "rom": [
      "gungnae"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "國內"
    },
    {
     "ko": "내용",
@@ -6708,7 +6928,8 @@
     "rom": [
      "naeyong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "內容"
    },
    {
     "ko": "무시",
@@ -6719,7 +6940,8 @@
     "rom": [
      "musi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "無視"
    },
    {
     "ko": "발견",
@@ -6730,7 +6952,8 @@
     "rom": [
      "balgyeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "發見"
    },
    {
     "ko": "발달",
@@ -6741,7 +6964,8 @@
     "rom": [
      "balttal"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "發達"
    },
    {
     "ko": "발전",
@@ -6752,7 +6976,8 @@
     "rom": [
      "baljjeon"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "發展"
    },
    {
     "ko": "밟다",
@@ -6774,7 +6999,8 @@
     "rom": [
      "byeong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "病"
    },
    {
     "ko": "부상",
@@ -6785,7 +7011,8 @@
     "rom": [
      "busang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "負傷"
    },
    {
     "ko": "부작용",
@@ -6796,7 +7023,8 @@
     "rom": [
      "bujagyong"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "副作用"
    },
    {
     "ko": "사업",
@@ -6807,7 +7035,8 @@
     "rom": [
      "saeop"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "事業"
    },
    {
     "ko": "선택",
@@ -6818,7 +7047,8 @@
     "rom": [
      "seontaek"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "選擇"
    },
    {
     "ko": "설치",
@@ -6829,7 +7059,8 @@
     "rom": [
      "seolchi"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "設置"
    },
    {
     "ko": "소개",
@@ -6840,7 +7071,8 @@
     "rom": [
      "sogae"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "紹介"
    },
    {
     "ko": "쌓다",
@@ -6862,7 +7094,8 @@
     "rom": [
      "yeongu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "硏究"
    },
    {
     "ko": "이용",
@@ -6873,7 +7106,8 @@
     "rom": [
      "iyong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "利用"
    },
    {
     "ko": "점점",
@@ -6884,7 +7118,8 @@
     "rom": [
      "jeomjeom"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "漸漸"
    },
    {
     "ko": "조금씩",
@@ -6917,7 +7152,8 @@
     "rom": [
      "chingchan"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "稱讚"
    },
    {
     "ko": "풀다",
@@ -6966,7 +7202,8 @@
     "rom": [
      "baedal"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "配達"
    },
    {
     "ko": "신분증",
@@ -6977,7 +7214,8 @@
     "rom": [
      "sinbunjjeung"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "身分證"
    },
    {
     "ko": "아빠",
@@ -6999,7 +7237,8 @@
     "rom": [
      "yang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "量"
    },
    {
     "ko": "어렸을 때",
@@ -7054,7 +7293,8 @@
     "rom": [
      "jayuroptta"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "自由롭다"
    },
    {
     "ko": "장소",
@@ -7065,7 +7305,8 @@
     "rom": [
      "jangso"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "場所"
    },
    {
     "ko": "주의",
@@ -7076,7 +7317,8 @@
     "rom": [
      "juui"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "注意"
    },
    {
     "ko": "줄다",
@@ -7111,7 +7353,8 @@
     "rom": [
      "hwamyeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "畫面"
    }
   ]
  },
@@ -7127,7 +7370,8 @@
     "rom": [
      "gwangye"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "關係"
    },
    {
     "ko": "기회",
@@ -7138,7 +7382,8 @@
     "rom": [
      "gihoe"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "機會"
    },
    {
     "ko": "모습",
@@ -7171,7 +7416,8 @@
     "rom": [
      "bumonim"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "父母님"
    },
    {
     "ko": "사라지다",
@@ -7215,7 +7461,8 @@
     "rom": [
      "isang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "以上"
    },
    {
     "ko": "일부러",
@@ -7248,7 +7495,8 @@
     "rom": [
      "jasehada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "仔細하다"
    },
    {
     "ko": "정부",
@@ -7259,7 +7507,8 @@
     "rom": [
      "jeongbu"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "政府"
    },
    {
     "ko": "차라리",
@@ -7281,7 +7530,8 @@
     "rom": [
      "choegeun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "最近"
    },
    {
     "ko": "태어나다",
@@ -7303,7 +7553,8 @@
     "rom": [
      "pohamhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "包含하다"
    },
    {
     "ko": "표현",
@@ -7314,7 +7565,8 @@
     "rom": [
      "pyohyeon"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "表現"
    },
    {
     "ko": "행동",
@@ -7325,7 +7577,8 @@
     "rom": [
      "haengdong"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "行動"
    },
    {
     "ko": "행복",
@@ -7336,7 +7589,8 @@
     "rom": [
      "haengbok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "幸福"
    }
   ]
  },
@@ -7363,7 +7617,8 @@
     "rom": [
      "myeongnyeong"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "命令"
    },
    {
     "ko": "보석",
@@ -7374,7 +7629,8 @@
     "rom": [
      "boseok"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "寶石"
    },
    {
     "ko": "상상",
@@ -7385,7 +7641,8 @@
     "rom": [
      "sangsang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "想像"
    },
    {
     "ko": "소리(를) 치다",
@@ -7409,7 +7666,8 @@
     "rom": [
      "somun"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "所聞"
    },
    {
     "ko": "자랑",
@@ -7431,7 +7689,8 @@
     "rom": [
      "jeonhada"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "傳하다"
    },
    {
     "ko": "제안",
@@ -7442,7 +7701,8 @@
     "rom": [
      "jean"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "提案"
    },
    {
     "ko": "주장",
@@ -7453,7 +7713,8 @@
     "rom": [
      "jujang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "主張"
    },
    {
     "ko": "추측",
@@ -7464,7 +7725,8 @@
     "rom": [
      "chucheuk"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "推測"
    },
    {
     "ko": "평가",
@@ -7475,7 +7737,8 @@
     "rom": [
      "pyeongkka"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "評價"
    },
    {
     "ko": "평양",
@@ -7486,7 +7749,8 @@
     "rom": [
      "pyeong-yang"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "平壤"
    },
    {
     "ko": "혼내다",
@@ -7497,7 +7761,8 @@
     "rom": [
      "honnaeda"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "魂내다"
    },
    {
     "ko": "확신",
@@ -7508,7 +7773,8 @@
     "rom": [
      "hwakssin"
     ],
-    "chg": true
+    "chg": true,
+    "hanja": "確信"
    },
    {
     "ko": "후회",
@@ -7519,7 +7785,8 @@
     "rom": [
      "huhoe"
     ],
-    "chg": false
+    "chg": false,
+    "hanja": "後悔"
    }
   ]
  }

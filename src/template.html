@@ -467,6 +467,7 @@ dialog::backdrop { background: var(--backdrop); }
             <span class="word" id="back-ko" lang="ko"></span>
             <span class="roman t-hero" id="roman" lang="ko-Latn"></span>
             <span class="pron t-title muted" id="pron" lang="ko"></span>
+            <span class="pron t-title muted" id="hanja" lang="ko"></span>
             <span class="meaning t-h2" id="meaning"></span>
           </span>
         </span>
@@ -718,6 +719,8 @@ function render() {
   $('meaning').hidden = state.reverse;
   $('roman').textContent = c.rom.join(' / ');
   $('pron').textContent = c.pron.map(p => '[' + p + ']').join(' / ');
+  $('hanja').textContent = c.hanja || '';
+  $('hanja').hidden = !c.hanja;
   $('prev').disabled = pos === 0;
 }
 
