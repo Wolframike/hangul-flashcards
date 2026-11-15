@@ -37,18 +37,19 @@
   ],
   "dialogue": [
    {
-    "ko": "저기요, 저 혹시 유카 씨가 아닙니까?",
-    "ja": "すみません、あの、もしかしてユカさんではありませんか。",
+    "speaker": "가람",
+    "ko": "저기요-. 저-, 혹시 유키 씨가 아닙니까?",
+    "ja": "すみません。あの、もしかしてユキさんではありませんか。",
     "pron": [
-     "저기요 저 혹씨 유카 씨가 아님니까"
+     "저기요 저 혹씨 유키 씨가 아님니까"
     ],
     "rom": [
-     "jeogiyo jeo hokssi yuka ssiga animnikka"
+     "jeogiyo jeo hokssi yuki ssiga animnikka"
     ],
-    "speaker": "가람",
     "note": "濃音化、鼻音化"
    },
    {
+    "speaker": "유키",
     "ko": "네, 맞아요.",
     "ja": "はい、そうです。",
     "pron": [
@@ -57,36 +58,38 @@
     "rom": [
      "ne majayo"
     ],
-    "speaker": "유카",
     "note": "連音化"
    },
    {
+    "speaker": "가람",
     "ko": "제가 가람입니다. 처음 뵙겠습니다.",
     "ja": "私がカラムです。はじめまして。",
     "pron": [
-     "제가 가라밈니다 처음 뷉껟씀니다",
+     "제가 가라밈니다 처음 뵙께씀니다",
      "제가 가라밈니다 처음 뵙껟씀니다"
     ],
     "rom": [
-     "jega garamimnida cheoeum bwepkketsseumnida",
+     "jega garamimnida cheoeum boepkkesseumnida",
      "jega garamimnida cheoeum boepkketsseumnida"
     ],
-    "speaker": "가람",
-    "note": "連音化、鼻音化、濃音化、ㅚは[ㅞ]"
+    "note": "連音化、鼻音化、濃音化"
    },
    {
-    "ko": "아, 가람 씨, 안녕하세요? 반갑습니다. 가람 씨는 전공이 한국어입니까?",
-    "ja": "あ、カラムさん、こんにちは。お会いできてうれしいです。カラムさんは専攻が韓国語ですか。",
+    "speaker": "유키",
+    "ko": "아, 가람 씨! 안녕하세요? 반갑습니다. 가람 씨는 전공이 한국어입니까?",
+    "ja": "あ、カラムさん！こんにちは。お会いできてうれしいです。カラムさんは専攻が韓国語ですか。",
     "pron": [
+     "아 가람 씨 안녕아세요 반갑씀니다 가람 씨는 전공이 한구거임니까",
      "아 가람 씨 안녕하세요 반갑씀니다 가람 씨는 전공이 한구거임니까"
     ],
     "rom": [
+     "a garam ssi annyeong-aseyo bangapsseumnida garam ssineun jeongong-i hangugeoimnikka",
      "a garam ssi annyeonghaseyo bangapsseumnida garam ssineun jeongong-i hangugeoimnikka"
     ],
-    "speaker": "유카",
-    "note": "濃音化、鼻音化、連音化"
+    "note": "ㅎの弱化、濃音化、鼻音化、連音化"
    },
    {
+    "speaker": "가람",
     "ko": "네, 한국어입니다. 잘 부탁합니다.",
     "ja": "はい、韓国語です。よろしくお願いします。",
     "pron": [
@@ -95,7 +98,6 @@
     "rom": [
      "ne hangugeoimnida jal butakamnida"
     ],
-    "speaker": "가람",
     "note": "連音化、鼻音化、激音化"
    }
   ]

@@ -599,7 +599,7 @@ dialog::backdrop { background: var(--backdrop); }
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p class="disclaimer">単語と意味は Quizlet のクラス「SFC朝鮮語」の25セット（2026年10月26日に取得）から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ は教科書どおり[ㅞ]・[ㅣ]で示しています。漢字表記は標準国語大辞典の原語欄による韓国の字形です。9課の会話文は授業の指示から作成し、話し手の割り当て・句読点・日本語訳は作成者によるものです。人名のハングル表記は外来語表記法によります。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
+    <p class="disclaimer">単語と意味は Quizlet のクラス「SFC朝鮮語」の25セット（2026年10月26日に取得）から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ（[ㅞ]・[ㅣ]）、ㅎの弱化、9課の会話文の発音は教科書『ハングルハングルⅠ』の形を先に示しています。漢字表記は標準国語大辞典の原語欄による韓国の字形です。9課の会話文は教科書 p.52 から写したもので、日本語訳は作成者によるものです。人名のハングル表記は教科書の日本語のハングル表記の規則によります。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
   </div>
 </footer>
 <script>
@@ -836,7 +836,7 @@ function speak(...texts) {
   if (synth.speaking || synth.pending) synth.cancel();
   const voice = voices.find(v => v.voiceURI === $('voice').value);
   utterances = texts.map(text => {
-    const u = new SpeechSynthesisUtterance(text);
+    const u = new SpeechSynthesisUtterance(text.replace(/-/g, ''));  // the textbook's "-" marks a drawn-out sound
     u.lang = 'ko-KR';
     if (voice) u.voice = voice;
     u.rate = state.slow ? 0.7 : 1;
