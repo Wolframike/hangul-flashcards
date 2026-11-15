@@ -1,0 +1,103 @@
+{
+ "09": {
+  "extra": [
+   {
+    "ko": "스즈키",
+    "ja": "鈴木（人名）",
+    "pron": [
+     "스즈키"
+    ],
+    "rom": [
+     "seujeuki"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "다로",
+    "ja": "太郎（人名）",
+    "pron": [
+     "다로"
+    ],
+    "rom": [
+     "daro"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "다나카",
+    "ja": "田中（人名）",
+    "pron": [
+     "다나카"
+    ],
+    "rom": [
+     "danaka"
+    ],
+    "chg": false
+   }
+  ],
+  "dialogue": [
+   {
+    "ko": "저기요, 저 혹시 유카 씨가 아닙니까?",
+    "ja": "すみません、あの、もしかしてユカさんではありませんか。",
+    "pron": [
+     "저기요 저 혹씨 유카 씨가 아님니까"
+    ],
+    "rom": [
+     "jeogiyo jeo hokssi yuka ssiga animnikka"
+    ],
+    "speaker": "가람",
+    "note": "濃音化、鼻音化"
+   },
+   {
+    "ko": "네, 맞아요.",
+    "ja": "はい、そうです。",
+    "pron": [
+     "네 마자요"
+    ],
+    "rom": [
+     "ne majayo"
+    ],
+    "speaker": "유카",
+    "note": "連音化"
+   },
+   {
+    "ko": "제가 가람입니다. 처음 뵙겠습니다.",
+    "ja": "私がカラムです。はじめまして。",
+    "pron": [
+     "제가 가라밈니다 처음 뷉껟씀니다",
+     "제가 가라밈니다 처음 뵙껟씀니다"
+    ],
+    "rom": [
+     "jega garamimnida cheoeum bwepkketsseumnida",
+     "jega garamimnida cheoeum boepkketsseumnida"
+    ],
+    "speaker": "가람",
+    "note": "連音化、鼻音化、濃音化、ㅚは[ㅞ]"
+   },
+   {
+    "ko": "아, 가람 씨, 안녕하세요? 반갑습니다. 가람 씨는 전공이 한국어입니까?",
+    "ja": "あ、カラムさん、こんにちは。お会いできてうれしいです。カラムさんは専攻が韓国語ですか。",
+    "pron": [
+     "아 가람 씨 안녕하세요 반갑씀니다 가람 씨는 전공이 한구거임니까"
+    ],
+    "rom": [
+     "a garam ssi annyeonghaseyo bangapsseumnida garam ssineun jeongong-i hangugeoimnikka"
+    ],
+    "speaker": "유카",
+    "note": "濃音化、鼻音化、連音化"
+   },
+   {
+    "ko": "네, 한국어입니다. 잘 부탁합니다.",
+    "ja": "はい、韓国語です。よろしくお願いします。",
+    "pron": [
+     "네 한구거임니다 잘 부타캄니다"
+    ],
+    "rom": [
+     "ne hangugeoimnida jal butakamnida"
+    ],
+    "speaker": "가람",
+    "note": "連音化、鼻音化、激音化"
+   }
+  ]
+ }
+}

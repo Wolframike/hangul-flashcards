@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:,">
+<title>ハングル読み練習</title>
+<script>try { if (localStorage.getItem('hangul-cards:theme') === '"light"') document.documentElement.dataset.theme = 'light'; } catch (e) {}</script>
+<style>
+/* base.css — openai 規則の値の正本。RULES.md と完全に一致させる。
+   使い方: ページの <style> の先頭に、省略せず変えずに写す。部品の CSS はこの後ろに足す。 */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff; --fill: #f3f3f3; --fill-strong: #e8e8e8; --raised: #ffffff; --selected: #ffffff;
+  --text: #000000; --text-2: #666666;
+  --border: #e0e0e0; --border-strong: #cccccc; --border-input: #8f8f8f;
+  --ink: #000000; --focus: #000000;
+  --cat1-tint: #eaf2fd; --cat1: #1f4e94;
+  --cat2-tint: #f2eefb; --cat2: #5a3e9e;
+  --cat3-tint: #e8f5ec; --cat3: #1d6b3b;
+  --warn-tint: #fff0e5; --warn: #8f3b00;
+  --error-tint: #fdecea; --error: #b42318;
+  --highlight: #f6d247; --highlight-hover: #e8c33a; --on-highlight: #000000; --highlight-tint: #fdf3c4;
+  --backdrop: rgba(0, 0, 0, .4);
+  --shadow-composer: 0 3px 6px rgba(0, 0, 0, .04), 0 4px 80px 8px rgba(0, 0, 0, .04);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", Meiryo, "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --r-xs: 4px; --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 24px; --r-pill: 9999px;
+  --ease: cubic-bezier(.4, 0, .2, 1); --ease-out: cubic-bezier(0, .56, .46, 1);
+  --gutter: 32px; --measure: 720px; --wide: 1200px; --aside: clamp(440px, 50%, 880px); --nav: 240px; --rail: 80px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --fill: #1f1f1f; --fill-strong: #2b2b2b; --raised: #1f1f1f; --selected: #2b2b2b;
+    --text: #ffffff; --text-2: #a3a3a3;
+    --border: #333333; --border-strong: #4d4d4d; --border-input: #6b6b6b;
+    --ink: #ffffff; --focus: #ffffff;
+    --cat1-tint: #0f2541; --cat1: #a4cdfb;
+    --cat2-tint: #251d3d; --cat2: #c7b8f5;
+    --cat3-tint: #0f2c1b; --cat3: #95d5aa;
+    --warn-tint: #3a1f0c; --warn: #ffb27a;
+    --error-tint: #3b1310; --error: #ff9e94;
+    --highlight: #f6d247; --highlight-hover: #e8c33a; --on-highlight: #000000; --highlight-tint: #3a3212;
+    --backdrop: rgba(0, 0, 0, .7);
+    --shadow-composer: none;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --fill: #1f1f1f; --fill-strong: #2b2b2b; --raised: #1f1f1f; --selected: #2b2b2b;
+  --text: #ffffff; --text-2: #a3a3a3;
+  --border: #333333; --border-strong: #4d4d4d; --border-input: #6b6b6b;
+  --ink: #ffffff; --focus: #ffffff;
+  --cat1-tint: #0f2541; --cat1: #a4cdfb;
+  --cat2-tint: #251d3d; --cat2: #c7b8f5;
+  --cat3-tint: #0f2c1b; --cat3: #95d5aa;
+  --warn-tint: #3a1f0c; --warn: #ffb27a;
+  --error-tint: #3b1310; --error: #ff9e94;
+  --highlight: #f6d247; --highlight-hover: #e8c33a; --on-highlight: #000000; --highlight-tint: #3a3212;
+  --backdrop: rgba(0, 0, 0, .7);
+  --shadow-composer: none;
+}
+@media (max-width: 767px) { :root { --gutter: 16px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.75 var(--font); letter-spacing: .02em; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul, ol { padding-left: 1.25em; }
+li + li { margin-top: var(--s1); }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+::placeholder { color: var(--text-2); opacity: 1; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--text-2); }
+
+/* 文字の段階（RULES.md「トークン」の文字） */
+.t-hero { font-size: 48px; line-height: 1.25; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; text-wrap: balance; word-break: auto-phrase; }
+.t-h2 { font-size: 30px; line-height: 1.35; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; text-wrap: balance; word-break: auto-phrase; }
+.t-h3 { font-size: 22px; line-height: 1.4; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; text-wrap: balance; word-break: auto-phrase; }
+.t-title { font-size: 18px; line-height: 1.4; font-weight: 500; letter-spacing: 0; font-feature-settings: "palt"; }
+.t-lead { font-size: 18px; line-height: 1.7; font-weight: 400; letter-spacing: .02em; text-wrap: pretty; }
+.t-body { font-size: 16px; line-height: 1.75; font-weight: 400; letter-spacing: .02em; text-wrap: pretty; line-break: strict; }
+.t-brand { font-size: 16px; line-height: 1.4; font-weight: 500; letter-spacing: 0; }
+.t-ui { font-size: 14px; line-height: 1.4; font-weight: 500; letter-spacing: .01em; }
+.t-data { font-size: 14px; line-height: 1.5; font-weight: 400; letter-spacing: .01em; }
+.t-small { font-size: 13px; line-height: 1.6; font-weight: 400; letter-spacing: .01em; }
+.t-caption { font-size: 12px; line-height: 1.5; font-weight: 400; letter-spacing: .01em; }
+.t-mono { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; letter-spacing: 0; }
+@media (max-width: 767px) { .t-hero { font-size: 32px; } .t-h2 { font-size: 24px; } .t-h3 { font-size: 20px; } }
+
+/* アイコン。Material Symbols の公式 SVG を <symbol id="i-名前"> でページに入れ、<svg class="icon" aria-hidden="true"><use href="#i-名前"/></svg> で描く */
+.icon { width: 20px; height: 20px; flex: none; fill: currentColor; vertical-align: middle; }
+
+/* ボタン */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); height: 40px; padding: 0 20px; border: 1px solid transparent; border-radius: var(--r-pill); font-size: 14px; line-height: 1; font-weight: 500; letter-spacing: .01em; white-space: nowrap; text-decoration: none; transition: background-color .2s linear, border-color .2s linear, color .2s linear; }
+.btn .icon { width: 18px; height: 18px; }
+.btn-sm { height: 36px; padding: 0 16px; }
+.btn-primary { background: var(--highlight); color: var(--on-highlight); }
+.btn-primary:hover { background: var(--highlight-hover); }
+.btn-secondary { background: var(--fill); color: var(--text); }
+.btn-secondary:hover { background: var(--fill-strong); }
+.btn-danger { background: var(--fill); color: var(--error); }
+.btn-danger:hover { background: var(--fill-strong); }
+.btn-icon { width: 36px; height: 36px; padding: 0; background: transparent; color: var(--text); }
+.btn-icon:hover { background: var(--fill); }
+.btn-icon.btn-xs { width: 24px; height: 24px; color: var(--text-2); }
+.btn-icon.btn-xs .icon { width: 18px; height: 18px; }
+.btn-icon.btn-xs:hover { background: var(--fill-strong); }
+.btn:disabled, .btn[aria-disabled="true"] { background: var(--fill-strong); color: var(--text-2); cursor: not-allowed; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+
+/* チップ・切替・絞り込みの行 */
+.chip { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; border: 1px solid var(--border-strong); border-radius: var(--r-lg); background: transparent; color: var(--text); font-size: 14px; line-height: 1.5; font-weight: 500; letter-spacing: .01em; text-align: left; word-break: auto-phrase; transition: background-color .2s linear; }
+.chip:hover { background: var(--fill); }
+.toggle { display: inline-flex; align-items: center; gap: var(--s1); height: 32px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: transparent; color: var(--text-2); font-size: 13px; line-height: 1; font-weight: 500; white-space: nowrap; transition: background-color .2s linear, border-color .2s linear, color .2s linear; }
+.toggle .icon { display: none; width: 16px; height: 16px; }
+.toggle[aria-pressed="true"] { background: var(--fill-strong); border-color: var(--fill-strong); color: var(--text); }
+.toggle[aria-pressed="true"] .icon { display: inline-block; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); }
+.toolbar .search { flex: 1 1 280px; }
+.filter { display: inline-flex; align-items: center; gap: var(--s2); }
+.filter > label { color: var(--text-2); font-size: 13px; line-height: 1.4; white-space: nowrap; }
+
+/* 入力とフォーム、入力と送信の面 */
+.field { width: 100%; height: 40px; padding: 0 16px; border: 1px solid var(--border-input); border-radius: var(--r-pill); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.5; transition: border-color .2s linear, box-shadow .2s linear; }
+.field:focus { outline: none; border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
+.field[aria-invalid="true"] { border-color: var(--error); }
+textarea.field { height: auto; min-height: 96px; padding: 10px 16px; border-radius: var(--r-md); resize: vertical; }
+.field-sm { height: 36px; padding-left: 14px; }
+.select { position: relative; display: inline-flex; align-items: center; }
+.select select { appearance: none; padding-right: 40px; background: var(--fill); cursor: pointer; }
+.select .icon { position: absolute; right: 12px; pointer-events: none; }
+.search { position: relative; display: flex; align-items: center; }
+.search .field { padding-left: 44px; }
+.search .icon { position: absolute; left: 16px; color: var(--text-2); pointer-events: none; }
+input[type="checkbox"], input[type="radio"] { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--ink); flex: none; }
+.form { display: grid; gap: var(--s5); }
+.form-row { display: grid; gap: var(--s2); }
+.form-label { font-size: 14px; line-height: 1.4; font-weight: 500; }
+.form-help { font-size: 13px; line-height: 1.6; color: var(--text-2); }
+.check-row { display: flex; align-items: flex-start; gap: var(--s3); }
+.check-row .form-label { line-height: 1.75; }
+fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+legend { padding: 0; }
+.composer { display: flex; align-items: flex-end; gap: var(--s2); min-height: 56px; padding: 8px 8px 8px 20px; border: 1px solid var(--border-input); border-radius: var(--r-xl); background: var(--raised); box-shadow: var(--shadow-composer); transition: border-color .2s linear, box-shadow .2s linear; }
+.composer:focus-within { border-color: var(--text); box-shadow: 0 0 0 1px var(--text), var(--shadow-composer); }
+.composer textarea { flex: 1; min-width: 0; max-height: 192px; padding: 8px 0; border: 0; outline: none; background: transparent; color: var(--text); font-size: 16px; line-height: 24px; resize: none; }
+.composer .btn-send { width: 36px; height: 36px; padding: 0; border: 0; border-radius: var(--r-pill); display: inline-flex; align-items: center; justify-content: center; background: var(--highlight); color: var(--on-highlight); transition: background-color .2s linear; }
+.composer .btn-send:hover { background: var(--highlight-hover); }
+.composer .btn-send:disabled { background: var(--fill-strong); color: var(--text-2); cursor: not-allowed; }
+
+/* 知らせ・空の状態・読み込み中 */
+.banner { display: flex; justify-content: center; align-items: flex-start; gap: var(--s2); padding: 8px 16px; background: var(--fill); color: var(--text); font-size: 13px; line-height: 1.6; text-align: center; }
+.banner .icon { color: var(--text-2); }
+.notice { display: flex; align-items: flex-start; gap: var(--s2); padding: 12px 16px; border-radius: var(--r-md); background: var(--fill); color: var(--text); font-size: 13px; line-height: 1.6; }
+.notice-warn { background: var(--warn-tint); color: var(--warn); }
+.notice-error { background: var(--error-tint); color: var(--error); }
+.notice-title { display: block; font-size: 14px; line-height: 1.5; font-weight: 500; }
+.notice ul { margin: 0; padding-left: 20px; }
+.notice li + li { margin-top: var(--s1); }
+.notice-toggle { display: inline-flex; align-items: center; gap: var(--s1); height: 32px; padding: 0 10px 0 12px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: transparent; color: var(--warn); font-size: 13px; line-height: 1; font-weight: 500; white-space: nowrap; transition: background-color .2s linear, border-color .2s linear; }
+.notice-toggle:hover { background: var(--fill); }
+.notice-toggle.is-new { border-color: var(--warn-tint); background: var(--warn-tint); }
+.notice-toggle .icon { width: 16px; height: 16px; }
+.notice-toggle .icon:last-child { transition: transform .3s var(--ease); }
+.notice-toggle[aria-expanded="true"] .icon:last-child { transform: rotate(180deg); }
+.menu-toggle { display: inline-flex; align-items: center; gap: var(--s1); height: 32px; padding: 0 10px 0 12px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: transparent; color: var(--text); font-size: 13px; line-height: 1; font-weight: 500; white-space: nowrap; cursor: pointer; transition: background-color .2s linear; }
+.menu-toggle:hover { background: var(--fill); }
+.menu-toggle .icon { width: 16px; height: 16px; transition: transform .3s var(--ease); }
+.menu-toggle[aria-expanded="true"] .icon { transform: rotate(180deg); }
+.say { display: flex; align-items: flex-start; gap: var(--s1); font-size: 13px; line-height: 1.6; color: var(--text-2); }
+.say-warn { color: var(--warn); }
+.say-error { color: var(--error); }
+.say .icon { width: 18px; height: 18px; margin-top: 2px; }
+.disclaimer { padding: 8px 16px; font-size: 12px; line-height: 1.5; color: var(--text-2); text-align: center; }
+.empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s2); padding: var(--s7) 0; text-align: center; }
+.empty-text { font-size: 14px; line-height: 1.6; color: var(--text-2); }
+.empty .chips, .empty .actions { justify-content: center; margin-top: var(--s4); }
+.loading { display: flex; justify-content: center; align-items: center; gap: var(--s2); padding: var(--s7) 0; color: var(--text-2); font-size: 13px; line-height: 1.6; }
+.dots { display: inline-flex; align-items: center; gap: var(--s1); }
+.dots i { width: 6px; height: 6px; border-radius: var(--r-pill); background: currentColor; animation: blink 1.2s infinite; }
+.dots i:nth-child(2) { animation-delay: .2s; }
+.dots i:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+
+/* ラベル・一覧・表・カード・手順・折りたたみ・リンク */
+.tag { display: inline-block; padding: 0 6px; border-radius: var(--r-xs); background: var(--fill); color: var(--text); font-size: 12px; line-height: 20px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
+.tag-cat1 { background: var(--cat1-tint); color: var(--cat1); }
+.tag-cat2 { background: var(--cat2-tint); color: var(--cat2); }
+.tag-cat3 { background: var(--cat3-tint); color: var(--cat3); }
+.tag-warn { background: var(--warn-tint); color: var(--warn); }
+.list { margin: 0; padding: 0; list-style: none; }
+.list > li + li { margin-top: 0; }
+.list-row { display: flex; align-items: center; gap: var(--s3); min-height: 56px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.list-main { flex: 1; min-width: 0; }
+.list-title { font-size: 14px; line-height: 1.5; font-weight: 500; }
+.list-meta { font-size: 13px; line-height: 1.6; color: var(--text-2); }
+.box { border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); overflow: hidden; }
+.box-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s2); padding: 12px 16px; font-size: 13px; line-height: 1.6; font-weight: 500; }
+.box-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s1) var(--s3); padding: 10px 16px; border-top: 1px solid var(--border); font-size: 13px; line-height: 1.6; }
+.table-wrap { position: relative; width: 100%; overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; letter-spacing: .01em; }
+.table th { height: 40px; padding: 0 12px; border-bottom: 1px solid var(--border); background: var(--bg); color: var(--text-2); font-size: 13px; font-weight: 500; text-align: left; white-space: nowrap; }
+.table td { padding: 14px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.table th:first-child, .table td:first-child { padding-left: 0; }
+.table th:last-child, .table td:last-child { padding-right: 0; }
+.table .col-num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-dense td { padding-top: 8px; padding-bottom: 8px; }
+.table thead th { position: sticky; top: 0; z-index: 1; }
+.table th button { display: inline-flex; align-items: center; gap: var(--s1); padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.table th button .icon { width: 16px; height: 16px; }
+.table th[aria-sort] button { color: var(--text); }
+.c-cat1 { color: var(--cat1); } .c-cat2 { color: var(--cat2); } .c-cat3 { color: var(--cat3); } .c-warn { color: var(--warn); } .c-error { color: var(--error); }
+.card { padding: var(--s5); border-radius: var(--r-sm); background: var(--fill); }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s5); margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.steps > li { margin: 0; counter-increment: step; }
+.steps > li::before { content: counter(step); display: block; margin-bottom: var(--s2); color: var(--text-2); font-size: 14px; line-height: 1.4; font-weight: 500; font-variant-numeric: tabular-nums; }
+.steps > li > * + * { margin-top: var(--s2); }
+.card > * + * { margin-top: var(--s2); }
+details > summary { display: flex; align-items: center; gap: var(--s1); list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary .icon { transition: transform .3s var(--ease); }
+details[open] > summary .icon { transform: rotate(180deg); }
+.faq > details { border-top: 1px solid var(--border); }
+.faq > details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { justify-content: space-between; padding: 16px 0; font-size: 16px; line-height: 1.6; font-weight: 500; }
+.faq details > div { padding: 0 0 16px; color: var(--text-2); }
+a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; transition: color .2s linear; }
+a:hover { color: var(--text-2); }
+a.btn, .nav a, .side-nav a, a.brand { text-decoration: none; }
+a.btn-primary:hover { color: var(--on-highlight); }
+a.btn-secondary:hover { color: var(--text); }
+
+/* ナビゲーション・タブ・ダイアログ */
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: var(--s4); height: 64px; padding: 0 var(--gutter); }
+.nav { display: flex; align-items: center; gap: var(--s5); }
+.nav a { color: var(--text-2); font-size: 14px; line-height: 1.4; font-weight: 500; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--text); }
+.side-nav { display: flex; flex-direction: column; gap: 2px; }
+.side-nav a { display: flex; align-items: center; gap: var(--s2); height: 40px; padding: 0 12px; border-radius: var(--r-pill); color: var(--text-2); font-size: 14px; line-height: 1; font-weight: 500; }
+.side-nav a:hover { color: var(--text); }
+.side-nav a[aria-current="page"] { background: var(--fill); color: var(--text); }
+.tabs { display: flex; padding: 4px; border-radius: var(--r-pill); background: var(--fill); }
+.tab { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: var(--s1); height: 36px; padding: 0 12px; border: 0; border-radius: var(--r-pill); background: transparent; color: var(--text-2); font-size: 14px; line-height: 1; font-weight: 500; white-space: nowrap; transition: background-color .2s linear, color .2s linear; }
+.tab[aria-selected="true"] { background: var(--selected); color: var(--text); }
+dialog { width: min(480px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: var(--s5); border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); color: var(--text); }
+dialog::backdrop { background: var(--backdrop); }
+.dialog-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--s2); margin-top: var(--s5); }
+
+/* アプリの外枠の部品（利用者の部品、縦のメニュー、面のタブ、ドラッグ&ドロップ、メニュー） */
+.header-actions { display: flex; align-items: center; gap: var(--s2); }
+.avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--r-pill); background: var(--fill-strong); color: var(--text); font-size: 14px; line-height: 1; font-weight: 500; }
+.avatar-button { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: var(--r-pill); background: transparent; }
+.avatar-button:hover { background: var(--fill); }
+.rail { display: flex; flex-direction: column; align-items: center; gap: var(--s1); padding: var(--s3) 0; border-right: 1px solid var(--border); }
+.rail-item { display: flex; flex-direction: column; align-items: center; gap: var(--s1); width: 64px; padding: var(--s1) 0; border: 0; background: none; color: var(--text-2); font-size: 12px; line-height: 1.4; font-weight: 500; text-align: center; text-decoration: none; cursor: pointer; transition: color .2s linear; }
+.rail-item:hover { color: var(--text); }
+.rail-mark { display: flex; align-items: center; justify-content: center; width: 56px; height: 32px; border-radius: var(--r-pill); transition: background-color .2s linear; }
+.rail-item:hover .rail-mark { background: var(--fill); }
+.rail-item .icon { width: 24px; height: 24px; }
+.rail-item.is-open { color: var(--text); }
+.rail-item.is-open .rail-mark { background: var(--highlight); color: var(--on-highlight); }
+.panel-tabs { display: flex; align-items: flex-end; gap: var(--s2); min-height: 48px; padding: 0 var(--s4); border-bottom: 1px solid var(--border); }
+.panel-tab-group { display: inline-flex; align-items: center; gap: var(--s1); height: 40px; border-bottom: 2px solid transparent; }
+.panel-tab-group:has([aria-selected="true"]) { border-bottom-color: var(--ink); }
+.panel-tab { display: inline-flex; align-items: center; gap: var(--s2); height: 36px; padding: 0 var(--s1); border: 0; border-radius: var(--r-sm); background: none; color: var(--text-2); font-size: 14px; line-height: 1; font-weight: 500; white-space: nowrap; cursor: grab; }
+.panel-tab[aria-selected="true"] { color: var(--text); }
+.panel-tab:hover { background: var(--fill); }
+.is-dragging { opacity: .4; }
+.drop-zone { position: absolute; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s2); padding: var(--s5); border: 2px dashed var(--text-2); border-radius: var(--r-md); background: var(--highlight-tint); color: var(--text); font-size: 14px; line-height: 1.5; font-weight: 500; text-align: center; pointer-events: none; }
+.drop-zone .icon { width: 24px; height: 24px; }
+.drop-zone.is-over { border-style: solid; border-color: var(--text); }
+.has-menu { position: relative; }
+.menu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; min-width: 240px; padding: var(--s1); border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); color: var(--text); }
+.menu-label { padding: var(--s2) var(--s3) var(--s1); color: var(--text-2); font-size: 12px; line-height: 1.5; }
+.menu-item { display: flex; align-items: center; gap: var(--s2); width: 100%; min-height: 40px; padding: 0 var(--s3); border: 0; border-radius: var(--r-sm); background: none; color: var(--text); font-size: 14px; line-height: 1.4; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer; }
+.menu-item:hover { background: var(--fill); }
+.menu-item[aria-disabled="true"] { color: var(--text-2); background: none; cursor: not-allowed; }
+.menu-item .menu-end { margin-left: auto; }
+.menu-text { display: flex; flex-direction: column; min-width: 0; padding: 6px 0; }
+.menu-sub { color: var(--text-2); font-family: var(--font-mono); font-size: 12px; line-height: 1.5; font-weight: 400; letter-spacing: 0; overflow-wrap: anywhere; }
+.menu-sub:empty { display: none; }
+.menu-sep { height: 1px; margin: var(--s1) 0; background: var(--border); }
+/* 格子と幅 */
+.container { width: 100%; max-width: calc(var(--wide) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+.measure { width: 100%; max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.section { padding: var(--s9) 0; }
+.section-head { margin-bottom: var(--s5); }
+.stack > * + * { margin-top: var(--s4); }
+.prose > * + * { margin-top: var(--s5); }
+.prose > h2, .prose > h3 { margin-top: var(--s7); }
+.prose > h2 + *, .prose > h3 + * { margin-top: var(--s4); }
+.pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); margin-top: var(--s7); }
+.pager > :last-child { text-align: right; }
+.pager-label { display: block; margin-bottom: var(--s1); color: var(--text-2); font-size: 13px; line-height: 1.6; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s5); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); }
+.site-footer { border-top: 1px solid var(--border); padding: var(--s7) 0; }
+.site-footer .disclaimer { padding: 0; text-align: left; }
+.app { display: flex; flex-direction: column; height: 100dvh; }
+.app-frame { flex: 1; min-height: 0; display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); }
+.app-body { position: relative; min-width: 0; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+.app[data-layout="split"] .app-body { grid-template-columns: minmax(0, 1fr) var(--aside); }
+.app[data-layout="full"] .side-panel { display: none; }
+.pane { position: relative; min-width: 0; min-height: 0; overflow-y: auto; }
+.side-panel { position: relative; min-width: 0; min-height: 0; display: flex; flex-direction: column; border-left: 1px solid var(--border); }
+.side-panel > .pane { flex: 1; }
+.split-handle { display: none; position: absolute; top: 0; bottom: 0; right: calc(var(--aside) - 6px); z-index: 3; width: 12px; align-items: center; justify-content: center; cursor: col-resize; touch-action: none; }
+.app[data-layout="split"] .split-handle { display: flex; }
+.split-handle::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); }
+.split-handle:hover::before, .split-handle:focus-visible::before, .is-resizing .split-handle::before { background: var(--border-input); }
+.split-handle:focus-visible { outline: none; }
+.split-grip { position: relative; display: flex; align-items: center; justify-content: center; width: 16px; height: 40px; border: 1px solid var(--border-strong); border-radius: var(--r-pill); background: var(--bg); color: var(--text-2); }
+.split-handle:focus-visible .split-grip { border: 2px solid var(--focus); }
+.split-grip .icon { width: 16px; height: 16px; }
+.is-resizing { cursor: col-resize; user-select: none; }
+.with-nav { display: grid; grid-template-columns: var(--nav) minmax(0, 1fr); gap: var(--s7); }
+@media (max-width: 1023px) {
+  .app[data-layout] .app-body { grid-template-columns: minmax(0, 1fr); }
+  .app-body > :not(.is-current) { display: none !important; }
+  .app[data-layout="full"] .side-panel.is-current { display: flex; }
+  .side-panel { border-left: 0; }
+  .with-nav { grid-template-columns: minmax(0, 1fr); gap: var(--s5); }
+  .side-nav { flex-direction: row; flex-wrap: wrap; gap: var(--s2); }
+}
+@media (max-width: 767px) {
+  .app-frame { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; }
+  .rail { grid-row: 2; flex-direction: row; justify-content: space-around; padding: var(--s1) 0; border-right: 0; border-top: 1px solid var(--border); }
+  .site-header { height: 56px; }
+  .section { padding: var(--s8) 0; }
+  .grid-2, .grid-3, .pager { grid-template-columns: minmax(0, 1fr); }
+  .pager > :last-child { text-align: left; }
+  .table-wrap .table th, .table-wrap .table td { white-space: nowrap; }
+  .table-wrap .table th:first-child, .table-wrap .table td:first-child { width: 160px; min-width: 160px; white-space: normal; }
+}
+
+/* 動き */
+@keyframes appear { from { opacity: 0; transform: translateY(4px); } }
+.appear { animation: appear .3s var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* 単語カードのページ */
+.practice { padding: var(--s6) 0 var(--s8); }
+.flashcard { display: block; width: 100%; margin-top: var(--s5); padding: 0; border: 0; border-radius: var(--r-md); background: none; color: var(--text); text-align: center; perspective: 1200px; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.flashcard-inner { display: grid; transform-style: preserve-3d; transition: transform .3s var(--ease); }
+.flashcard.is-flipped .flashcard-inner { transform: rotateY(180deg); }
+.flashcard.no-anim .flashcard-inner { transition: none; }
+.face { grid-area: 1 / 1; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--s3); min-width: 0; aspect-ratio: 8 / 5; padding: var(--s7) var(--s5); border-radius: var(--r-md); background: var(--fill); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.face-back { transform: rotateY(180deg); }
+/* 回転の途中（真横を向いた時点）で表と裏を入れ替える。backface-visibility が効かない環境でも裏が透けない */
+.face-front, .face-back { transition: visibility 0s linear .15s; }
+.face-back, .flashcard.is-flipped .face-front { visibility: hidden; }
+.flashcard.is-flipped .face-back { visibility: visible; }
+.flashcard.no-anim .face-front, .flashcard.no-anim .face-back { transition: none; }
+.face-label { position: absolute; top: var(--s4); left: var(--s5); }
+.face-hint { position: absolute; right: 0; bottom: var(--s4); left: 0; }
+.word { font-size: 72px; line-height: 1.25; font-weight: 500; letter-spacing: 0; word-break: keep-all; overflow-wrap: anywhere; }
+.roman, .pron { word-break: keep-all; overflow-wrap: anywhere; }
+.meaning { margin-top: var(--s4); overflow-wrap: anywhere; }
+.deck-nav { display: flex; justify-content: center; align-items: center; gap: var(--s5); margin-top: var(--s5); }
+.nav-btn { width: 40px; padding: 0; touch-action: manipulation; }
+.keys { margin-top: var(--s3); text-align: center; }
+.hint-touch { display: none; }
+@media (hover: none) { .hint-mouse, .keys { display: none; } .hint-touch { display: inline; } }
+.mode-tabs { margin-bottom: var(--s5); }
+
+/* 発音テスト */
+.test-say { margin-top: var(--s3); }
+.view-tabs { display: inline-flex; margin-bottom: var(--s4); }
+.view-tabs .tab { padding: 0 var(--s5); }
+.face-pos { position: absolute; top: var(--s4); right: var(--s5); }
+.test-card .face { gap: var(--s2); }
+.test-sentence, .test-meaning { word-break: keep-all; overflow-wrap: anywhere; }
+.test-reveal { display: flex; flex-direction: column; align-items: center; gap: var(--s1); margin-top: var(--s3); visibility: hidden; word-break: keep-all; overflow-wrap: anywhere; }
+.test-card.is-revealed .test-reveal { visibility: visible; }
+#voice-hint { margin-top: var(--s6); }
+.lesson-bar { margin-bottom: var(--s4); }
+.front-ja { overflow-wrap: anywhere; }
+#dialogue-list > .actions { margin-bottom: var(--s2); }
+.test-section { margin-top: var(--s6); }
+.test-group { margin-top: var(--s4); }
+.test-item { align-items: flex-start; }
+.test-ko { word-break: keep-all; overflow-wrap: anywhere; }
+.test-pron { margin-top: var(--s1); }
+.test-pron > summary { width: fit-content; }
+.test-forms { margin-top: var(--s1); }
+.test-forms > span { display: block; word-break: keep-all; overflow-wrap: anywhere; }
+
+/* スマホでは、カードを画面の残りの高さまで伸ばす */
+@media (max-width: 767px) {
+  .practice { display: flex; flex-direction: column; min-height: calc(100vh - 56px); min-height: calc(100dvh - 56px); padding: var(--s4) 0 var(--s5); }
+  #cards-view, #study, #test-view, #test-cards, #tstudy, #dialogue-view, #dialogue-cards, #dstudy { display: flex; flex: 1; flex-direction: column; }
+  .view-tabs { align-self: flex-start; }
+  .mode-tabs { margin-bottom: var(--s4); }
+  .flashcard { display: grid; flex: 1; margin-top: var(--s4); }
+  .face { aspect-ratio: auto; min-height: 240px; }
+  .word { font-size: 48px; }
+  .keys { display: none; }
+}
+</style>
+</head>
+<body>
+<svg hidden>
+<symbol id="i-arrow_back" viewBox="0 -960 960 960"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224 h487 v80 H313 Z"/></symbol>
+<symbol id="i-arrow_forward" viewBox="0 -960 960 960"><path d="M647-440 H160 v-80 h487 L423-744 l57-56 320 320-320 320-57-56 224-224 Z"/></symbol>
+<symbol id="i-check" viewBox="0 -960 960 960"><path d="M382-240 154-468 l57-57 171 171 367-367 57 57-424 424 Z"/></symbol>
+<symbol id="i-error" viewBox="0 -960 960 960"><path d="M480-280 q17 0 28.5-11.5 T520-320 q0-17-11.5-28.5 T480-360 q-17 0-28.5 11.5 T440-320 q0 17 11.5 28.5 T480-280 Z m-40-160 h80 v-240 h-80 v240 Z m40 360 q-83 0-156-31.5 T197-197 q-54-54-85.5-127 T80-480 q0-83 31.5-156 T197-763 q54-54 127-85.5 T480-880 q83 0 156 31.5 T763-763 q54 54 85.5 127 T880-480 q0 83-31.5 156 T763-197 q-54 54-127 85.5 T480-80 Z m0-80 q134 0 227-93 t93-227 q0-134-93-227 t-227-93 q-134 0-227 93 t-93 227 q0 134 93 227 t227 93 Z m0-320 Z"/></symbol>
+<symbol id="i-expand_more" viewBox="0 -960 960 960"><path d="M480-345 240-585 l56-56 184 184 184-184 56 56-240 240 Z"/></symbol>
+<symbol id="i-refresh" viewBox="0 -960 960 960"><path d="M480-160 q-134 0-227-93 t-93-227 q0-134 93-227 t227-93 q69 0 132 28.5 T720-690 v-110 h80 v280 H520 v-80 h168 q-32-56-87.5-88 T480-720 q-100 0-170 70 t-70 170 q0 100 70 170 t170 70 q77 0 139-44 t87-116 h84 q-28 106-114 173 t-196 67 Z"/></symbol>
+<symbol id="i-volume_up" viewBox="0 -960 960 960"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></symbol>
+</svg>
+<header class="site-header container">
+  <h1 class="t-brand">ハングル読み練習</h1>
+  <div class="header-actions">
+    <button class="toggle" id="theme" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ダークモード</button>
+  </div>
+</header>
+<main class="container">
+  <div class="measure practice">
+    <div class="toolbar lesson-bar">
+      <div class="filter">
+        <label for="lesson">課</label>
+        <span class="select"><select id="lesson" class="field field-sm"></select><svg class="icon" aria-hidden="true"><use href="#i-expand_more"/></svg></span>
+      </div>
+      <div class="filter" id="voice-filter">
+        <label for="voice">声</label>
+        <span class="select"><select id="voice" class="field field-sm"></select><svg class="icon" aria-hidden="true"><use href="#i-expand_more"/></svg></span>
+      </div>
+      <div class="chips">
+        <button class="toggle" id="slow" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ゆっくり</button>
+      </div>
+    </div>
+    <p class="say say-error test-say" id="speech-error" role="alert" hidden><svg class="icon" aria-hidden="true"><use href="#i-error"/></svg><span>読み上げに失敗しました。別の声を選ぶか、ページを読み込み直してください。</span></p>
+
+    <div class="tabs mode-tabs" role="tablist" aria-label="練習の種類" id="lesson-tabs">
+      <button class="tab" role="tab" id="tab-words" data-mode="words" aria-controls="cards-view" aria-selected="true">単語</button>
+      <button class="tab" role="tab" id="tab-dialogue" data-mode="dialogue" aria-controls="dialogue-view" aria-selected="false" tabindex="-1">会話文</button>
+    </div>
+
+    <section id="cards-view" role="tabpanel" aria-labelledby="tab-words">
+    <div class="toolbar">
+      <div class="chips">
+        <button class="toggle" id="reverse" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>日本語から</button>
+        <button class="toggle" id="shuffle" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>順番を混ぜる</button>
+        <button class="toggle" id="changed" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>発音が変わる語だけ</button>
+      </div>
+    </div>
+
+    <div id="study">
+      <button class="flashcard" id="card">
+        <span class="flashcard-inner">
+          <span class="face face-front" id="front">
+            <span class="face-label t-small muted" id="where"></span>
+            <span class="face-pos t-small muted num" id="pos" aria-live="polite"></span>
+            <span class="word" id="word" lang="ko"></span>
+            <span class="face-hint t-caption muted"><span class="hint-mouse">クリックで裏返す</span><span class="hint-touch">中央をタップで裏返す　端をタップかスワイプで前後へ</span></span>
+          </span>
+          <span class="face face-back" id="back" aria-hidden="true">
+            <span class="face-label t-small muted" id="where-back"></span>
+            <span class="face-pos t-small muted num" id="pos-back"></span>
+            <span class="word" id="back-ko" lang="ko"></span>
+            <span class="roman t-hero" id="roman" lang="ko-Latn"></span>
+            <span class="pron t-title muted" id="pron" lang="ko"></span>
+            <span class="meaning t-h2" id="meaning"></span>
+          </span>
+        </span>
+      </button>
+      <div class="deck-nav">
+        <button class="btn btn-secondary nav-btn" id="prev" aria-label="前のカード"><svg class="icon" aria-hidden="true"><use href="#i-arrow_back"/></svg></button>
+        <button class="btn btn-secondary listen" id="listen"><svg class="icon" aria-hidden="true"><use href="#i-volume_up"/></svg>聞く</button>
+        <button class="btn btn-secondary nav-btn" id="next" aria-label="次のカード"><svg class="icon" aria-hidden="true"><use href="#i-arrow_forward"/></svg></button>
+      </div>
+      <p class="t-caption muted keys">クリック・Space：裏返す　← →：前後のカード</p>
+    </div>
+
+    <div class="empty" id="done" hidden>
+      <h2 class="t-title" id="done-title"></h2>
+      <p class="empty-text" id="done-text"></p>
+      <div class="actions" id="done-actions"><button class="btn btn-primary" id="restart"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>最初から</button></div>
+    </div>
+    </section>
+
+    <section id="dialogue-view" role="tabpanel" aria-labelledby="tab-dialogue" hidden>
+      <div class="tabs view-tabs" role="tablist" aria-label="表示">
+        <button class="tab" role="tab" id="dview-list" data-view="list" aria-controls="dialogue-list" aria-selected="true">一覧</button>
+        <button class="tab" role="tab" id="dview-cards" data-view="cards" aria-controls="dialogue-cards" aria-selected="false" tabindex="-1">カード</button>
+      </div>
+
+      <div id="dialogue-list" role="tabpanel" aria-labelledby="dview-list">
+        <div class="actions"><button class="btn btn-secondary listen" id="play-all"><svg class="icon" aria-hidden="true"><use href="#i-volume_up"/></svg>通して聞く</button></div>
+        <ul class="list" id="dialogue-lines"></ul>
+      </div>
+
+      <div id="dialogue-cards" role="tabpanel" aria-labelledby="dview-cards" hidden>
+        <div id="dstudy">
+          <button class="flashcard test-card" id="dcard">
+            <span class="flashcard-inner">
+              <span class="face">
+                <span class="face-label t-small muted" id="dwhere" lang="ko"></span>
+                <span class="face-pos t-small muted num" id="dpos"></span>
+                <span class="t-h2 test-meaning" id="dja"></span>
+                <span class="test-reveal">
+                  <span class="t-h2 test-sentence" id="dko" lang="ko"></span>
+                  <span class="t-h3" id="dpron" lang="ko"></span>
+                  <span class="muted" id="drom" lang="ko-Latn"></span>
+                </span>
+                <span class="face-hint t-caption muted"><span class="hint-mouse">クリックでハングルを表示</span><span class="hint-touch">中央をタップでハングル　端をタップかスワイプで前後へ</span></span>
+              </span>
+            </span>
+          </button>
+          <div class="deck-nav">
+            <button class="btn btn-secondary nav-btn" id="dprev" aria-label="前のセリフ"><svg class="icon" aria-hidden="true"><use href="#i-arrow_back"/></svg></button>
+            <button class="btn btn-secondary listen" id="dlisten"><svg class="icon" aria-hidden="true"><use href="#i-volume_up"/></svg>聞く</button>
+            <button class="btn btn-secondary nav-btn" id="dnext" aria-label="次のセリフ"><svg class="icon" aria-hidden="true"><use href="#i-arrow_forward"/></svg></button>
+          </div>
+          <p class="t-caption muted keys">クリック・Space：ハングル　← →：前後のセリフ</p>
+        </div>
+        <div class="empty" id="ddone" hidden>
+          <h2 class="t-title">最後まで終わりました</h2>
+          <p class="empty-text" id="ddone-text"></p>
+          <div class="actions"><button class="btn btn-primary" id="drestart"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>最初から</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="test-view" hidden>
+      <div class="tabs view-tabs" role="tablist" aria-label="表示">
+        <button class="tab" role="tab" id="view-list" data-view="list" aria-controls="test-list" aria-selected="true">一覧</button>
+        <button class="tab" role="tab" id="view-cards" data-view="cards" aria-controls="test-cards" aria-selected="false" tabindex="-1">カード</button>
+      </div>
+      <div class="toolbar">
+        <div class="filter" id="range-filter">
+          <label for="range">範囲</label>
+          <span class="select"><select id="range" class="field field-sm">
+            <option value="words">単語編（50語）</option>
+            <option value="sentences">文章編（10文）</option>
+            <option value="all">すべて（60）</option>
+          </select><svg class="icon" aria-hidden="true"><use href="#i-expand_more"/></svg></span>
+        </div>
+        <div class="chips">
+          <button class="toggle" id="test-shuffle" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>順番を混ぜる</button>
+          <button class="toggle" id="show-pron" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>発音表記をすべて表示</button>
+        </div>
+      </div>
+
+      <div id="test-list" role="tabpanel" aria-labelledby="view-list">
+        <section class="test-section" aria-labelledby="words-title">
+          <h2 class="t-h3" id="words-title">単語編</h2>
+          <div id="test-words"></div>
+        </section>
+        <section class="test-section" aria-labelledby="sentences-title">
+          <h2 class="t-h3" id="sentences-title">文章編</h2>
+          <ul class="list" id="test-sentences"></ul>
+        </section>
+      </div>
+
+      <div id="test-cards" role="tabpanel" aria-labelledby="view-cards" hidden>
+        <div id="tstudy">
+          <button class="flashcard test-card" id="tcard">
+            <span class="flashcard-inner">
+              <span class="face">
+                <span class="face-label t-small muted" id="twhere"></span>
+                <span class="face-pos t-small muted num" id="tpos"></span>
+                <span id="tko" lang="ko"></span>
+                <span class="t-title muted test-meaning" id="tja"></span>
+                <span class="test-reveal" id="treveal">
+                  <span class="t-h3" id="tpron" lang="ko"></span>
+                  <span class="t-h3" id="thanja" lang="ko"></span>
+                  <span class="muted" id="trom" lang="ko-Latn"></span>
+                  <span class="t-small muted" id="tnote"></span>
+                </span>
+                <span class="face-hint t-caption muted"><span class="hint-mouse">クリックで発音表記を表示</span><span class="hint-touch">中央をタップで発音表記　端をタップかスワイプで前後へ</span></span>
+              </span>
+            </span>
+          </button>
+          <div class="deck-nav">
+            <button class="btn btn-secondary nav-btn" id="tprev" aria-label="前のカード"><svg class="icon" aria-hidden="true"><use href="#i-arrow_back"/></svg></button>
+            <button class="btn btn-secondary" id="tlisten"><svg class="icon" aria-hidden="true"><use href="#i-volume_up"/></svg>聞く</button>
+            <button class="btn btn-secondary nav-btn" id="tnext" aria-label="次のカード"><svg class="icon" aria-hidden="true"><use href="#i-arrow_forward"/></svg></button>
+          </div>
+          <p class="t-caption muted keys">クリック・Space：発音表記　← →：前後のカード</p>
+        </div>
+        <div class="empty" id="tdone" hidden>
+          <h2 class="t-title">最後まで終わりました</h2>
+          <p class="empty-text" id="tdone-text"></p>
+          <div class="actions"><button class="btn btn-primary" id="trestart"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>最初から</button></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="say test-say" id="voice-hint" hidden></p>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p class="disclaimer">単語と意味は Quizlet のクラス「SFC朝鮮語」の25セット（2026年10月26日に取得）から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ は教科書どおり[ㅞ]・[ㅣ]で示しています。漢字表記は標準国語大辞典の原語欄による韓国の字形です。9課の会話文は授業の指示から作成し、話し手の割り当て・句読点・日本語訳は作成者によるものです。人名のハングル表記は外来語表記法によります。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
+  </div>
+</footer>
+<script>
+const SETS = /*SETS*/;
+const TESTS = /*TESTS*/;
+const LESSONS = /*LESSONS*/;
+const $ = id => document.getElementById(id);
+
+const store = {
+  get(key, fallback) {
+    try { const v = localStorage.getItem('hangul-cards:' + key); return v === null ? fallback : JSON.parse(v); } catch (e) { return fallback; }
+  },
+  set(key, value) {
+    try { localStorage.setItem('hangul-cards:' + key, JSON.stringify(value)); } catch (e) {}
+  }
+};
+
+// 課: 'pron' = the 〜8課 pronunciation test, a Quizlet set number ('09', '11', …) = that 課, 'all' = every set.
+// A 課 in LESSONS may add words ("extra") and a dialogue to memorise; the newest 課 with a dialogue opens first.
+const LATEST = Object.keys(LESSONS).filter(n => LESSONS[n].dialogue).sort().pop() || 'all';
+const LESSON_IDS = ['pron', ...SETS.map(s => s.n), 'all'];
+
+const state = {
+  lesson: store.get('lesson', LATEST),
+  lessonTab: store.get('lessonTab', 'words'),
+  reverse: store.get('reverse', false),
+  shuffle: store.get('shuffle', false),
+  changed: store.get('changed', false),
+  showPron: store.get('showPron', false),
+  slow: store.get('slow', false),
+  testView: store.get('testView', 'list'),
+  testRange: store.get('testRange', 'words'),
+  testShuffle: store.get('testShuffle', false),
+  dialogueView: store.get('dialogueView', 'list')
+};
+if (!LESSON_IDS.includes(state.lesson)) state.lesson = LATEST;
+if (!['words', 'sentences', 'all'].includes(state.testRange)) state.testRange = 'words';
+
+const lessonName = n => Number(n) + '課';
+function lessonCards(n) {
+  const sets = n === 'all' ? SETS : SETS.filter(s => s.n === n);
+  return sets.flatMap(s => [...s.cards, ...((LESSONS[s.n] || {}).extra || [])].map(c => Object.assign({ set: s.n }, c)));
+}
+
+const el = (tag, cls, text) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+};
+
+function shuffled(list) {
+  for (let i = list.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
+  return list;
+}
+
+// 単語: flashcards that turn over. 「日本語から」 puts the meaning on the front.
+const card = $('card');
+let deck = [];
+let pos = 0;
+let flipped = false;
+
+function build() {
+  deck = lessonCards(state.lesson);
+  if (state.changed) deck = deck.filter(c => c.chg);
+  if (state.shuffle) shuffled(deck);
+  go(0);
+}
+
+function setFlipped(value) {
+  flipped = value;
+  card.classList.toggle('is-flipped', flipped);
+  $('front').setAttribute('aria-hidden', String(flipped));
+  $('back').setAttribute('aria-hidden', String(!flipped));
+}
+
+// Move to card i showing its front, without animating the turn back.
+function go(i) {
+  card.classList.add('no-anim');
+  setFlipped(false);
+  pos = i;
+  render();
+  void card.offsetWidth;
+  card.classList.remove('no-anim');
+}
+
+function render() {
+  const finished = deck.length === 0 || pos >= deck.length;
+  $('study').hidden = finished;
+  $('done').hidden = !finished;
+  if (finished) {
+    if (deck.length === 0) {
+      $('done-title').textContent = '該当する語がありません';
+      $('done-text').textContent = '「発音が変わる語だけ」を外すか、別の課を選んでください。';
+      $('done-actions').hidden = true;
+    } else {
+      $('done-title').textContent = '最後まで終わりました';
+      $('done-text').textContent = deck.length + '語を見ました。';
+      $('done-actions').hidden = false;
+    }
+    return;
+  }
+  const c = deck[pos];
+  $('where').textContent = $('where-back').textContent = lessonName(c.set);
+  $('pos').textContent = $('pos-back').textContent = (pos + 1) + ' / ' + deck.length;
+  const front = $('word');
+  front.textContent = state.reverse ? c.ja : c.ko;
+  front.lang = state.reverse ? 'ja' : 'ko';
+  front.className = state.reverse ? 't-hero front-ja' : 'word';
+  $('back-ko').textContent = c.ko;
+  $('back-ko').hidden = !state.reverse;
+  $('meaning').textContent = c.ja;
+  $('meaning').hidden = state.reverse;
+  $('roman').textContent = c.rom.join(' / ');
+  $('pron').textContent = c.pron.map(p => '[' + p + ']').join(' / ');
+  $('prev').disabled = pos === 0;
+}
+
+function next() { if (pos < deck.length) go(pos + 1); }
+function prev() { if (pos > 0) go(pos - 1); }
+
+for (const key of ['reverse', 'shuffle', 'changed']) {
+  const button = $(key);
+  button.setAttribute('aria-pressed', String(state[key]));
+  button.addEventListener('click', () => {
+    state[key] = !state[key];
+    store.set(key, state[key]);
+    button.setAttribute('aria-pressed', String(state[key]));
+    if (key === 'reverse') go(pos); else build();
+  });
+}
+
+const theme = $('theme');
+theme.setAttribute('aria-pressed', String(document.documentElement.dataset.theme === 'dark'));
+theme.addEventListener('click', () => {
+  const dark = document.documentElement.dataset.theme !== 'dark';
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  theme.setAttribute('aria-pressed', String(dark));
+  store.set('theme', dark ? 'dark' : 'light');
+});
+
+// Touch: swipe left/right, or tap within EDGE px of the card's left/right edge, to move between cards;
+// a tap elsewhere calls onTap. A click right after a swipe is ignored so it does not also call onTap.
+const EDGE = 64;
+function addCardGestures(el, deck) {
+  let touchStart = null;
+  let swipedAt = -Infinity;
+  el.addEventListener('click', () => { if (performance.now() - swipedAt > 500) deck.tap(); });
+  el.addEventListener('touchstart', e => {
+    const t = e.touches[0];
+    touchStart = e.touches.length === 1 ? { x: t.clientX, y: t.clientY } : null;
+  }, { passive: true });
+  el.addEventListener('touchend', e => {
+    if (!touchStart) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.x;
+    const dy = t.clientY - touchStart.y;
+    touchStart = null;
+    if (Math.abs(dx) >= 50 && Math.abs(dx) >= 2 * Math.abs(dy)) {
+      swipedAt = performance.now();
+      if (dx < 0) deck.next(); else deck.prev();
+    } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+      // Edge tap: cancelling touchend stops the click, so onTap does not run.
+      const r = el.getBoundingClientRect();
+      if (t.clientX > r.right - EDGE) { e.preventDefault(); deck.next(); }
+      else if (t.clientX < r.left + EDGE && deck.hasPrev()) { e.preventDefault(); deck.prev(); }
+    }
+  });
+}
+
+const cardDeck = {
+  next, prev,
+  hasPrev: () => pos > 0,
+  tap: () => setFlipped(!flipped),
+  finished: () => !$('done').hidden,
+  restart: () => { if (!$('done-actions').hidden) build(); }
+};
+addCardGestures(card, cardDeck);
+$('prev').addEventListener('click', prev);
+$('next').addEventListener('click', next);
+$('restart').addEventListener('click', build);
+
+// Speech: the browser's own speech synthesis, one press of 「聞く」.
+const synth = window.speechSynthesis;
+const NOVELTY = /^(eddy|flo|grandma|grandpa|reed|rocko|sandy|shelley)\b/i;  // macOS Eloquence voices
+let voices = [];
+let utterances = [];  // kept referenced so Chrome does not drop them mid-speech
+
+// Higher is better; 0 = left out of the list.
+function voiceRank(v) {
+  const id = (v.voiceURI + ' ' + v.name).toLowerCase();
+  if (NOVELTY.test(v.name) || id.includes('eloquence')) return 0;
+  if (id.includes('super-compact')) return 1;
+  if (/premium|プレミアム/.test(id)) return 6;
+  if (/enhanced|拡張|natural/.test(id)) return 5;
+  if (id.includes('google')) return 4;
+  return 2;
+}
+
+function voiceLabel(v) {
+  const id = v.voiceURI.toLowerCase();
+  const tier = id.includes('premium') ? 'プレミアム' : id.includes('enhanced') ? '拡張' : id.includes('super-compact') ? '簡易' : '';
+  return tier && !v.name.includes(tier) ? v.name + '（' + tier + '）' : v.name;
+}
+
+function loadVoices() {
+  voices = synth.getVoices()
+    .filter(v => /^ko([-_]|$)/i.test(v.lang) && voiceRank(v) > 0)
+    .sort((a, b) => voiceRank(b) - voiceRank(a));
+  const chosen = voices.find(v => v.voiceURI === store.get('voice', '')) || voices[0];
+  const select = $('voice');
+  select.replaceChildren();
+  if (!voices.length) select.append(new Option('端末の標準の声', ''));
+  for (const v of voices) select.append(new Option(voiceLabel(v), v.voiceURI));
+  select.value = chosen ? chosen.voiceURI : '';
+
+  const hint = $('voice-hint');
+  if (!synth.getVoices().length) hint.hidden = true;
+  else if (!voices.length) {
+    hint.textContent = 'この端末には韓国語の読み上げ音声が見つかりません。端末の設定で韓国語の声を追加してください。';
+    hint.hidden = false;
+  } else if (voiceRank(voices[0]) <= 2) {
+    hint.textContent = 'より自然な声にするには、iPhone・Mac では設定のアクセシビリティにある読み上げの項目から韓国語の高品質な声（拡張・プレミアム）を追加してください。パソコンでは Chrome か Edge でも高品質な声を選べます。';
+    hint.hidden = false;
+  } else hint.hidden = true;
+}
+
+// Speak one or more texts in order, stopping whatever is playing.
+function speak(...texts) {
+  $('speech-error').hidden = true;
+  if (synth.speaking || synth.pending) synth.cancel();
+  const voice = voices.find(v => v.voiceURI === $('voice').value);
+  utterances = texts.map(text => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ko-KR';
+    if (voice) u.voice = voice;
+    u.rate = state.slow ? 0.7 : 1;
+    u.onerror = e => { if (e.error !== 'interrupted' && e.error !== 'canceled') $('speech-error').hidden = false; };
+    return u;
+  });
+  for (const u of utterances) synth.speak(u);
+}
+
+$('listen').addEventListener('click', () => speak(deck[pos].ko));
+
+// One row of a list (発音テスト・会話文): text and meaning always shown, pronunciation in a closed <details>.
+function testItem(item, koClass) {
+  const li = el('li', 'list-row test-item');
+  const main = el('div', 'list-main');
+  if (item.speaker) {
+    const speaker = el('p', 't-small muted', item.speaker);
+    speaker.lang = 'ko';
+    main.append(speaker);
+  }
+  const ko = el('p', koClass + ' test-ko', item.ko);
+  ko.lang = 'ko';
+  main.append(ko, el('p', 'list-meta', item.ja));
+
+  const details = el('details', 'test-pron');
+  details.open = state.showPron;
+  const summary = el('summary', 't-small muted', '発音表記');
+  summary.insertAdjacentHTML('beforeend', '<svg class="icon" aria-hidden="true"><use href="#i-expand_more"/></svg>');
+  const forms = el('p', 'test-forms');
+  const pron = el('span', 't-title', item.pron.map(p => '[' + p + ']').join(' / '));
+  pron.lang = 'ko';
+  forms.append(pron);
+  if (item.hanja) {
+    const hanja = el('span', 't-title', item.hanja);
+    hanja.lang = 'ko';
+    forms.append(hanja);
+  }
+  const rom = el('span', 'muted', item.rom.join(' / '));
+  rom.lang = 'ko-Latn';
+  forms.append(rom);
+  details.append(summary, forms);
+  if (item.note) details.append(el('p', 't-small muted', item.note));
+  main.append(details);
+  li.append(main);
+
+  if (synth) {
+    const listen = el('button', 'btn btn-secondary');
+    listen.insertAdjacentHTML('beforeend', '<svg class="icon" aria-hidden="true"><use href="#i-volume_up"/></svg>');
+    listen.append('聞く');
+    listen.setAttribute('aria-label', item.ko + ' を聞く');
+    listen.addEventListener('click', () => speak(item.ko));
+    li.append(listen);
+  }
+  return li;
+}
+
+for (let row = 1; row <= 10; row++) {
+  const group = el('div', 'test-group');
+  const list = el('ul', 'list');
+  for (const item of TESTS.words.filter(w => w.row === row)) list.append(testItem(item, 't-h3'));
+  group.append(el('h3', 't-small muted', row + '行目'), list);
+  $('test-words').append(group);
+}
+for (const item of TESTS.sentences) $('test-sentences').append(testItem(item, 't-title'));
+
+// Cards that do not turn over: tapping shows the hidden part in place (発音テスト・会話文).
+// Element ids share a prefix: <p>card, <p>study, <p>done, <p>done-text, <p>pos, <p>prev, <p>next, <p>listen.
+function revealDeck(prefix, show, doneText) {
+  const cardEl = $(prefix + 'card');
+  const d = { items: [], pos: 0 };
+  d.go = i => {
+    cardEl.classList.remove('is-revealed');
+    d.pos = i;
+    const finished = i >= d.items.length;
+    $(prefix + 'study').hidden = finished;
+    $(prefix + 'done').hidden = !finished;
+    if (finished) {
+      $(prefix + 'done-text').textContent = doneText(d.items.length);
+      return;
+    }
+    $(prefix + 'pos').textContent = (i + 1) + ' / ' + d.items.length;
+    $(prefix + 'prev').disabled = i === 0;
+    show(d.items[i]);
+  };
+  d.start = items => { d.items = items; d.go(0); };
+  d.next = () => { if (d.pos < d.items.length) d.go(d.pos + 1); };
+  d.prev = () => { if (d.pos > 0) d.go(d.pos - 1); };
+  d.hasPrev = () => d.pos > 0;
+  d.tap = () => cardEl.classList.toggle('is-revealed');
+  d.finished = () => d.pos >= d.items.length;
+  addCardGestures(cardEl, d);
+  $(prefix + 'prev').addEventListener('click', d.prev);
+  $(prefix + 'next').addEventListener('click', d.next);
+  if (synth) $(prefix + 'listen').addEventListener('click', () => speak(d.items[d.pos].ko));
+  else $(prefix + 'listen').hidden = true;
+  return d;
+}
+
+const testDeck = revealDeck('t', item => {
+  const isWord = item.id[0] === 'w';
+  $('twhere').textContent = isWord ? '単語編 ' + item.row + '行目' : '文章編 ' + item.row;
+  $('tko').textContent = item.ko;
+  $('tko').className = isWord ? 'word' : 't-h2 test-sentence';
+  $('tja').textContent = item.ja;
+  $('tpron').textContent = item.pron.map(p => '[' + p + ']').join(' / ');
+  $('thanja').textContent = item.hanja || '';
+  $('thanja').hidden = !item.hanja;
+  $('trom').textContent = item.rom.join(' / ');
+  $('tnote').textContent = item.note;
+}, n => n + { words: '語', sentences: '文', all: '項目' }[state.testRange] + 'を見ました。');
+
+function buildTest() {
+  const r = state.testRange;
+  const items = [...(r !== 'sentences' ? TESTS.words : []), ...(r !== 'words' ? TESTS.sentences : [])];
+  if (state.testShuffle) shuffled(items);
+  testDeck.start(items);
+}
+testDeck.restart = buildTest;
+$('trestart').addEventListener('click', buildTest);
+
+// 会話文: the card shows who speaks and the Japanese; tapping shows the Korean line.
+const dialogueDeck = revealDeck('d', item => {
+  $('dwhere').textContent = item.speaker;
+  $('dja').textContent = item.ja;
+  $('dko').textContent = item.ko;
+  $('dpron').textContent = item.pron.map(p => '[' + p + ']').join(' / ');
+  $('drom').textContent = item.rom.join(' / ');
+}, n => n + 'つのセリフを見ました。');
+dialogueDeck.restart = () => dialogueDeck.go(0);
+$('drestart').addEventListener('click', dialogueDeck.restart);
+
+function lessonDialogue() { return (LESSONS[state.lesson] || {}).dialogue || []; }
+function buildDialogue() {
+  const lines = lessonDialogue();
+  $('dialogue-lines').replaceChildren(...lines.map(item => testItem(item, 't-title')));
+  dialogueDeck.start(lines.slice());
+}
+if (synth) $('play-all').addEventListener('click', () => speak(...lessonDialogue().map(l => l.ko)));
+else $('play-all').hidden = true;
+
+// ← →: previous/next card, Space/Enter: the card's tap action, on whichever card deck is showing.
+document.addEventListener('keydown', e => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  const deck = !$('cards-view').hidden ? cardDeck
+    : !$('dialogue-view').hidden && !$('dialogue-cards').hidden ? dialogueDeck
+    : !$('test-view').hidden && !$('test-cards').hidden ? testDeck : null;
+  const t = e.target;
+  if (!deck || t.closest('select, input, textarea')) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); deck.next(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); deck.prev(); }
+  else if ((e.key === ' ' || e.key === 'Enter') && !t.closest('button')) {
+    e.preventDefault();
+    if (deck.finished()) deck.restart(); else deck.tap();
+  }
+});
+
+const range = $('range');
+range.value = state.testRange;
+range.addEventListener('change', () => {
+  state.testRange = range.value;
+  store.set('testRange', range.value);
+  buildTest();
+});
+
+for (const [key, id] of [['testShuffle', 'test-shuffle'], ['slow', 'slow'], ['showPron', 'show-pron']]) {
+  const button = $(id);
+  button.setAttribute('aria-pressed', String(state[key]));
+  button.addEventListener('click', () => {
+    state[key] = !state[key];
+    store.set(key, state[key]);
+    button.setAttribute('aria-pressed', String(state[key]));
+    if (key === 'showPron') for (const d of document.querySelectorAll('.test-pron')) d.open = state.showPron;
+    if (key === 'testShuffle') buildTest();
+  });
+}
+
+if (synth) {
+  loadVoices();
+  if (typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', loadVoices);
+  $('voice').addEventListener('change', () => store.set('voice', $('voice').value));
+} else {
+  $('voice-filter').hidden = true;
+  $('slow').hidden = true;
+  $('listen').hidden = true;
+  $('voice-hint').textContent = 'このブラウザは読み上げに対応していないため、音声は再生できません。';
+  $('voice-hint').hidden = false;
+}
+
+// Tabs: click, or ← → to move to the neighbouring tab.
+function showTab(list, selected) {
+  for (const tab of list) {
+    const on = tab === selected;
+    tab.setAttribute('aria-selected', String(on));
+    tab.tabIndex = on ? 0 : -1;
+    $(tab.getAttribute('aria-controls')).hidden = !on;
+  }
+}
+function setupTabs(list, select) {
+  list.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      e.stopPropagation();
+      const other = list[(i + (e.key === 'ArrowRight' ? 1 : list.length - 1)) % list.length];
+      other.focus();
+      select(other);
+    });
+  });
+}
+
+const lessonTabs = [$('tab-words'), $('tab-dialogue')];
+function setLessonTab(tab) {
+  state.lessonTab = tab;
+  store.set('lessonTab', tab);
+  showTab(lessonTabs, tab === 'dialogue' ? lessonTabs[1] : lessonTabs[0]);
+  if (synth) synth.cancel();
+}
+setupTabs(lessonTabs, tab => setLessonTab(tab.dataset.mode));
+
+const viewTabs = [$('view-list'), $('view-cards')];
+function setView(view) {
+  state.testView = view;
+  store.set('testView', view);
+  showTab(viewTabs, view === 'cards' ? viewTabs[1] : viewTabs[0]);
+  $('range-filter').hidden = $('test-shuffle').hidden = view !== 'cards';
+  $('show-pron').hidden = view === 'cards';
+}
+setupTabs(viewTabs, tab => setView(tab.dataset.view));
+
+const dialogueTabs = [$('dview-list'), $('dview-cards')];
+function setDialogueView(view) {
+  state.dialogueView = view;
+  store.set('dialogueView', view);
+  showTab(dialogueTabs, view === 'cards' ? dialogueTabs[1] : dialogueTabs[0]);
+}
+setupTabs(dialogueTabs, tab => setDialogueView(tab.dataset.view));
+
+const lessonSelect = $('lesson');
+lessonSelect.append(new Option('〜8課（発音テスト）', 'pron'));
+for (const s of SETS) lessonSelect.append(new Option(lessonName(s.n) + ((LESSONS[s.n] || {}).dialogue ? '（テスト）' : ''), s.n));
+lessonSelect.append(new Option('全課の単語（' + lessonCards('all').length + '語）', 'all'));
+
+function setLesson(n) {
+  state.lesson = n;
+  store.set('lesson', n);
+  lessonSelect.value = n;
+  const dialogue = (LESSONS[n] || {}).dialogue;
+  $('lesson-tabs').hidden = !dialogue;
+  if (n === 'pron') {
+    $('cards-view').hidden = $('dialogue-view').hidden = true;
+    $('test-view').hidden = false;
+  } else {
+    $('test-view').hidden = true;
+    if (dialogue) {
+      $('tab-words').textContent = '単語（' + lessonCards(n).length + '）';
+      $('tab-dialogue').textContent = '会話文（' + dialogue.length + '）';
+      buildDialogue();
+    }
+    showTab(lessonTabs, dialogue && state.lessonTab === 'dialogue' ? lessonTabs[1] : lessonTabs[0]);
+    build();
+  }
+  if (!synth) return;
+  synth.cancel();
+  loadVoices();  // some browsers fill the voice list late without an event
+}
+lessonSelect.addEventListener('change', () => setLesson(lessonSelect.value));
+
+setView(state.testView === 'cards' ? 'cards' : 'list');
+setDialogueView(state.dialogueView === 'cards' ? 'cards' : 'list');
+buildTest();
+setLesson(state.lesson);
+</script>
+</body>
+</html>
