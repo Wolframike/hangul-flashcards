@@ -600,7 +600,7 @@ dialog::backdrop { background: var(--backdrop); }
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p class="disclaimer">単語と意味は Quizlet のクラス「SFC朝鮮語」の25セット（2026年10月26日に取得）から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ（[ㅞ]・[ㅣ]）、ㅎの弱化、9課の会話文の発音は教科書『ハングルハングルⅠ』の形を先に示しています。漢字表記は標準国語大辞典の原語欄による韓国の字形です。9課の会話文は教科書 p.52 から写したもので、日本語訳は作成者によるものです。人名のハングル表記は教科書の日本語のハングル表記の規則によります。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
+    <p class="disclaimer">単語と意味は Quizlet の「SFC朝鮮語」セット（クラスの25セットを2026年10月26日に、クラスに入っていない10課・13課のセットを11月19日に取得）から。13課の単語バンク（親族名称・接続詞）は教科書 p.87 から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ（[ㅞ]・[ㅣ]）、ㅎの弱化、会話文の発音は教科書『ハングルハングルⅠ』の形（会話文は「発音ピックアップ」の形）を先に示しています。漢字表記は教科書に〈〉の表記がある語はそれに、ほかは標準国語大辞典の原語欄によるもので、字形は韓国のものです。9〜15課の会話文は教科書の「会話しよう」（pp.52・60・68・76・86・94・102）から写したもので、日本語訳は作成者によるものです。数字を含むセリフは、数字をハングルで書き直した文を読み上げます。人名のハングル表記は教科書の日本語のハングル表記の規則によります。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
   </div>
 </footer>
 <script>
@@ -618,13 +618,13 @@ const store = {
   }
 };
 
-// 課: 'pron' = the 〜8課 pronunciation test, a Quizlet set number ('09', '11', …) = that 課, 'all' = every set.
-// A 課 in LESSONS may add words ("extra") and a dialogue to memorise; the newest 課 with a dialogue opens first.
-const LATEST = Object.keys(LESSONS).filter(n => LESSONS[n].dialogue).sort().pop() || 'all';
+// 課: 'pron' = the 〜8課 pronunciation test, a Quizlet set number ('09', '10', …) = that 課, 'all' = every set.
+// A 課 in LESSONS may add words ("extra") and a dialogue to memorise; the 課 marked "current" opens first.
+const CURRENT = Object.keys(LESSONS).find(n => LESSONS[n].current) || 'all';
 const LESSON_IDS = ['pron', ...SETS.map(s => s.n), 'all'];
 
 const state = {
-  lesson: store.get('lesson', LATEST),
+  lesson: store.get('lesson', CURRENT),
   lessonTab: store.get('lessonTab', 'words'),
   reverse: store.get('reverse', false),
   shuffle: store.get('shuffle', false),
@@ -636,7 +636,7 @@ const state = {
   testShuffle: store.get('testShuffle', false),
   dialogueView: store.get('dialogueView', 'list')
 };
-if (!LESSON_IDS.includes(state.lesson)) state.lesson = LATEST;
+if (!LESSON_IDS.includes(state.lesson)) state.lesson = CURRENT;
 if (!['words', 'sentences', 'all'].includes(state.testRange)) state.testRange = 'words';
 
 const lessonName = n => Number(n) + '課';
@@ -890,7 +890,7 @@ function testItem(item, koClass) {
     listen.insertAdjacentHTML('beforeend', '<svg class="icon" aria-hidden="true"><use href="#i-volume_up"/></svg>');
     listen.append('聞く');
     listen.setAttribute('aria-label', item.ko + ' を聞く');
-    listen.addEventListener('click', () => speak(item.ko));
+    listen.addEventListener('click', () => speak(item.say || item.ko));
     li.append(listen);
   }
   return li;
@@ -933,7 +933,7 @@ function revealDeck(prefix, show, doneText) {
   addCardGestures(cardEl, d);
   $(prefix + 'prev').addEventListener('click', d.prev);
   $(prefix + 'next').addEventListener('click', d.next);
-  if (synth) $(prefix + 'listen').addEventListener('click', () => speak(d.items[d.pos].ko));
+  if (synth) $(prefix + 'listen').addEventListener('click', () => speak(d.items[d.pos].say || d.items[d.pos].ko));
   else $(prefix + 'listen').hidden = true;
   return d;
 }
@@ -977,7 +977,7 @@ function buildDialogue() {
   $('dialogue-lines').replaceChildren(...lines.map(item => testItem(item, 't-title')));
   dialogueDeck.start(lines.slice());
 }
-if (synth) $('play-all').addEventListener('click', () => speak(...lessonDialogue().map(l => l.ko)));
+if (synth) $('play-all').addEventListener('click', () => speak(...lessonDialogue().map(l => l.say || l.ko)));
 else $('play-all').hidden = true;
 
 // ← →: previous/next card, Space/Enter: the card's tap action, on whichever card deck is showing.

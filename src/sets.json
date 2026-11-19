@@ -347,6 +347,389 @@
   ]
  },
  {
+  "n": "10",
+  "cards": [
+   {
+    "ko": "교과서",
+    "ja": "教科書",
+    "pron": [
+     "교과서",
+     "교꽈서"
+    ],
+    "rom": [
+     "gyogwaseo",
+     "gyokkwaseo"
+    ],
+    "chg": true,
+    "hanja": "敎科書"
+   },
+   {
+    "ko": "교시",
+    "ja": "限、時間目",
+    "pron": [
+     "교시"
+    ],
+    "rom": [
+     "gyosi"
+    ],
+    "chg": false,
+    "hanja": "校時"
+   },
+   {
+    "ko": "그런데",
+    "ja": "ところで",
+    "pron": [
+     "그런데"
+    ],
+    "rom": [
+     "geureonde"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "년",
+    "ja": "～年",
+    "pron": [
+     "년"
+    ],
+    "rom": [
+     "nyeon"
+    ],
+    "chg": false,
+    "hanja": "年"
+   },
+   {
+    "ko": "대학교",
+    "ja": "大学",
+    "pron": [
+     "대학꾜"
+    ],
+    "rom": [
+     "daehakkyo"
+    ],
+    "chg": true,
+    "hanja": "大學校"
+   },
+   {
+    "ko": "도서관",
+    "ja": "図書館",
+    "pron": [
+     "도서관"
+    ],
+    "rom": [
+     "doseogwan"
+    ],
+    "chg": false,
+    "hanja": "圖書館"
+   },
+   {
+    "ko": "며칠",
+    "ja": "何日",
+    "pron": [
+     "며칠"
+    ],
+    "rom": [
+     "myeochil"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "몇",
+    "ja": "いくつ、何",
+    "pron": [
+     "멷"
+    ],
+    "rom": [
+     "myeot"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "무엇",
+    "ja": "何",
+    "pron": [
+     "무얻"
+    ],
+    "rom": [
+     "mueot"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "번호",
+    "ja": "番号",
+    "pron": [
+     "번호"
+    ],
+    "rom": [
+     "beonho"
+    ],
+    "chg": false,
+    "hanja": "番號"
+   },
+   {
+    "ko": "분",
+    "ja": "〜分",
+    "pron": [
+     "분"
+    ],
+    "rom": [
+     "bun"
+    ],
+    "chg": false,
+    "hanja": "分"
+   },
+   {
+    "ko": "생일",
+    "ja": "誕生日",
+    "pron": [
+     "생일"
+    ],
+    "rom": [
+     "saeng-il"
+    ],
+    "chg": false,
+    "hanja": "生日"
+   },
+   {
+    "ko": "식당",
+    "ja": "食堂",
+    "pron": [
+     "식땅"
+    ],
+    "rom": [
+     "sikttang"
+    ],
+    "chg": true,
+    "hanja": "食堂"
+   },
+   {
+    "ko": "어디",
+    "ja": "どこ",
+    "pron": [
+     "어디"
+    ],
+    "rom": [
+     "eodi"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "언제",
+    "ja": "いつ",
+    "pron": [
+     "언제"
+    ],
+    "rom": [
+     "eonje"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "영화",
+    "ja": "映画",
+    "pron": [
+     "영화"
+    ],
+    "rom": [
+     "yeonghwa"
+    ],
+    "chg": false,
+    "hanja": "映畫"
+   },
+   {
+    "ko": "원",
+    "ja": "〜ウォン",
+    "pron": [
+     "원"
+    ],
+    "rom": [
+     "won"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "월",
+    "ja": "～月",
+    "pron": [
+     "월"
+    ],
+    "rom": [
+     "wol"
+    ],
+    "chg": false,
+    "hanja": "月"
+   },
+   {
+    "ko": "일",
+    "ja": "～日",
+    "pron": [
+     "일"
+    ],
+    "rom": [
+     "il"
+    ],
+    "chg": false,
+    "hanja": "日"
+   },
+   {
+    "ko": "전화",
+    "ja": "電話",
+    "pron": [
+     "전화"
+    ],
+    "rom": [
+     "jeonhwa"
+    ],
+    "chg": false,
+    "hanja": "電話"
+   },
+   {
+    "ko": "주일",
+    "ja": "週間",
+    "pron": [
+     "주일"
+    ],
+    "rom": [
+     "juil"
+    ],
+    "chg": false,
+    "hanja": "週日"
+   },
+   {
+    "ko": "책",
+    "ja": "本",
+    "pron": [
+     "책"
+    ],
+    "rom": [
+     "chaek"
+    ],
+    "chg": false,
+    "hanja": "冊"
+   },
+   {
+    "ko": "층",
+    "ja": "〜階",
+    "pron": [
+     "층"
+    ],
+    "rom": [
+     "cheung"
+    ],
+    "chg": false,
+    "hanja": "層"
+   },
+   {
+    "ko": "학년",
+    "ja": "〜年生",
+    "pron": [
+     "항년"
+    ],
+    "rom": [
+     "hangnyeon"
+    ],
+    "chg": true,
+    "hanja": "學年"
+   },
+   {
+    "ko": "한글날",
+    "ja": "ハングルの日",
+    "pron": [
+     "한글랄"
+    ],
+    "rom": [
+     "hangeullal"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "일요일",
+    "ja": "日曜日",
+    "pron": [
+     "이료일"
+    ],
+    "rom": [
+     "iryoil"
+    ],
+    "chg": true,
+    "hanja": "日曜日"
+   },
+   {
+    "ko": "월요일",
+    "ja": "月曜日",
+    "pron": [
+     "워료일"
+    ],
+    "rom": [
+     "woryoil"
+    ],
+    "chg": true,
+    "hanja": "月曜日"
+   },
+   {
+    "ko": "화요일",
+    "ja": "火曜日",
+    "pron": [
+     "화요일"
+    ],
+    "rom": [
+     "hwayoil"
+    ],
+    "chg": false,
+    "hanja": "火曜日"
+   },
+   {
+    "ko": "수요일",
+    "ja": "水曜日",
+    "pron": [
+     "수요일"
+    ],
+    "rom": [
+     "suyoil"
+    ],
+    "chg": false,
+    "hanja": "水曜日"
+   },
+   {
+    "ko": "목요일",
+    "ja": "木曜日",
+    "pron": [
+     "모교일"
+    ],
+    "rom": [
+     "mogyoil"
+    ],
+    "chg": true,
+    "hanja": "木曜日"
+   },
+   {
+    "ko": "금요일",
+    "ja": "金曜日",
+    "pron": [
+     "그묘일"
+    ],
+    "rom": [
+     "geumyoil"
+    ],
+    "chg": true,
+    "hanja": "金曜日"
+   },
+   {
+    "ko": "토요일",
+    "ja": "土曜日",
+    "pron": [
+     "토요일"
+    ],
+    "rom": [
+     "toyoil"
+    ],
+    "chg": false,
+    "hanja": "土曜日"
+   }
+  ]
+ },
+ {
   "n": "11",
   "cards": [
    {
@@ -1027,6 +1410,327 @@
     ],
     "rom": [
      "tada"
+    ],
+    "chg": false
+   }
+  ]
+ },
+ {
+  "n": "13",
+  "cards": [
+   {
+    "ko": "기다리다",
+    "ja": "待つ",
+    "pron": [
+     "기다리다"
+    ],
+    "rom": [
+     "gidarida"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "나가다",
+    "ja": "出る、出て行く",
+    "pron": [
+     "나가다"
+    ],
+    "rom": [
+     "nagada"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "넣다",
+    "ja": "入れる",
+    "pron": [
+     "너타"
+    ],
+    "rom": [
+     "neota"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "놀다",
+    "ja": "遊ぶ",
+    "pron": [
+     "놀다"
+    ],
+    "rom": [
+     "nolda"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "들",
+    "ja": "たち",
+    "pron": [
+     "들"
+    ],
+    "rom": [
+     "deul"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "말",
+    "ja": "言葉",
+    "pron": [
+     "말"
+    ],
+    "rom": [
+     "mal"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "맛이 없다",
+    "ja": "まずい",
+    "pron": [
+     "마시 업따"
+    ],
+    "rom": [
+     "masi eoptta"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "반갑다",
+    "ja": "会えて嬉しい",
+    "pron": [
+     "반갑따"
+    ],
+    "rom": [
+     "bangaptta"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "보리차",
+    "ja": "麦茶",
+    "pron": [
+     "보리차"
+    ],
+    "rom": [
+     "boricha"
+    ],
+    "chg": false,
+    "hanja": "보리茶"
+   },
+   {
+    "ko": "사과",
+    "ja": "りんご",
+    "pron": [
+     "사과"
+    ],
+    "rom": [
+     "sagwa"
+    ],
+    "chg": false,
+    "hanja": "沙果"
+   },
+   {
+    "ko": "사다",
+    "ja": "買う",
+    "pron": [
+     "사다"
+    ],
+    "rom": [
+     "sada"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "사장님",
+    "ja": "社長",
+    "pron": [
+     "사장님"
+    ],
+    "rom": [
+     "sajangnim"
+    ],
+    "chg": false,
+    "hanja": "社長님"
+   },
+   {
+    "ko": "숙제",
+    "ja": "宿題",
+    "pron": [
+     "숙쩨"
+    ],
+    "rom": [
+     "sukjje"
+    ],
+    "chg": true,
+    "hanja": "宿題"
+   },
+   {
+    "ko": "쉬다",
+    "ja": "休む",
+    "pron": [
+     "쉬다"
+    ],
+    "rom": [
+     "swida"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "아직",
+    "ja": "まだ",
+    "pron": [
+     "아직"
+    ],
+    "rom": [
+     "ajik"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "음식",
+    "ja": "食べ物",
+    "pron": [
+     "음식"
+    ],
+    "rom": [
+     "eumsik"
+    ],
+    "chg": false,
+    "hanja": "飮食"
+   },
+   {
+    "ko": "응",
+    "ja": "うん",
+    "pron": [
+     "응"
+    ],
+    "rom": [
+     "eung"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "입다",
+    "ja": "着る",
+    "pron": [
+     "입따"
+    ],
+    "rom": [
+     "iptta"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "있으시다",
+    "ja": "おありだ",
+    "pron": [
+     "이쓰시다"
+    ],
+    "rom": [
+     "isseusida"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "저희",
+    "ja": "わたくしたち",
+    "pron": [
+     "저히"
+    ],
+    "rom": [
+     "jeohi"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "좀",
+    "ja": "ちょっと",
+    "pron": [
+     "좀"
+    ],
+    "rom": [
+     "jom"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "좋아하다",
+    "ja": "好きだ",
+    "pron": [
+     "조아하다"
+    ],
+    "rom": [
+     "joahada"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "찾다",
+    "ja": "探す",
+    "pron": [
+     "찯따"
+    ],
+    "rom": [
+     "chatta"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "청소",
+    "ja": "掃除",
+    "pron": [
+     "청소"
+    ],
+    "rom": [
+     "cheongso"
+    ],
+    "chg": false,
+    "hanja": "淸掃"
+   },
+   {
+    "ko": "커피",
+    "ja": "コーヒー",
+    "pron": [
+     "커피"
+    ],
+    "rom": [
+     "keopi"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "화장실",
+    "ja": "トイレ",
+    "pron": [
+     "화장실"
+    ],
+    "rom": [
+     "hwajangsil"
+    ],
+    "chg": false,
+    "hanja": "化粧室"
+   },
+   {
+    "ko": "회사",
+    "ja": "会社",
+    "pron": [
+     "회사"
+    ],
+    "rom": [
+     "hoesa"
+    ],
+    "chg": false,
+    "hanja": "會社"
+   },
+   {
+    "ko": "참",
+    "ja": "本当に",
+    "pron": [
+     "참"
+    ],
+    "rom": [
+     "cham"
     ],
     "chg": false
    }

@@ -101,5 +101,680 @@
     "note": "連音化、鼻音化、激音化"
    }
   ]
+ },
+ "10": {
+  "dialogue": [
+   {
+    "speaker": "가람",
+    "ko": "유키 씨 생일은 몇 월 며칠입니까?",
+    "ja": "ユキさんの誕生日は何月何日ですか。",
+    "pron": [
+     "유키 씨 생이른 며둴며치림니까"
+    ],
+    "rom": [
+     "yuki ssi saeng-ireun myeodwolmyeochirimnikka"
+    ],
+    "note": "連音化、鼻音化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "1월10일입니다.",
+    "ja": "1月10日です。",
+    "pron": [
+     "이뤌시비림니다"
+    ],
+    "rom": [
+     "irwolsibirimnida"
+    ],
+    "note": "連音化、鼻音化",
+    "say": "일월 십일입니다."
+   },
+   {
+    "speaker": "유키",
+    "ko": "가람 씨는 언제입니까?",
+    "ja": "カラムさんはいつですか。",
+    "pron": [
+     "가람 씨는 언제임니까"
+    ],
+    "rom": [
+     "garam ssineun eonjeimnikka"
+    ],
+    "note": "鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "저는 10월9일, 한글날입니다.",
+    "ja": "私は10月9日、ハングルの日です。",
+    "pron": [
+     "저는 시월구일 한글라림니다"
+    ],
+    "rom": [
+     "jeoneun siwolguil hangeullarimnida"
+    ],
+    "note": "流音化、連音化、鼻音化",
+    "say": "저는 시월 구일, 한글날입니다."
+   },
+   {
+    "speaker": "유키",
+    "ko": "아, 그래요? 그런데 가람 씨, 저것은 무엇입니까?",
+    "ja": "あ、そうですか。ところでカラムさん、あれは何ですか。",
+    "pron": [
+     "아 그래요 그런데 가람 씨 저거슨 무어심니까"
+    ],
+    "rom": [
+     "a geuraeyo geureonde garam ssi jeogeoseun mueosimnikka"
+    ],
+    "note": "連音化、鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "저것은 도서관입니다.",
+    "ja": "あれは図書館です。",
+    "pron": [
+     "저거슨 도서과님니다"
+    ],
+    "rom": [
+     "jeogeoseun doseogwanimnida"
+    ],
+    "note": "連音化、鼻音化"
+   }
+  ],
+  "current": true
+ },
+ "11": {
+  "dialogue": [
+   {
+    "speaker": "유키",
+    "ko": "가람 씨! 어디에 갑니까?",
+    "ja": "カラムさん！どこに行きますか。",
+    "pron": [
+     "가람 씨 어디에 감니까"
+    ],
+    "rom": [
+     "garam ssi eodie gamnikka"
+    ],
+    "note": "鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "아, 안녕하세요? 저는 학생 식당에 갑니다.",
+    "ja": "あ、こんにちは。私は学生食堂に行きます。",
+    "pron": [
+     "아 안녕아세요 저는 학쌩 식땅에 감니다",
+     "아 안녕하세요 저는 학쌩 식땅에 감니다"
+    ],
+    "rom": [
+     "a annyeong-aseyo jeoneun hakssaeng sikttang-e gamnida",
+     "a annyeonghaseyo jeoneun hakssaeng sikttang-e gamnida"
+    ],
+    "note": "ㅎの弱化、濃音化、鼻音化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "학생 식당에서 점심을 먹습니까?",
+    "ja": "学生食堂で昼ご飯を食べますか。",
+    "pron": [
+     "학쌩 식땅에서 점시믈 먹씀니까"
+    ],
+    "rom": [
+     "hakssaeng sikttang-eseo jeomsimeul meoksseumnikka"
+    ],
+    "note": "濃音化、連音化、鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "네, 오늘 점심은 비빔밥입니다.",
+    "ja": "はい、今日の昼ご飯はビビンバです。",
+    "pron": [
+     "네 오늘 점시믄 비빔빠빔니다"
+    ],
+    "rom": [
+     "ne oneul jeomsimeun bibimppabimnida"
+    ],
+    "note": "連音化、濃音化、鼻音化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "값은 안 비쌉니까?",
+    "ja": "値段は高くありませんか。",
+    "pron": [
+     "갑쓴 안 비쌈니까"
+    ],
+    "rom": [
+     "gapsseun an bissamnikka"
+    ],
+    "note": "連音化、濃音化、鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "네, 안 비쌉니다.",
+    "ja": "はい、高くありません。",
+    "pron": [
+     "네 안 비쌈니다"
+    ],
+    "rom": [
+     "ne an bissamnida"
+    ],
+    "note": "鼻音化"
+   }
+  ]
+ },
+ "12": {
+  "dialogue": [
+   {
+    "speaker": "유키",
+    "ko": "가람 씨는 오늘 학교에 언제 갑니까?",
+    "ja": "カラムさんは今日、学校にいつ行きますか。",
+    "pron": [
+     "가람 씨는 오늘 학꾜에 언제 감니까"
+    ],
+    "rom": [
+     "garam ssineun oneul hakkyoe eonje gamnikka"
+    ],
+    "note": "濃音化、鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "저는 10시까지 갑니다.",
+    "ja": "私は10時までに行きます。",
+    "pron": [
+     "저는 열씨까지 감니다"
+    ],
+    "rom": [
+     "jeoneun yeolssikkaji gamnida"
+    ],
+    "note": "濃音化、鼻音化",
+    "say": "저는 열 시까지 갑니다."
+   },
+   {
+    "speaker": "유키",
+    "ko": "그런데 벌써 9시 36분입니다. 괜찮습니까?",
+    "ja": "ところで、もう9時36分です。大丈夫ですか。",
+    "pron": [
+     "그런데 벌써 아홉씨 삼심뉵뿌님니다 괜찬씀니까"
+    ],
+    "rom": [
+     "geureonde beolsseo ahopssi samsimnyukppunimnida gwaenchansseumnikka"
+    ],
+    "note": "濃音化、ㄴ挿入、鼻音化、連音化",
+    "say": "그런데 벌써 아홉 시 삼십육 분입니다. 괜찮습니까?"
+   },
+   {
+    "speaker": "가람",
+    "ko": "네, 여기에서 학교까지 20분이 걸립니다. 괜찮습니다.",
+    "ja": "はい、ここから学校まで20分かかります。大丈夫です。",
+    "pron": [
+     "네 여기에서 학꾜까지 이십뿌니 걸림니다 괜찬씀니다"
+    ],
+    "rom": [
+     "ne yeogieseo hakkyokkaji isippuni geollimnida gwaenchansseumnida"
+    ],
+    "note": "濃音化、連音化、鼻音化",
+    "say": "네, 여기에서 학교까지 이십 분이 걸립니다. 괜찮습니다."
+   },
+   {
+    "speaker": "유키",
+    "ko": "학교까지는 버스를 탑니까?",
+    "ja": "学校まではバスに乗りますか。",
+    "pron": [
+     "학꾜까지는 버스를 탐니까"
+    ],
+    "rom": [
+     "hakkyokkajineun beoseureul tamnikka"
+    ],
+    "note": "濃音化、鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "아뇨, 버스를 타지 않습니다. 자전거를 탑니다.",
+    "ja": "いいえ、バスには乗りません。自転車に乗ります。",
+    "pron": [
+     "아뇨 버스를 타지 안씀니다 자전거를 탐니다"
+    ],
+    "rom": [
+     "anyo beoseureul taji ansseumnida jajeongeoreul tamnida"
+    ],
+    "note": "濃音化、鼻音化"
+   }
+  ]
+ },
+ "13": {
+  "dialogue": [
+   {
+    "speaker": "유키",
+    "ko": "선생님 계십니까?",
+    "ja": "（ドアをノックして）先生、いらっしゃいますか。",
+    "pron": [
+     "선생님 게심니까",
+     "선생님 계심니까"
+    ],
+    "rom": [
+     "seonsaengnim gesimnikka",
+     "seonsaengnim gyesimnikka"
+    ],
+    "note": "鼻音化"
+   },
+   {
+    "speaker": "선생님",
+    "ko": "아, 네. 응? 그것은 무엇입니까?",
+    "ja": "（ドアが開いて）あ、はい。うん？それは何ですか。",
+    "pron": [
+     "아 네 응 그거슨 무어심니까"
+    ],
+    "rom": [
+     "a ne eung geugeoseun mueosimnikka"
+    ],
+    "note": "連音化、鼻音化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "커피입니다. 선생님께서는 커피를 드십니까?",
+    "ja": "コーヒーです。先生はコーヒーを召し上がりますか。",
+    "pron": [
+     "커피임니다 선생님께서는 커피를 드심니까"
+    ],
+    "rom": [
+     "keopiimnida seonsaengnimkkeseoneun keopireul deusimnikka"
+    ],
+    "note": "鼻音化"
+   },
+   {
+    "speaker": "선생님",
+    "ko": "아뇨, 저는 보리차를 좋아하고, 커피는…좀….",
+    "ja": "いいえ、私は麦茶が好きで、コーヒーは…ちょっと…。",
+    "pron": [
+     "아뇨 저는 보리차를 조아하고 커피는 좀"
+    ],
+    "rom": [
+     "anyo jeoneun borichareul joahago keopineun jom"
+    ],
+    "note": "ㅎの弱化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "아, 그렇습니까? 저희 어머니께서 보리차를 참 좋아하십니다.",
+    "ja": "あ、そうですか。うちの母は麦茶がとても好きです。",
+    "pron": [
+     "아 그럳씀니까 저이 어머니께서 보리차를 참 조아하심니다",
+     "아 그러씀니까 저히 어머니께서 보리차를 참 조아하심니다"
+    ],
+    "rom": [
+     "a geureotsseumnikka jeoi eomeonikkeseo borichareul cham joahasimnida",
+     "a geureosseumnikka jeohi eomeonikkeseo borichareul cham joahasimnida"
+    ],
+    "note": "濃音化、鼻音化、ㅎの弱化"
+   },
+   {
+    "speaker": "선생님",
+    "ko": "하하, 저희 어머니께서는 커피를 좋아하십니다.",
+    "ja": "はは、うちの母はコーヒーが好きです。",
+    "pron": [
+     "하하 저이 어머니께서는 커피를 조아하심니다",
+     "하하 저히 어머니께서는 커피를 조아하심니다"
+    ],
+    "rom": [
+     "haha jeoi eomeonikkeseoneun keopireul joahasimnida",
+     "haha jeohi eomeonikkeseoneun keopireul joahasimnida"
+    ],
+    "note": "ㅎの弱化、鼻音化"
+   }
+  ],
+  "extra": [
+   {
+    "ko": "할아버지",
+    "ja": "（父方の）おじいさん",
+    "pron": [
+     "하라버지"
+    ],
+    "rom": [
+     "harabeoji"
+    ],
+    "chg": true
+   },
+   {
+    "ko": "할머니",
+    "ja": "（父方の）おばあさん",
+    "pron": [
+     "할머니"
+    ],
+    "rom": [
+     "halmeoni"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "외할아버지",
+    "ja": "（母方の）おじいさん",
+    "pron": [
+     "외하라버지"
+    ],
+    "rom": [
+     "oeharabeoji"
+    ],
+    "chg": true,
+    "hanja": "外할아버지"
+   },
+   {
+    "ko": "외할머니",
+    "ja": "（母方の）おばあさん",
+    "pron": [
+     "외할머니"
+    ],
+    "rom": [
+     "oehalmeoni"
+    ],
+    "chg": false,
+    "hanja": "外할머니"
+   },
+   {
+    "ko": "아버지",
+    "ja": "父",
+    "pron": [
+     "아버지"
+    ],
+    "rom": [
+     "abeoji"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "어머니",
+    "ja": "母",
+    "pron": [
+     "어머니"
+    ],
+    "rom": [
+     "eomeoni"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "형",
+    "ja": "（男性からみた）兄",
+    "pron": [
+     "형"
+    ],
+    "rom": [
+     "hyeong"
+    ],
+    "chg": false,
+    "hanja": "兄"
+   },
+   {
+    "ko": "누나",
+    "ja": "（男性からみた）姉",
+    "pron": [
+     "누나"
+    ],
+    "rom": [
+     "nuna"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "오빠",
+    "ja": "（女性からみた）兄",
+    "pron": [
+     "오빠"
+    ],
+    "rom": [
+     "oppa"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "언니",
+    "ja": "（女性からみた）姉",
+    "pron": [
+     "언니"
+    ],
+    "rom": [
+     "eonni"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "남동생",
+    "ja": "弟",
+    "pron": [
+     "남동생"
+    ],
+    "rom": [
+     "namdongsaeng"
+    ],
+    "chg": false,
+    "hanja": "男同生"
+   },
+   {
+    "ko": "여동생",
+    "ja": "妹",
+    "pron": [
+     "여동생"
+    ],
+    "rom": [
+     "yeodongsaeng"
+    ],
+    "chg": false,
+    "hanja": "女同生"
+   },
+   {
+    "ko": "그리고",
+    "ja": "そして",
+    "pron": [
+     "그리고"
+    ],
+    "rom": [
+     "geurigo"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "하지만",
+    "ja": "しかし",
+    "pron": [
+     "하지만"
+    ],
+    "rom": [
+     "hajiman"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "또는",
+    "ja": "または",
+    "pron": [
+     "또는"
+    ],
+    "rom": [
+     "ttoneun"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "그래서",
+    "ja": "だから",
+    "pron": [
+     "그래서"
+    ],
+    "rom": [
+     "geuraeseo"
+    ],
+    "chg": false
+   },
+   {
+    "ko": "그러니까",
+    "ja": "だから",
+    "pron": [
+     "그러니까"
+    ],
+    "rom": [
+     "geureonikka"
+    ],
+    "chg": false
+   }
+  ]
+ },
+ "14": {
+  "dialogue": [
+   {
+    "speaker": "유키",
+    "ko": "가람 씨, 여기 근처에 병원이 있습니까?",
+    "ja": "カラムさん、この近くに病院はありますか。",
+    "pron": [
+     "가람 씨 여기 근처에 병워니 읻씀니까"
+    ],
+    "rom": [
+     "garam ssi yeogi geuncheoe byeong-woni itsseumnikka"
+    ],
+    "note": "連音化、濃音化、鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "아, 병원은 저쪽에 경찰서와 도서관 사이에 있습니다. 어디가 안 좋으십니까?",
+    "ja": "あ、病院はあちらの、警察署と図書館の間にあります。どこか具合が悪いのですか。",
+    "pron": [
+     "아 병워는 저쪼게 경찰써와 도서관 사이에 읻씀니다 어디가 안 조으심니까"
+    ],
+    "rom": [
+     "a byeong-woneun jeojjoge gyeongchalsseowa doseogwan saie itsseumnida eodiga an joeusimnikka"
+    ],
+    "note": "連音化、濃音化、鼻音化、ㅎの弱化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "네, 머리가 좀 아픕니다.",
+    "ja": "はい、頭が少し痛いです。",
+    "pron": [
+     "네 머리가 좀 아픔니다"
+    ],
+    "rom": [
+     "ne meoriga jom apeumnida"
+    ],
+    "note": "鼻音化"
+   },
+   {
+    "speaker": "가람",
+    "ko": "아, 그럼 그 병원에 가면 됩니다. 지금 가십시오.",
+    "ja": "あ、じゃあ、その病院に行けばいいです。今行ってください。",
+    "pron": [
+     "아 그럼 그 병워네 가면 뒘니다 지금 가십씨오",
+     "아 그럼 그 병워네 가면 됨니다 지금 가십씨오"
+    ],
+    "rom": [
+     "a geureom geu byeong-wone gamyeon dwemnida jigeum gasipssio",
+     "a geureom geu byeong-wone gamyeon doemnida jigeum gasipssio"
+    ],
+    "note": "連音化、鼻音化、濃音化"
+   },
+   {
+    "speaker": "유키",
+    "ko": "알겠습니다. 3시까지 돌아오면 됩니까?",
+    "ja": "わかりました。3時までに帰ってくればいいですか。",
+    "pron": [
+     "알겓씀니다 세시까지 도라오면 뒘니까",
+     "알겓씀니다 세시까지 도라오면 됨니까"
+    ],
+    "rom": [
+     "algetsseumnida sesikkaji doraomyeon dwemnikka",
+     "algetsseumnida sesikkaji doraomyeon doemnikka"
+    ],
+    "note": "濃音化、鼻音化、連音化",
+    "say": "알겠습니다. 세 시까지 돌아오면 됩니까?"
+   },
+   {
+    "speaker": "가람",
+    "ko": "아닙니다. 천천히 돌아오십시오.",
+    "ja": "いいえ。ゆっくり帰ってきてください。",
+    "pron": [
+     "아님니다 천처니 도라오십씨오",
+     "아님니다 천천히 도라오십씨오"
+    ],
+    "rom": [
+     "animnida cheoncheoni doraosipssio",
+     "animnida cheoncheonhi doraosipssio"
+    ],
+    "note": "鼻音化、ㅎの弱化、連音化、濃音化"
+   }
+  ]
+ },
+ "15": {
+  "dialogue": [
+   {
+    "speaker": "준호",
+    "ko": "메이 씨는 언제까지 한국에 있어요?",
+    "ja": "メイさんはいつまで韓国にいますか。",
+    "pron": [
+     "메이 씨는 언제까지 한구게 이써요"
+    ],
+    "rom": [
+     "mei ssineun eonjekkaji hanguge isseoyo"
+    ],
+    "note": "連音化"
+   },
+   {
+    "speaker": "메이",
+    "ko": "아! 저는 다음 달 23일까지 한국에 있습니다.",
+    "ja": "あ！私は来月23日まで韓国にいます。",
+    "pron": [
+     "아 저는 다음딸 이십싸밀까지 한구게 읻씀니다"
+    ],
+    "rom": [
+     "a jeoneun daeumttal isipssamilkkaji hanguge itsseumnida"
+    ],
+    "note": "濃音化、連音化、鼻音化",
+    "say": "아! 저는 다음 달 이십삼 일까지 한국에 있습니다."
+   },
+   {
+    "speaker": "준호",
+    "ko": "그때까지는 어디에서 살아요?",
+    "ja": "それまではどこに住みますか。",
+    "pron": [
+     "그때까지는 어디에서 사라요"
+    ],
+    "rom": [
+     "geuttaekkajineun eodieseo sarayo"
+    ],
+    "note": "連音化"
+   },
+   {
+    "speaker": "메이",
+    "ko": "네. 유키 씨 집 옆에 살아요.",
+    "ja": "はい。ユキさんの家の隣に住みます。",
+    "pron": [
+     "네 유키 씨 짐녀페 사라요"
+    ],
+    "rom": [
+     "ne yuki ssi jimnyeope sarayo"
+    ],
+    "note": "ㄴ挿入、鼻音化、連音化"
+   },
+   {
+    "speaker": "준호",
+    "ko": "그럼 음식은 보통 무엇을 먹어요?",
+    "ja": "じゃあ、食べ物は普段何を食べますか。",
+    "pron": [
+     "그럼 음시근 보통 무어슬 머거요"
+    ],
+    "rom": [
+     "geureom eumsigeun botong mueoseul meogeoyo"
+    ],
+    "note": "連音化"
+   },
+   {
+    "speaker": "메이",
+    "ko": "음, 김치찌개와 김밥을 잘 먹어요. 보통 10,000원 정도(가) 들어요.",
+    "ja": "うーん、キムチチゲとのり巻きをよく食べます。普段1万ウォンくらいかかります。",
+    "pron": [
+     "음 김치찌개와 김빠블 잘 머거요 보통 마눤 정도(가) 드러요",
+     "음 김치찌개와 김바블 잘 머거요 보통 마눤 정도(가) 드러요"
+    ],
+    "rom": [
+     "eum gimchijjigaewa gimppabeul jal meogeoyo botong manwon jeongdo(ga) deureoyo",
+     "eum gimchijjigaewa gimbabeul jal meogeoyo botong manwon jeongdo(ga) deureoyo"
+    ],
+    "note": "濃音化、連音化",
+    "say": "음, 김치찌개와 김밥을 잘 먹어요. 보통 만 원 정도가 들어요."
+   }
+  ]
  }
 }
