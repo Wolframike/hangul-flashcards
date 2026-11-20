@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
-<title>ハングル読み練習</title>
+<title>ハングル練習</title>
 <script>try { if (localStorage.getItem('hangul-cards:theme') === '"light"') document.documentElement.dataset.theme = 'light'; } catch (e) {}</script>
 <style>
 /* base.css — openai 規則の値の正本。RULES.md と完全に一致させる。
@@ -392,16 +392,41 @@ dialog::backdrop { background: var(--backdrop); }
 .test-forms { margin-top: var(--s1); }
 .test-forms > span { display: block; word-break: keep-all; overflow-wrap: anywhere; }
 
+/* タイピング。画面のキーボードは 2벌식 の文字の3段と Shift で、1キー = 46 分の 4 列 */
+.type-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--s3); padding: var(--s7) var(--s5) var(--s5); border-radius: var(--r-md); background: var(--fill); text-align: center; }
+.type-keys { display: flex; gap: var(--s2); }
+.type-keys .is-done { color: var(--text-2); }
+.type-keys .is-next { padding: 0 var(--s1); border-radius: var(--r-xs); background: var(--ink); color: var(--bg); }
+.type-meaning { overflow-wrap: anywhere; }
+.type-form { width: 100%; }
+.type-field { height: 56px; margin-top: var(--s2); font-size: 22px; text-align: center; }
+div.type-field { display: flex; align-items: center; justify-content: center; overflow: hidden; white-space: pre; cursor: text; }
+div.type-field:focus::after { content: ""; height: 1.2em; border-left: 2px solid var(--text); }
+div.type-field:not(:focus):empty::before { content: "ここをクリックして入力"; color: var(--text-2); font-size: 16px; }
+.kb { display: flex; flex-direction: column; gap: var(--s1); margin-top: var(--s5); }
+.kb-row { display: grid; grid-template-columns: repeat(46, minmax(0, 1fr)); }
+.kb-row:first-child > :first-child { grid-column-start: 7; }
+.kb-row:nth-child(2) > :first-child { grid-column-start: 8; }
+.kb-key { position: relative; grid-column-end: span 4; display: flex; align-items: center; justify-content: center; height: var(--s7); margin: 0 calc(var(--s1) / 2); border-radius: var(--r-sm); background: var(--fill); color: var(--text); transition: background-color .2s linear, color .2s linear; }
+.kb-key.kb-shift { grid-column-end: span 9; }
+.kb-shifted { position: absolute; top: var(--s1); left: var(--s2); }
+.kb-latin { position: absolute; right: var(--s2); bottom: var(--s1); }
+.kb-key.is-next, .kb-key.is-next .muted { background: var(--ink); color: var(--bg); }
+.kb-key.is-down, .kb-key.is-down .muted { background: var(--fill-strong); color: var(--text); }
+.kb-key.is-wrong, .kb-key.is-wrong .muted { background: var(--error-tint); color: var(--error); }
+.type-hint { margin-top: var(--s3); text-align: center; text-wrap: pretty; }
+
 /* スマホでは、カードを画面の残りの高さまで伸ばす */
 @media (max-width: 767px) {
   .practice { display: flex; flex-direction: column; min-height: calc(100vh - 56px); min-height: calc(100dvh - 56px); padding: var(--s4) 0 var(--s5); }
-  #cards-view, #study, #test-view, #test-cards, #tstudy, #dialogue-view, #dialogue-cards, #dstudy { display: flex; flex: 1; flex-direction: column; }
+  #read-page, #cards-view, #study, #test-view, #test-cards, #tstudy, #dialogue-view, #dialogue-cards, #dstudy { display: flex; flex: 1; flex-direction: column; }
   .view-tabs { align-self: flex-start; }
   .mode-tabs { margin-bottom: var(--s4); }
   .flashcard { display: grid; flex: 1; margin-top: var(--s4); }
   .face { aspect-ratio: auto; min-height: 240px; }
   .word { font-size: 48px; }
   .keys { display: none; }
+  .kb-shifted, .kb-latin { display: none; }
 }
 </style>
 </head>
@@ -416,9 +441,10 @@ dialog::backdrop { background: var(--backdrop); }
 <symbol id="i-volume_up" viewBox="0 -960 960 960"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></symbol>
 </svg>
 <header class="site-header container">
-  <h1 class="t-brand">ハングル読み練習</h1>
+  <h1 class="t-brand">ハングル練習</h1>
   <div class="header-actions">
-    <button class="toggle" id="theme" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ダークモード</button>
+    <nav class="nav" aria-label="ページ"><a href="#read" aria-current="page">読み</a><a href="#typing">タイピング</a></nav>
+    <button class="toggle" id="theme" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ダーク</button>
   </div>
 </header>
 <main class="container">
@@ -436,6 +462,7 @@ dialog::backdrop { background: var(--backdrop); }
         <button class="toggle" id="slow" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>ゆっくり</button>
       </div>
     </div>
+    <div id="read-page">
     <p class="say say-error test-say" id="speech-error" role="alert" hidden><svg class="icon" aria-hidden="true"><use href="#i-error"/></svg><span>読み上げに失敗しました。別の声を選ぶか、ページを読み込み直してください。</span></p>
 
     <div class="tabs mode-tabs" role="tablist" aria-label="練習の種類" id="lesson-tabs">
@@ -596,11 +623,41 @@ dialog::backdrop { background: var(--backdrop); }
     </section>
 
     <p class="say test-say" id="voice-hint" hidden></p>
+    </div>
+
+    <section id="typing-page" hidden>
+      <div class="tabs mode-tabs" role="tablist" aria-label="レベル">
+        <button class="tab" role="tab" id="level-basic" data-level="basic" aria-controls="type-play" aria-selected="true">初級（1文字）</button>
+        <button class="tab" role="tab" id="level-advanced" data-level="advanced" aria-controls="type-play" aria-selected="false" tabindex="-1">上級（単語）</button>
+      </div>
+      <div id="type-play" role="tabpanel">
+        <div id="type-study">
+          <div class="type-card" id="type-card">
+            <span class="face-label t-small muted" id="type-where"></span>
+            <span class="face-pos t-small muted num" id="type-pos"></span>
+            <span class="word" id="type-target" lang="ko" aria-live="polite"></span>
+            <span class="t-h3 type-keys" id="type-keys" lang="ko" aria-hidden="true"></span>
+            <span class="t-h3 type-meaning" id="type-meaning"></span>
+            <div class="field type-field" id="type-box" role="textbox" tabindex="0" aria-label="入力した文字" lang="ko"></div>
+            <form class="type-form" id="type-form" hidden><label class="sr-only" for="type-input">入力</label><input class="field type-field" id="type-input" lang="ko" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" placeholder="ここに入力"></form>
+            <p class="say say-error" id="type-error" role="alert" hidden><svg class="icon" aria-hidden="true"><use href="#i-error"/></svg><span id="type-error-text"></span></p>
+          </div>
+          <div class="kb" id="kb" lang="ko" aria-hidden="true"></div>
+          <div class="deck-nav"><button class="btn btn-secondary" id="type-skip">次へ<svg class="icon" aria-hidden="true"><use href="#i-arrow_forward"/></svg></button></div>
+          <p class="t-small muted type-hint" id="type-hint"></p>
+        </div>
+        <div class="empty" id="type-done" hidden>
+          <h2 class="t-title">最後まで終わりました</h2>
+          <p class="empty-text" id="type-done-text"></p>
+          <div class="actions"><button class="btn btn-primary" id="type-restart"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>最初から</button></div>
+        </div>
+      </div>
+    </section>
   </div>
 </main>
 <footer class="site-footer">
   <div class="container">
-    <p class="disclaimer">単語と意味は Quizlet の「SFC朝鮮語」セット（クラスの25セットを2026年10月26日に、クラスに入っていない10課・13課のセットを11月19日に取得）から。13課の単語バンク（親族名称・接続詞）は教科書 p.87 から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ（[ㅞ]・[ㅣ]）、ㅎの弱化、会話文の発音は教科書『ハングルハングルⅠ』の形（会話文は「発音ピックアップ」の形）を先に示しています。漢字表記は教科書に〈〉の表記がある語はそれに、ほかは標準国語大辞典の原語欄によるもので、字形は韓国のものです。9〜15課の会話文は教科書の「会話しよう」（pp.52・60・68・76・86・94・102）から写したもので、日本語訳は作成者によるものです。数字を含むセリフは、数字をハングルで書き直した文を読み上げます。人名のハングル表記は教科書の日本語のハングル表記の規則によります。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
+    <p class="disclaimer">単語と意味は Quizlet の「SFC朝鮮語」セット（クラスの25セットを2026年10月26日に、クラスに入っていない10課・13課のセットを11月19日に取得）から。13課の単語バンク（親族名称・接続詞）は教科書 p.87 から。発音は標準発音の規則と単語ごとの例外から作ったもので、誤りを含むことがあります。ローマ字は発音どおりに書いており、公式のローマ字表記とは一部異なります。発音テストの単語と文は授業の配布資料から。発音表記は標準国語大辞典に合わせ、ㅚ と語中の ㅢ（[ㅞ]・[ㅣ]）、ㅎの弱化、会話文の発音は教科書『ハングルハングルⅠ』の形（会話文は「発音ピックアップ」の形）を先に示しています。漢字表記は教科書に〈〉の表記がある語はそれに、ほかは標準国語大辞典の原語欄によるもので、字形は韓国のものです。9〜15課の会話文は教科書の「会話しよう」（pp.52・60・68・76・86・94・102）から写したもので、日本語訳は作成者によるものです。数字を含むセリフは、数字をハングルで書き直した文を読み上げます。人名のハングル表記は教科書の日本語のハングル表記の規則によります。タイピングのキー配列は韓国の標準の2ボル式（<span lang="ko">두벌식</span>）です。パソコンではページがキーの位置を読み取るので、韓国語入力に切り替えずに打てます。スマホでは端末の韓国語キーボードで入力します。音声は端末のブラウザの読み上げ機能で再生するため、声と音質は端末によって異なります。</p>
   </div>
 </footer>
 <script>
@@ -982,7 +1039,7 @@ else $('play-all').hidden = true;
 
 // ← →: previous/next card, Space/Enter: the card's tap action, on whichever card deck is showing.
 document.addEventListener('keydown', e => {
-  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.altKey || e.ctrlKey || e.metaKey || $('read-page').hidden) return;
   const deck = !$('cards-view').hidden ? cardDeck
     : !$('dialogue-view').hidden && !$('dialogue-cards').hidden ? dialogueDeck
     : !$('test-view').hidden && !$('test-cards').hidden ? testDeck : null;
@@ -1078,6 +1135,250 @@ function setDialogueView(view) {
 }
 setupTabs(dialogueTabs, tab => setDialogueView(tab.dataset.view));
 
+// タイピング: 初級 = one syllable at a time with the 2벌식 keyboard on screen, 上級 = the 課's words in random order
+// with their meaning. With a physical keyboard the page reads the keys itself (KeyboardEvent.code), so no Korean
+// input method is needed; on touch devices the device's Korean keyboard types into an <input> and return moves on.
+const PHYSICAL = !matchMedia('(hover: none)').matches;
+const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+const JUNG = 'ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ';
+const JONG = ['', ...'ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ'];
+// Jamo typed with two keys.
+const PAIRS = { 'ㅘ': 'ㅗㅏ', 'ㅙ': 'ㅗㅐ', 'ㅚ': 'ㅗㅣ', 'ㅝ': 'ㅜㅓ', 'ㅞ': 'ㅜㅔ', 'ㅟ': 'ㅜㅣ', 'ㅢ': 'ㅡㅣ',
+  'ㄳ': 'ㄱㅅ', 'ㄵ': 'ㄴㅈ', 'ㄶ': 'ㄴㅎ', 'ㄺ': 'ㄹㄱ', 'ㄻ': 'ㄹㅁ', 'ㄼ': 'ㄹㅂ', 'ㄽ': 'ㄹㅅ', 'ㄾ': 'ㄹㅌ', 'ㄿ': 'ㄹㅍ', 'ㅀ': 'ㄹㅎ', 'ㅄ': 'ㅂㅅ' };
+const JOIN = Object.fromEntries(Object.entries(PAIRS).map(([jamo, keys]) => [keys, jamo]));
+const isSyllable = c => c >= '가' && c <= '힣';
+const isJamo = c => c >= 'ㄱ' && c <= 'ㅣ';
+const isVowel = c => c >= 'ㅏ' && c <= 'ㅣ';
+const split = jamo => [...(PAIRS[jamo] || jamo)];
+
+// The keys typed for a text: 과 → ㄱㅗㅏ, 값 → ㄱㅏㅂㅅ, 까 → ㄲㅏ (Shift+ㄱ). Other characters stand for themselves.
+function keysOf(text) {
+  const keys = [];
+  for (const c of text) {
+    if (!isSyllable(c)) { keys.push(...split(c)); continue; }
+    const n = c.charCodeAt(0) - 0xAC00;
+    keys.push(CHO[Math.floor(n / 588)], ...split(JUNG[Math.floor(n / 28) % 21]), ...split(JONG[n % 28]));
+  }
+  return keys;
+}
+
+// What a 2벌식 input method shows for these keys. A final consonant moves on when a vowel follows (갑+ㅏ → 가바, 값+ㅏ → 갑사).
+function compose(keys) {
+  let out = '', cho = '', jung = '', jong = '';
+  const flush = () => {
+    out += cho && jung ? String.fromCharCode(0xAC00 + (CHO.indexOf(cho) * 21 + JUNG.indexOf(jung)) * 28 + JONG.indexOf(jong)) : cho + jung;
+    cho = jung = jong = '';
+  };
+  for (const k of keys) {
+    if (!isJamo(k)) { flush(); out += k; }
+    else if (isVowel(k)) {
+      if (jong) {
+        const [stay, move] = PAIRS[jong] ? split(jong) : ['', jong];
+        jong = stay;
+        flush();
+        cho = move;
+        jung = k;
+      } else if (JOIN[jung + k]) jung = JOIN[jung + k];
+      else if (cho && !jung) jung = k;
+      else { flush(); jung = k; }
+    }
+    else if (cho && jung && !jong && JONG.includes(k)) jong = k;
+    else if (jong && JOIN[jong + k]) jong = JOIN[jong + k];
+    else { flush(); cho = k; }
+  }
+  flush();
+  return out;
+}
+
+// The 2벌식 layout: the jamo on each letter key, then the one typed with Shift.
+const LAYOUT = { q: 'ㅂㅃ', w: 'ㅈㅉ', e: 'ㄷㄸ', r: 'ㄱㄲ', t: 'ㅅㅆ', y: 'ㅛ', u: 'ㅕ', i: 'ㅑ', o: 'ㅐㅒ', p: 'ㅔㅖ',
+  a: 'ㅁ', s: 'ㄴ', d: 'ㅇ', f: 'ㄹ', g: 'ㅎ', h: 'ㅗ', j: 'ㅓ', k: 'ㅏ', l: 'ㅣ',
+  z: 'ㅋ', x: 'ㅌ', c: 'ㅊ', v: 'ㅍ', b: 'ㅠ', n: 'ㅜ', m: 'ㅡ' };
+const JAMO_OF = {};  // key code → [jamo, jamo with Shift]
+const KEY_OF = {};   // jamo → [key code, whether Shift is needed]
+for (const [letter, jamo] of Object.entries(LAYOUT)) {
+  const code = 'Key' + letter.toUpperCase();
+  JAMO_OF[code] = [jamo[0], jamo[1] || jamo[0]];
+  KEY_OF[jamo[0]] = [code, false];
+  if (jamo[1]) KEY_OF[jamo[1]] = [code, true];
+}
+
+const kb = $('kb');
+const kbKeys = {};  // key code → its key on the screen
+for (const [i, letters] of ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'].entries()) {
+  const row = el('div', 'kb-row');
+  if (i === 2) row.append(kbKeys.ShiftLeft = el('span', 'kb-key kb-shift'));
+  for (const letter of letters) {
+    const [jamo, shifted] = LAYOUT[letter];
+    const key = kbKeys['Key' + letter.toUpperCase()] = el('span', 'kb-key');
+    key.append(el('span', 't-title', jamo));
+    if (shifted) key.append(el('span', 'kb-shifted t-caption muted', shifted));
+    key.append(el('span', 'kb-latin t-caption muted', letter.toUpperCase()));
+    row.append(key);
+  }
+  if (i === 2) row.append(kbKeys.ShiftRight = el('span', 'kb-key kb-shift'));
+  kb.append(row);
+}
+kbKeys.ShiftLeft.append(el('span', 't-small', 'Shift'));
+kbKeys.ShiftRight.append(el('span', 't-small', 'Shift'));
+
+const typeBox = $('type-box');
+const typeInput = $('type-input');
+const typing = { level: store.get('typingLevel', 'basic'), pool: [], deck: [], pos: 0, count: 0, target: null, forms: [], typed: [] };
+if (!['basic', 'advanced'].includes(typing.level)) typing.level = 'basic';
+
+// What to type: a part in parentheses may be typed or left out (대신(에) = 대신에 or 대신), punctuation is not typed.
+const UNTYPED = '?!.,~()';
+const clean = text => [...text].filter(c => !UNTYPED.includes(c)).join('').trim();
+function typingForms(ko) {
+  return [...new Set([ko.replace(/[()]/g, ''), ko.replace(/\([^)]*\)/g, '')])].map(s => keysOf(clean(s)));
+}
+const isPrefix = (keys, form) => keys.length <= form.length && keys.every((k, i) => k === form[i]);
+const typingDone = () => typing.forms.some(f => f.length === typing.typed.length && isPrefix(typing.typed, f));
+const typingWords = n => n === 'pron' ? TESTS.words : lessonCards(n);
+const typingPlace = n => n === 'pron' || !n ? '〜8課' : n === 'all' ? '全課' : lessonName(n);
+
+function showTypeError(text) {
+  if ($('type-error-text').textContent !== text) $('type-error-text').textContent = text;
+  $('type-error').hidden = !text;
+}
+
+function buildTyping() {
+  const words = typingWords(state.lesson);
+  typing.pool = words.flatMap(w => [...w.ko].filter(isSyllable));
+  typing.deck = shuffled(words.slice());
+  typing.pos = -1;
+  typing.count = 0;
+  nextTyping();
+}
+
+function nextTyping() {
+  const basic = typing.level === 'basic';
+  let target;
+  if (basic) {
+    const last = typing.target && typing.target.ko;
+    do target = { ko: typing.pool[Math.floor(Math.random() * typing.pool.length)] };
+    while (target.ko === last && typing.pool.some(s => s !== last));
+    typing.count++;
+  } else {
+    typing.pos++;
+    target = typing.deck[typing.pos];
+  }
+  $('type-study').hidden = !target;
+  $('type-done').hidden = !!target;
+  if (!target) {
+    $('type-done-text').textContent = typing.deck.length + '語を練習しました。';
+    return;
+  }
+  $('type-where').textContent = typingPlace(basic ? state.lesson : target.set);
+  $('type-pos').textContent = basic ? typing.count + '文字目' : (typing.pos + 1) + ' / ' + typing.deck.length;
+  $('type-target').textContent = target.ko;
+  $('type-meaning').textContent = basic ? '' : target.ja;
+  typing.target = target;
+  typing.forms = typingForms(target.ko);
+  typing.typed = [];
+  typeInput.value = '';
+  showTypeError('');
+  renderTyping();
+}
+
+// Show what has been typed, whether it is still on the way to the target, and (初級) the next key.
+function renderTyping() {
+  const { typed, forms } = typing;
+  const ok = forms.some(f => isPrefix(typed, f));
+  const form = forms.find(f => isPrefix(typed, f)) || forms[0];
+  let n = 0;
+  while (n < typed.length && typed[n] === form[n]) n++;
+  typeBox.textContent = compose(typed);
+  typeBox.setAttribute('aria-invalid', String(!ok));
+  typeInput.setAttribute('aria-invalid', String(!ok));
+  $('type-keys').replaceChildren(...form.map((k, i) => el('span', i < n ? 'is-done' : i === n && ok ? 'is-next' : '', k)));
+  for (const key of kb.querySelectorAll('.is-next')) key.classList.remove('is-next');
+  const next = ok && !kb.hidden && KEY_OF[form[n]];
+  if (next) {
+    kbKeys[next[0]].classList.add('is-next');
+    // Shift with the other hand: the right Shift for the left hand's ㅃㅉㄸㄲㅆ, the left for ㅒㅖ.
+    if (next[1]) kbKeys[/Key[QWERT]/.test(next[0]) ? 'ShiftRight' : 'ShiftLeft'].classList.add('is-next');
+  }
+  if (PHYSICAL) showTypeError(ok ? '' : '違うキーです。Backspace で消してください。');
+  return ok;
+}
+
+typeBox.addEventListener('keydown', e => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.key === 'Shift') { if (kbKeys[e.code]) kbKeys[e.code].classList.add('is-down'); return; }
+  const jamo = JAMO_OF[e.code];
+  let keys;
+  if (jamo) keys = [jamo[e.shiftKey ? 1 : 0]];
+  else if (e.key === 'Backspace') keys = null;
+  else if (e.key === ' ') keys = [' '];
+  else if (e.key.length === 1) keys = keysOf(clean(e.key));  // digits, or a jamo from a keyboard that sends no code
+  else return;
+  e.preventDefault();
+  if (keys) typing.typed.push(...keys); else typing.typed.pop();
+  const ok = renderTyping();
+  if (jamo) kbKeys[e.code].classList.add(ok ? 'is-down' : 'is-wrong');
+  if (typingDone()) nextTyping();
+});
+const releaseKeys = () => { for (const key of kb.querySelectorAll('.is-down, .is-wrong')) key.classList.remove('is-down', 'is-wrong'); };
+document.addEventListener('keyup', releaseKeys);
+typeBox.addEventListener('blur', releaseKeys);
+
+const readInput = () => { typing.typed = keysOf(clean(typeInput.value.normalize('NFC'))); };
+typeInput.addEventListener('input', () => {
+  readInput();
+  renderTyping();
+  showTypeError(/[A-Za-z぀-ヿ一-鿿]/.test(typeInput.value) ? 'ハングル以外の文字が入っています。韓国語のキーボードに切り替えてください。' : '');
+});
+$('type-form').addEventListener('submit', e => {
+  e.preventDefault();
+  readInput();
+  if (typingDone()) nextTyping();
+  else if (typing.typed.length) showTypeError('まだ合っていません。');
+});
+
+const focusTyping = () => (PHYSICAL ? typeBox : typeInput).focus({ preventScroll: true });
+$('type-card').addEventListener('click', focusTyping);
+$('type-skip').addEventListener('click', () => { nextTyping(); focusTyping(); });
+$('type-restart').addEventListener('click', () => { buildTyping(); focusTyping(); });
+typeBox.hidden = !PHYSICAL;
+$('type-form').hidden = PHYSICAL;
+$('type-hint').textContent = PHYSICAL
+  ? 'パソコンのキーボードで、韓国語入力に切り替えずにそのまま打てます。'
+  : '端末の韓国語キーボードで入力し、改行キーで次へ進みます。';
+
+const levelTabs = [$('level-basic'), $('level-advanced')];
+function setLevel(level) {
+  typing.level = level;
+  store.set('typingLevel', level);
+  for (const tab of levelTabs) {
+    const on = tab.dataset.level === level;
+    tab.setAttribute('aria-selected', String(on));
+    tab.tabIndex = on ? 0 : -1;
+  }
+  kb.hidden = !PHYSICAL || level !== 'basic';
+  $('type-keys').hidden = level !== 'basic';
+  $('type-meaning').hidden = level === 'basic';
+  buildTyping();
+}
+setupTabs(levelTabs, tab => setLevel(tab.dataset.level));
+for (const tab of levelTabs) tab.addEventListener('click', () => { if (PHYSICAL) focusTyping(); });
+
+// Pages: 読み (#read, the default) and タイピング (#typing) share the 課 select.
+function showPage() {
+  const typingPage = location.hash === '#typing';
+  $('read-page').hidden = typingPage;
+  $('typing-page').hidden = !typingPage;
+  $('voice-filter').hidden = $('slow').hidden = typingPage || !synth;
+  for (const a of document.querySelectorAll('.nav a')) {
+    if ((a.hash === '#typing') === typingPage) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  }
+  if (synth) synth.cancel();
+  if (typingPage && PHYSICAL) focusTyping();
+}
+addEventListener('hashchange', showPage);
+
 const lessonSelect = $('lesson');
 lessonSelect.append(new Option('〜8課（発音テスト）', 'pron'));
 for (const s of SETS) lessonSelect.append(new Option(lessonName(s.n) + ((LESSONS[s.n] || {}).dialogue ? '（テスト）' : ''), s.n));
@@ -1102,6 +1403,7 @@ function setLesson(n) {
     showTab(lessonTabs, dialogue && state.lessonTab === 'dialogue' ? lessonTabs[1] : lessonTabs[0]);
     build();
   }
+  buildTyping();
   if (!synth) return;
   synth.cancel();
   loadVoices();  // some browsers fill the voice list late without an event
@@ -1111,7 +1413,9 @@ lessonSelect.addEventListener('change', () => setLesson(lessonSelect.value));
 setView(state.testView === 'cards' ? 'cards' : 'list');
 setDialogueView(state.dialogueView === 'cards' ? 'cards' : 'list');
 buildTest();
+setLevel(typing.level);
 setLesson(state.lesson);
+showPage();
 </script>
 </body>
 </html>
